@@ -5,6 +5,26 @@
   scrollbar-color: var(--text-dim) transparent;
 }
 
+/* Dot Matrix Background */
+.bg-dot-matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(var(--text-dim) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: -1;
+  animation: dotDrift 60s linear infinite;
+}
+
+@keyframes dotDrift {
+  from { background-position: 0 0; }
+  to { background-position: 32px 64px; }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -35,10 +55,28 @@ body {
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-subtle);
+}
+
+.detail-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 3.5rem;
+  border-radius: 4rem;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-card:hover {
+  border-color: var(--accent-blue);
+  transform: translateY(-8px);
+  background: var(--bg-card-hover);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
 .premium-btn {

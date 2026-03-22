@@ -7,7 +7,7 @@
   
   /* Typography */
   --text-main: #ffffff;
-  --text-muted: #a0a0a0;
+  --text-muted: #cdcdcd; /* Brighter for better contrast */
   --text-dim: #606060;
   
   /* Accents */

@@ -9,10 +9,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-black text-white min-h-screen">
-    <!-- Navigation (Controlled by layout.js) -->
-    <nav class="w-full h-20 flex items-center border-b border-white/5 sticky top-0 bg-black/80 backdrop-blur-xl z-50">
-    </nav>
+<body class="bg-black text-white min-h-screen flex flex-col">
+    <div class="bg-dot-matrix"></div>
+    <header class="fixed top-0 w-full z-50 transition-all duration-500 py-6"></header>
+    <!-- Navigation (Injected by layout.js) -->
 
     <!-- Vertical Dot Navigation -->
     <div class="dot-nav" id="dotNav"></div>
