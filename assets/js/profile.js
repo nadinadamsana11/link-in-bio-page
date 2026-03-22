@@ -44,30 +44,39 @@ function displayProfile(data) {
     loading.classList.add('hidden');
     profileContent.classList.remove('hidden');
 
-    profileName.textContent = data.displayName || data.username;
-    profileBio.textContent = data.bio || "";
+    document.getElementById('profileName').textContent = data.displayName || data.username;
+    document.getElementById('profileUsername').textContent = `@${data.username}`;
+    document.getElementById('profileBio').textContent = data.bio || "Welcome to my official profile.";
     
     if (data.photoURL) {
-        profilePhoto.innerHTML = `<img src="${data.photoURL}" class="w-full h-full object-cover shadow-2xl">`;
+        profilePhoto.innerHTML = `<img src="${data.photoURL}" class="w-full h-full object-cover">`;
     } else {
-        profilePhoto.innerHTML = `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-3xl font-bold text-slate-400">${data.username[0].toUpperCase()}</div>`;
+        profilePhoto.innerHTML = `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-5xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
     }
 
     if (data.links && data.links.length > 0) {
         profileLinks.innerHTML = data.links.map(link => `
             <a href="${link.url}" target="_blank" 
-                class="profile-link block w-full bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center font-bold text-slate-100 flex items-center justify-between px-6 group">
-                <i data-lucide="${link.icon || 'link'}" class="w-5 h-5 text-slate-400 opacity-60 group-hover:opacity-100 transition-colors"></i>
-                <span class="flex-1">${link.title}</span>
-                <div class="w-5 h-5"></div>
+                class="block w-full bg-slate-900 border border-slate-800 p-6 rounded-[2rem] group hover:scale-[1.02] transition-all overflow-hidden relative">
+                <div class="flex items-center gap-6 relative z-10">
+                    <div class="bg-slate-800 p-4 rounded-2xl text-slate-400 group-hover:text-white transition-colors">
+                        <i data-lucide="${link.icon || 'link'}" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-black text-xl text-slate-100">${link.title}</h4>
+                        <p class="text-xs text-slate-500 uppercase tracking-widest font-bold mt-1 group-hover:text-slate-400 transition-colors">${link.url.replace('https://', '')}</p>
+                    </div>
+                    <i data-lucide="chevron-right" class="w-5 h-5 text-slate-700 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </a>
         `).join('');
     } else {
-        profileLinks.innerHTML = `<p class="text-center text-slate-500 italic mt-8">No links shared yet.</p>`;
+        profileLinks.innerHTML = `<p class="text-center text-slate-500 italic mt-8 font-medium">No active links found.</p>`;
     }
 
     lucide.createIcons();
-    document.title = `${data.displayName || data.username} | Link-in-Bio`;
+    document.title = `${data.displayName || data.username} | Digital Identity`;
 }
 
 function showError() {
