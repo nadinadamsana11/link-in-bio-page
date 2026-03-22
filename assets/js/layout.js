@@ -94,7 +94,7 @@ function injectFooter() {
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Support the project</h4>
                     <p class="text-[var(--text-muted)] text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
                     <div class="flex flex-col gap-3">
-                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[var(--accent-vibrant)] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 btn-support-yellow px-6 py-3 rounded-full text-[10px] uppercase tracking-widest transition-all shadow-xl">
                             <i data-lucide="coffee" class="w-4 h-4"></i>
                             Buy me a coffee
                         </a>
