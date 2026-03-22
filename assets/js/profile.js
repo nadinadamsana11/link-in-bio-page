@@ -5,83 +5,68 @@ import {
     where, 
     getDocs 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { calculateAge } from './utils.js';
 
-const profileContent = document.getElementById('profileContent');
-const loading = document.getElementById('loading');
-const errorState = document.getElementById('errorState');
-const profileLinks = document.getElementById('profileLinks');
-const profileName = document.getElementById('profileName');
-const profileBio = document.getElementById('profileBio');
-const profilePhoto = document.getElementById('profilePhoto');
+const urlParams = new URLSearchParams(window.location.search);
+const username = urlParams.get('u');
 
-async function fetchProfile() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const username = urlParams.get('u');
+if (username) {
+    loadPublicProfile();
+} else {
+    document.body.innerHTML = `<div class="p-20 text-center font-black text-slate-500 uppercase tracking-widest">Ghost Identity: No User Found</div>`;
+}
 
-    if (!username) {
-        showError();
+async function loadPublicProfile() {
+    const q = query(collection(db, "users"), where("username", "==", username.toLowerCase()));
+    const snapshot = await getDocs(q);
+
+    if (snapshot.empty) {
+        document.body.innerHTML = `<div class="p-20 text-center font-black text-slate-500 uppercase tracking-widest">Ghost Identity: No User Found</div>`;
         return;
     }
 
-    try {
-        const q = query(collection(db, "users"), where("username", "==", username.toLowerCase()));
-        const querySnapshot = await getDocs(q);
-
-        if (querySnapshot.empty) {
-            showError();
-            return;
-        }
-
-        const userData = querySnapshot.docs[0].data();
-        displayProfile(userData);
-    } catch (error) {
-        console.error("Fetch Error:", error);
-        showError();
-    }
+    const data = snapshot.docs[0].data();
+    renderProfile(data);
 }
 
-function displayProfile(data) {
-    loading.classList.add('hidden');
-    profileContent.classList.remove('hidden');
-
-    document.getElementById('profileName').textContent = data.displayName || data.username;
-    document.getElementById('profileUsername').textContent = `@${data.username}`;
-    document.getElementById('profileBio').textContent = data.bio || "Welcome to my official profile.";
+function renderProfile(data) {
+    document.getElementById('badgeName').textContent = data.displayName || data.username;
+    document.getElementById('badgeUsername').textContent = `@${data.username}`;
+    document.getElementById('badgeBio').textContent = data.bio || "";
     
-    if (data.photoURL) {
-        profilePhoto.innerHTML = `<img src="${data.photoURL}" class="w-full h-full object-cover">`;
-    } else {
-        profilePhoto.innerHTML = `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-5xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
-    }
+    // Expanded Fields
+    document.getElementById('badgeDOB').textContent = data.dob || "N/A";
+    document.getElementById('badgeAge').textContent = calculateAge(data.dob);
+    document.getElementById('badgeGender').textContent = data.gender || "N/A";
+    document.getElementById('badgeHome').textContent = data.home || "N/A";
+    document.getElementById('badgeTel').textContent = data.tel || "N/A";
+    document.getElementById('badgeEmail').textContent = data.email || "N/A";
 
+    const avatarPreview = document.getElementById('avatarPreview');
+    const photoContent = data.photoURL 
+        ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
+        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-5xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
+    
+    avatarPreview.innerHTML = photoContent;
+
+    const linksList = document.getElementById('linksList');
     if (data.links && data.links.length > 0) {
-        profileLinks.innerHTML = data.links.map(link => `
-            <a href="${link.url}" target="_blank" 
-                class="block w-full bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] group hover:scale-[1.02] transition-all overflow-hidden relative shadow-xl hover:shadow-white/5">
-                <div class="flex items-center gap-8 relative z-10">
-                    <div class="bg-slate-800 p-5 rounded-[1.5rem] text-slate-400 group-hover:text-white transition-colors shadow-lg">
-                        <i data-lucide="${link.icon || 'link'}" class="w-8 h-8"></i>
+        linksList.innerHTML = data.links.map(link => `
+            <a href="${link.url}" target="_blank" class="bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] flex flex-col gap-5 group hover:scale-[1.03] hover:border-emerald-500/30 transition-all border-glow">
+                <div class="flex justify-between items-start">
+                    <div class="bg-slate-800 p-5 rounded-2xl text-slate-300 group-hover:text-white transition-colors">
+                        <i data-lucide="${link.icon || 'link'}" class="w-7 h-7"></i>
                     </div>
-                    <div class="flex-1">
-                        <h4 class="font-black text-2xl text-slate-100 group-hover:text-white transition-colors">${link.title}</h4>
-                        <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-black mt-2 group-hover:text-slate-400 transition-colors">${link.url.replace('https://', '')}</p>
+                    <div class="bg-slate-800/40 p-2 rounded-lg group-hover:bg-emerald-500/10 transition-colors">
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400"></i>
                     </div>
-                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-slate-700 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                <div>
+                    <h4 class="font-black text-xl text-slate-100 mb-1 group-hover:text-emerald-400 transition-colors">${link.title}</h4>
+                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest truncate">${link.url.replace('https://', '')}</p>
+                </div>
             </a>
         `).join('');
-    } else {
-        profileLinks.innerHTML = `<p class="text-center text-slate-500 italic mt-8 font-medium">No active links found.</p>`;
+        lucide.createIcons();
     }
-
-    lucide.createIcons();
-    document.title = `${data.displayName || data.username} | Digital Identity`;
 }
-
-function showError() {
-    loading.classList.add('hidden');
-    errorState.classList.remove('hidden');
-}
-
-fetchProfile();

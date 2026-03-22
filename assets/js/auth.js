@@ -18,6 +18,7 @@ import {
     where, 
     getDocs 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { showToast } from './utils.js';
 
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
@@ -26,9 +27,13 @@ const googleBtn = document.getElementById('googleLogin');
 const magicLinkBtn = document.getElementById('magicLinkBtn');
 
 const showMessage = (msg, isError = false) => {
-    if (!messageEl) return;
+    if (!messageEl) {
+        showToast(msg, isError ? 'error' : 'success');
+        return;
+    }
     messageEl.textContent = msg;
     messageEl.className = `mt-4 text-center text-sm font-medium ${isError ? 'text-red-400' : 'text-emerald-400'}`;
+    showToast(msg, isError ? 'error' : 'success');
 };
 
 const setLoading = (btn, isLoading, originalContent) => {

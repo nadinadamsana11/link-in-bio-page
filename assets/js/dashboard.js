@@ -15,6 +15,7 @@ import {
     getDownloadURL 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { showToast, calculateAge } from './utils.js';
 
 let currentUser = null;
 let userLinks = [];
@@ -24,6 +25,10 @@ const modalAvatarPreview = document.getElementById('modalAvatarPreview');
 const photoInput = document.getElementById('photoInput');
 const displayNameInput = document.getElementById('displayName');
 const usernameInput = document.getElementById('dashboardUsername');
+const dobInput = document.getElementById('dob');
+const homeInput = document.getElementById('home');
+const telInput = document.getElementById('tel');
+const genderInput = document.getElementById('gender');
 const bioInput = document.getElementById('bio');
 const bioCounter = document.getElementById('bioCounter');
 const linksListEl = document.getElementById('linksList');
@@ -72,16 +77,26 @@ async function loadUserData() {
         data = {
             displayName: currentUser.displayName || emailPrefix,
             username: emailPrefix,
+            email: currentUser.email,
             photoURL: currentUser.photoURL || "",
             bio: "",
+            dob: "",
+            home: "",
+            tel: "",
+            gender: "",
             links: [],
             createdAt: new Date().toISOString()
         };
         await setDoc(userDocRef, data);
+        showToast("Welcome! Your Identity Badge has been initialized.", "success");
     }
 
     displayNameInput.value = data.displayName || "";
     usernameInput.value = data.username || "";
+    dobInput.value = data.dob || "";
+    homeInput.value = data.home || "";
+    telInput.value = data.tel || "";
+    genderInput.value = data.gender || "";
     bioInput.value = data.bio || "";
     userLinks = data.links || [];
     
@@ -95,6 +110,14 @@ function updateIdentityBadge(data) {
     document.getElementById('badgeBio').textContent = data.bio || "No bio added yet. Tell the world who you are.";
     document.getElementById('linkCount').textContent = data.links?.length || 0;
     
+    // Expanded Data
+    document.getElementById('badgeDOB').textContent = data.dob || "N/A";
+    document.getElementById('badgeAge').textContent = calculateAge(data.dob);
+    document.getElementById('badgeGender').textContent = data.gender || "N/A";
+    document.getElementById('badgeHome').textContent = data.home || "N/A";
+    document.getElementById('badgeTel').textContent = data.tel || "N/A";
+    document.getElementById('badgeEmail').textContent = data.email || currentUser.email;
+
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
         : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
@@ -106,11 +129,8 @@ function updateIdentityBadge(data) {
         : (data.displayName || data.username)[0].toUpperCase();
     
     if (data.createdAt) {
-        const date = new Date(data.createdAt);
-        document.getElementById('memberSince').textContent = date.getFullYear();
+        document.getElementById('publicProfileBtn').href = `../profile/view.html?u=${data.username}`;
     }
-
-    document.getElementById('publicProfileBtn').href = `../profile/view.html?u=${data.username}`;
     updateBioCounter();
 }
 
@@ -193,28 +213,33 @@ saveProfileBtn.addEventListener('click', async () => {
     const newUsername = usernameInput.value.trim().toLowerCase();
     const originalText = saveProfileBtn.innerHTML;
 
-    if (!newUsername) return alert("Username required");
+    if (!newUsername) return showToast("Handle required for production identity", "error");
     
     setLoading(saveProfileBtn, true, originalText);
     try {
         if (!(await isUsernameAvailable(newUsername, currentUser.uid))) {
-            alert("Username is already taken!");
+            showToast("This Handle is already claimed by another creator", "error");
             return;
         }
 
         const updates = {
             displayName: displayNameInput.value,
             username: newUsername,
-            bio: bioInput.value
+            bio: bioInput.value,
+            dob: dobInput.value,
+            home: homeInput.value,
+            tel: telInput.value,
+            gender: genderInput.value,
+            email: currentUser.email
         };
 
         await setDoc(doc(db, "users", currentUser.uid), updates, { merge: true });
         updateIdentityBadge(updates);
         identityModal.classList.add('hidden');
-        alert("Digital Identity secured successfully!");
+        showToast("Production Identity secured successfully!", "success");
     } catch (error) {
         console.error(error);
-        alert("Error updating identity.");
+        showToast("Identity sync failed. Please try again.", "error");
     } finally {
         setLoading(saveProfileBtn, false, originalText);
     }
@@ -227,8 +252,6 @@ photoInput.addEventListener('change', async (e) => {
 
     try {
         const webpBlob = await processToWebP(file);
-        
-        // Cloudinary Upload
         const formData = new FormData();
         formData.append('file', webpBlob);
         formData.append('upload_preset', 'link-in-bio-page');
@@ -244,11 +267,15 @@ photoInput.addEventListener('change', async (e) => {
         const url = result.secure_url;
         
         await setDoc(doc(db, "users", currentUser.uid), { photoURL: url }, { merge: true });
-        avatarPreview.innerHTML = `<img src="${url}" class="w-full h-full object-cover">`;
-        alert("Identity photo updated via Cloudinary!");
+        
+        // Update local badge instantly
+        const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+        updateIdentityBadge(userDoc.data());
+        
+        showToast("Identity Portrait updated via Cloudinary!", "success");
     } catch (error) {
         console.error(error);
-        alert("Photo upload failed.");
+        showToast("Portrait upload failed.", "error");
     }
 });
 
@@ -291,10 +318,15 @@ function renderLinks() {
 
 window.deleteLink = async (index) => {
     if (!confirm("Remove this entry from your library?")) return;
-    userLinks.splice(index, 1);
-    await setDoc(doc(db, "users", currentUser.uid), { links: userLinks }, { merge: true });
-    renderLinks();
-    document.getElementById('linkCount').textContent = userLinks.length;
+    try {
+        userLinks.splice(index, 1);
+        await setDoc(doc(db, "users", currentUser.uid), { links: userLinks }, { merge: true });
+        renderLinks();
+        document.getElementById('linkCount').textContent = userLinks.length;
+        showToast("Entry removed", "info");
+    } catch (err) {
+        showToast("Failed to remove item", "error");
+    }
 };
 
 window.editLink = (index) => {
@@ -341,8 +373,10 @@ linkForm.addEventListener('submit', async (e) => {
         linkModal.classList.add('hidden');
         renderLinks();
         document.getElementById('linkCount').textContent = userLinks.length;
+        showToast("Library updated successfully!", "success");
     } catch (error) {
         console.error(error);
+        showToast("Failed to save link. Please try again.", "error");
     } finally {
         setLoading(submitBtn, false, originalText);
     }

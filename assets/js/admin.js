@@ -8,6 +8,7 @@ import {
     query 
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { showToast } from './utils.js';
 
 const userTableBody = document.getElementById('userTableBody');
 
@@ -17,8 +18,8 @@ onAuthStateChanged(auth, async (user) => {
         if (userDoc.exists() && userDoc.data().isAdmin) {
             loadAllUsers();
         } else {
-            alert("Unauthorized access. Admin only.");
-            window.location.href = '../dashboard/index.html';
+            showToast("Unauthorized access. Admin only.", "error");
+            setTimeout(() => window.location.href = '../dashboard/index.html', 1500);
         }
     }
 });
