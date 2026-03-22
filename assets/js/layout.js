@@ -48,10 +48,21 @@ function injectHeader() {
 }
 
 function injectFooter() {
-    const footer = document.querySelector('footer');
-    if (!footer) return;
+    let footer = document.querySelector('footer');
+    if (!footer) {
+        footer = document.createElement('footer');
+        document.body.appendChild(footer);
+    }
 
-    footer.className = "bg-slate-900/50 border-t border-slate-900 pt-20 pb-10 mt-auto";
+    // Ensure only one footer exists
+    const allFooters = document.querySelectorAll('footer');
+    if (allFooters.length > 1) {
+        allFooters.forEach((f, i) => { if (i > 0) f.remove(); });
+        footer = document.querySelector('footer');
+    }
+
+    // Full-width background classes
+    footer.className = "w-full bg-slate-900/50 border-t border-slate-900 pt-20 pb-10 mt-auto relative z-10";
     footer.innerHTML = `
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -68,7 +79,7 @@ function injectFooter() {
                     </div>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6">Explore</h4>
+                    <h4 class="font-bold mb-6 text-white">Explore</h4>
                     <ul class="space-y-4 text-sm text-slate-400">
                         <li><a href="${pathPrefix}index.html" class="hover:text-white transition-colors">Home</a></li>
                         <li><a href="${pathPrefix}pages/about.html" class="hover:text-white transition-colors">About Us</a></li>
@@ -76,7 +87,7 @@ function injectFooter() {
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6">Company</h4>
+                    <h4 class="font-bold mb-6 text-white">Company</h4>
                     <ul class="space-y-4 text-sm text-slate-400">
                         <li><a href="${pathPrefix}pages/contact.html" class="hover:text-white transition-colors">Support</a></li>
                         <li><a href="${pathPrefix}pages/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
@@ -84,15 +95,15 @@ function injectFooter() {
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6">Newsletter</h4>
-                    <p class="text-sm text-slate-400 mb-4">Stay tuned for new features.</p>
+                    <h4 class="font-bold mb-6 text-white">Stay Tuned</h4>
+                    <p class="text-sm text-slate-400 mb-4">Subscribe to our newsletter.</p>
                     <div class="flex gap-2">
-                        <input type="email" placeholder="Email" class="bg-slate-800 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-slate-500 outline-none w-full">
-                        <button class="bg-white text-slate-950 px-4 py-2 rounded-lg font-bold text-sm">Join</button>
+                        <input type="email" placeholder="Email" class="bg-slate-800 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-slate-500 outline-none w-full text-white">
+                        <button class="bg-white text-slate-950 px-4 py-2 rounded-lg font-bold text-sm hover:bg-slate-200 transition-colors">Join</button>
                     </div>
                 </div>
             </div>
-            <div class="text-center pt-10 border-t border-slate-800 text-slate-600 text-xs">
+            <div class="text-center pt-10 border-t border-slate-800 text-slate-600 text-[10px] font-black uppercase tracking-widest">
                 &copy; 2026 Link-in-Bio Platform. All rights reserved.
             </div>
         </div>
