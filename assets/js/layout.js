@@ -16,29 +16,28 @@ export function renderGlobalUI() {
 }
 
 function injectHeader() {
-    const header = document.querySelector('nav'); // Targeting existing nav for replacement or just finding/injecting
+    const header = document.querySelector('header');
     if (!header) return;
 
     // We keep specific headers for Dashboard and Profile but unify the Landing/Auth/Pages
     const isSpecialPage = window.location.pathname.includes('/dashboard/') || window.location.pathname.includes('/profile/') || window.location.pathname.includes('/admin/');
-    if (isSpecialPage) return; // Dashboard or Profile handle their own complex headers
-
+    header.className = "fixed top-0 w-full z-[100] transition-all duration-500 bg-black/40 backdrop-blur-xl border-b border-white/5";
     header.innerHTML = `
-        <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-4 md:px-6">
+        <div class="w-full flex justify-between items-center px-6 md:px-12 h-20">
             <div id="nav-logo" class="flex items-center gap-2">
                 <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
                     <i data-lucide="zap" class="w-6 h-6 text-white"></i>
                 </div>
-                <a href="${pathPrefix}index.html" class="font-bold text-xl md:text-2xl tracking-tighter hover:text-white/70 transition-colors italic">Link-in-Bio</a>
+                <a href="${pathPrefix}index.html" class="font-black text-xl md:text-2xl tracking-tighter hover:text-white/70 transition-colors italic">Link-in-Bio</a>
             </div>
             
-            <div id="nav-actions" class="flex items-center gap-3 md:gap-6">
+            <div id="nav-actions" class="flex items-center gap-3 md:gap-8">
                 <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] px-5 py-2 rounded-full border border-[var(--accent-premium)]/20 text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-black transition-all">
                     <i data-lucide="crown" class="w-3 h-3"></i>
                     Get Pro
                 </a>
-                ${!window.location.pathname.includes('/profile/') && !window.location.pathname.includes('@') ? `<a href="${pathPrefix}auth/login.html" class="text-white/60 hover:text-white transition-all font-bold text-xs uppercase tracking-widest px-2">Log In</a>` : ''}
-                <a href="${pathPrefix}auth/register.html" class="bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] px-5 md:px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Start Now</a>
+                ${!window.location.pathname.includes('/profile/') && !window.location.pathname.includes('@') ? `<a href="${pathPrefix}auth/login.html" class="btn-nav-login font-bold text-xs uppercase tracking-widest px-2">Log In</a>` : ''}
+                <a href="${pathPrefix}auth/register.html" class="bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] px-6 md:px-10 py-3 rounded-full shadow-2xl transition-all font-black text-[10px] uppercase tracking-widest hover:scale-105 active:scale-95">Start Now</a>
             </div>
         </div>
     `;

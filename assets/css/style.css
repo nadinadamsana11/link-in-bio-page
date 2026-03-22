@@ -79,6 +79,61 @@ body {
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
+.creative-btn-primary {
+  background: white;
+  color: black;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+}
+
+.creative-btn-primary:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.2);
+}
+
+.creative-btn-premium {
+  background: var(--bg-card);
+  color: var(--accent-premium);
+  border: 1px solid var(--accent-premium);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(255, 215, 0, 0.1);
+}
+
+.creative-btn-premium::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 215, 0, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shineSweep 3s infinite;
+}
+
+.creative-btn-premium:hover {
+  background: var(--accent-premium) !important;
+  color: black !important;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px rgba(255, 215, 0, 0.4);
+}
+
+.creative-btn-premium:hover i {
+  color: black !important;
+}
+
+@keyframes shineSweep {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
 .premium-btn {
   background: #f8fafc;
   color: #020617 !important;
@@ -90,7 +145,20 @@ body {
 }
 
 .premium-btn:hover {
-  background: #cbd5e1;
+  background: var(--accent-premium) !important;
+  color: black !important;
+  transform: scale(1.02);
+}
+
+/* Global Button Visibility Fixes */
+.btn-nav-login {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease;
+}
+
+.btn-nav-login:hover {
+  color: white !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .link-btn {
