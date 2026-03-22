@@ -32,7 +32,7 @@ function injectHeader() {
             </div>
             
             <div id="nav-actions" class="flex items-center gap-3 md:gap-8">
-                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] px-5 py-2 rounded-full border border-[var(--accent-premium)]/20 text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-black transition-all">
+                <a href="${pathPrefix}pages/pro.html" class="hidden sm:inline-flex btn-nav-premium">
                     <i data-lucide="crown" class="w-3 h-3"></i>
                     Get Pro
                 </a>
