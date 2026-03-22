@@ -64,20 +64,20 @@ function injectFooter() {
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
                 <div class="col-span-1 md:col-span-1 space-y-6">
-                    <div class="flex items-center gap-2">
-                        <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                    <div class="flex items-center gap-2 text-white">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
                         <span class="font-bold text-xl italic">Link-in-Bio</span>
                     </div>
-                    <p class="text-slate-500 text-sm">The easy way to share all your links in one place.</p>
+                    <p class="text-[var(--text-muted)] text-sm">The easy way to share all your links in one place.</p>
                     <div class="flex gap-4">
-                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
-                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
-                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-[var(--text-muted)] hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-[var(--text-muted)] hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-[var(--text-muted)] hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Main Pages</h4>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500">
+                    <ul class="space-y-4 text-xs font-bold text-[var(--text-muted)]">
                         <li><a href="${pathPrefix}index.html" class="hover:text-white transition-colors uppercase">Home</a></li>
                         <li><a href="${pathPrefix}pages/pro.html" class="hover:text-white transition-colors uppercase">Get Pro</a></li>
                         <li><a href="${pathPrefix}auth/register.html" class="hover:text-white transition-colors uppercase">Join Now</a></li>
@@ -85,7 +85,7 @@ function injectFooter() {
                 </div>
                 <div>
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Help</h4>
-                    <ul class="space-y-4 text-xs font-bold text-slate-500">
+                    <ul class="space-y-4 text-xs font-bold text-[var(--text-muted)]">
                         <li><a href="${pathPrefix}pages/contact.html" class="hover:text-white transition-colors uppercase">Contact Support</a></li>
                         <li><a href="${pathPrefix}pages/privacy.html" class="hover:text-white transition-colors uppercase">Privacy Rules</a></li>
                     </ul>
@@ -94,7 +94,7 @@ function injectFooter() {
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Support the project</h4>
                     <p class="text-[var(--text-muted)] text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
                     <div class="flex flex-col gap-3">
-                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[var(--accent-premium)] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[var(--accent-vibrant)] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
                             <i data-lucide="coffee" class="w-4 h-4"></i>
                             Buy me a coffee
                         </a>
@@ -105,7 +105,7 @@ function injectFooter() {
                     </div>
                 </div>
             </div>
-            <div class="text-center pt-10 border-t border-slate-900 text-slate-700 text-[10px] font-black uppercase tracking-[0.2em]">
+            <div class="text-center pt-10 border-t border-[var(--border-subtle)] text-[var(--text-dim)] text-[10px] font-black uppercase tracking-[0.2em]">
                 &copy; 2026 Link-in-Bio Platform. Made for everyone.
             </div>
         </div>
