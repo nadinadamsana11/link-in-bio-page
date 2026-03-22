@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Link-in-Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center">
+        <a href="../index.html" class="flex items-center gap-2">
+            <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="font-bold text-2xl tracking-tighter">Link-in-Bio</span>
+        </a>
+    </nav>
+
+    <main class="max-w-xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-4xl font-black mb-4">Get in Touch</h1>
+        <p class="text-slate-400 mb-12">Have questions or need support? We're here to help.</p>
+        
+        <div class="glass-dark p-8 rounded-3xl border border-slate-800 text-left">
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1 ml-1">Your Name</label>
+                    <input type="text" class="w-full bg-slate-900 border border-slate-800 rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1 ml-1">Email Address</label>
+                    <input type="email" class="w-full bg-slate-900 border border-slate-800 rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-slate-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1 ml-1">Message</label>
+                    <textarea rows="4" class="w-full bg-slate-900 border border-slate-800 rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-slate-500"></textarea>
+                </div>
+                <button type="submit" class="w-full premium-btn py-4 rounded-2xl font-bold">Send Message</button>
+            </form>
+        </div>
+        
+        <div class="mt-12 flex justify-center gap-8">
+            <div class="text-center">
+                <i data-lucide="mail" class="w-6 h-6 text-slate-500 mx-auto mb-2"></i>
+                <p class="text-sm text-slate-400 font-medium">support@linkinbio.com</p>
+            </div>
+            <div class="text-center">
+                <i data-lucide="twitter" class="w-6 h-6 text-slate-500 mx-auto mb-2"></i>
+                <p class="text-sm text-slate-400 font-medium">@linkinbiodev</p>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

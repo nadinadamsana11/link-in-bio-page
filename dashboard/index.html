@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Link-in-Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen overflow-x-hidden">
+    <nav class="glass-dark border-b border-slate-900/50 p-4 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-slate-800 p-2 rounded-lg border border-slate-700">
+                    <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">Dashboard</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="../index.html" class="text-slate-400 hover:text-white text-sm font-medium transition-all">View Site</a>
+                <button onclick="logout()" class="text-slate-400 hover:text-red-400 p-2 rounded-lg hover:bg-red-400/10 transition-all">
+                    <i data-lucide="log-out" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6 md:p-8 space-y-8">
+        <!-- Profile Section -->
+        <section class="glass-dark p-6 rounded-2xl border border-slate-800 shadow-xl">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="user" class="text-slate-400"></i>
+                Profile Settings
+            </h2>
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="relative group mx-auto md:mx-0">
+                    <div id="avatarPreview" class="w-32 h-32 rounded-full bg-slate-800 border-4 border-slate-700 overflow-hidden flex items-center justify-center">
+                        <i data-lucide="image" class="w-8 h-8 text-slate-600"></i>
+                    </div>
+                    <label class="absolute bottom-0 right-0 bg-slate-100 p-2 rounded-full cursor-pointer hover:bg-white transition-all shadow-lg">
+                        <i data-lucide="camera" class="w-4 h-4 text-slate-950"></i>
+                        <input type="file" id="photoInput" class="hidden" accept="image/*">
+                    </label>
+                </div>
+                <div class="flex-1 w-full space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Display Name</label>
+                            <input type="text" id="displayName" autocomplete="name"
+                                class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 focus:ring-1 focus:ring-slate-500 outline-none transition-all placeholder-slate-700"
+                                placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-400 mb-1">Public Username</label>
+                            <input type="text" id="dashboardUsername" disabled 
+                                class="w-full bg-slate-800/50 border border-slate-700 rounded-xl py-2 px-4 text-slate-500 cursor-not-allowed">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-400 mb-1">Bio</label>
+                        <textarea id="bio" rows="3" 
+                            class="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-2 focus:ring-1 focus:ring-slate-500 outline-none transition-all placeholder-slate-700"
+                            placeholder="Talk about yourself..."></textarea>
+                    </div>
+                    <button id="saveProfileBtn" class="premium-btn px-6 py-2 rounded-xl font-semibold transition-all">
+                        Save Profile
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Links Section -->
+        <section class="space-y-4">
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="link-2" class="text-slate-400"></i>
+                    Your Links
+                </h2>
+                <button id="addLinkBtn" class="bg-white text-slate-950 px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    Add Link
+                </button>
+            </div>
+
+            <div id="linksList" class="space-y-3">
+                <!-- Links will be injected here -->
+                <div class="text-center py-12 text-slate-500">
+                    No links added yet. Click "Add Link" to get started.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Add/Edit Link Modal -->
+    <div id="linkModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4 z-[100]">
+        <div class="glass-dark border border-slate-700 p-8 rounded-2xl w-full max-w-md shadow-2xl">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-6">Add New Link</h3>
+            <form id="linkForm" class="space-y-4">
+                <input type="hidden" id="linkIndex">
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1">Link Title</label>
+                    <input type="text" id="linkTitle" required placeholder="e.g., Follow me on Twitter"
+                        class="w-full bg-slate-800 border border-slate-700 rounded-xl py-3 px-4 focus:ring-1 focus:ring-slate-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1">URL</label>
+                    <input type="url" id="linkUrl" required placeholder="https://..."
+                        class="w-full bg-slate-800 border border-slate-700 rounded-xl py-3 px-4 focus:ring-1 focus:ring-slate-500 outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-400 mb-1">Icon (Lucide Name)</label>
+                    <input type="text" id="linkIcon" placeholder="twitter, github, globe..."
+                        class="w-full bg-slate-800 border border-slate-700 rounded-xl py-3 px-4 focus:ring-1 focus:ring-slate-500 outline-none">
+                </div>
+                <div class="flex gap-3 pt-4">
+                    <button type="button" id="closeModalBtn" class="flex-1 bg-slate-800 hover:bg-slate-700 py-3 rounded-xl font-medium border border-slate-700">Cancel</button>
+                    <button type="submit" class="flex-1 bg-white text-slate-950 py-3 rounded-xl font-bold">Save Link</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/dashboard.js"></script>
+    <script type="module" src="../assets/js/auth.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
