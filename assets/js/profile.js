@@ -57,16 +57,16 @@ function displayProfile(data) {
     if (data.links && data.links.length > 0) {
         profileLinks.innerHTML = data.links.map(link => `
             <a href="${link.url}" target="_blank" 
-                class="block w-full bg-slate-900 border border-slate-800 p-6 rounded-[2rem] group hover:scale-[1.02] transition-all overflow-hidden relative">
-                <div class="flex items-center gap-6 relative z-10">
-                    <div class="bg-slate-800 p-4 rounded-2xl text-slate-400 group-hover:text-white transition-colors">
-                        <i data-lucide="${link.icon || 'link'}" class="w-6 h-6"></i>
+                class="block w-full bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] group hover:scale-[1.02] transition-all overflow-hidden relative shadow-xl hover:shadow-white/5">
+                <div class="flex items-center gap-8 relative z-10">
+                    <div class="bg-slate-800 p-5 rounded-[1.5rem] text-slate-400 group-hover:text-white transition-colors shadow-lg">
+                        <i data-lucide="${link.icon || 'link'}" class="w-8 h-8"></i>
                     </div>
                     <div class="flex-1">
-                        <h4 class="font-black text-xl text-slate-100">${link.title}</h4>
-                        <p class="text-xs text-slate-500 uppercase tracking-widest font-bold mt-1 group-hover:text-slate-400 transition-colors">${link.url.replace('https://', '')}</p>
+                        <h4 class="font-black text-2xl text-slate-100 group-hover:text-white transition-colors">${link.title}</h4>
+                        <p class="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-black mt-2 group-hover:text-slate-400 transition-colors">${link.url.replace('https://', '')}</p>
                     </div>
-                    <i data-lucide="chevron-right" class="w-5 h-5 text-slate-700 group-hover:text-white group-hover:translate-x-1 transition-all"></i>
+                    <i data-lucide="arrow-up-right" class="w-6 h-6 text-slate-700 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
                 </div>
                 <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
             </a>

@@ -18,6 +18,7 @@ let currentUser = null;
 let userLinks = [];
 
 const avatarPreview = document.getElementById('avatarPreview');
+const modalAvatarPreview = document.getElementById('modalAvatarPreview');
 const photoInput = document.getElementById('photoInput');
 const displayNameInput = document.getElementById('displayName');
 const usernameInput = document.getElementById('dashboardUsername');
@@ -26,42 +27,81 @@ const bioCounter = document.getElementById('bioCounter');
 const linksListEl = document.getElementById('linksList');
 const linkModal = document.getElementById('linkModal');
 const linkForm = document.getElementById('linkForm');
+const identityModal = document.getElementById('identityModal');
+
+// Dropdown Elements
+const profileDropdownBtn = document.getElementById('profileDropdownBtn');
+const profileDropdown = document.getElementById('profileDropdown');
+const navEmail = document.getElementById('navEmail');
+const navAvatar = document.getElementById('navAvatar');
+const dropdownEmail = document.getElementById('dropdownEmail');
 
 // Observer
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         currentUser = user;
+        navEmail.textContent = user.email;
+        dropdownEmail.textContent = user.email;
         loadUserData();
     } else {
         window.location.href = '../auth/login.html';
     }
 });
 
+// Dropdown Toggle
+profileDropdownBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    profileDropdown.classList.toggle('hidden');
+});
+
+document.addEventListener('click', () => profileDropdown.classList.add('hidden'));
+profileDropdown.addEventListener('click', (e) => e.stopPropagation());
+
 async function loadUserData() {
-    const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+    const userDocRef = doc(db, "users", currentUser.uid);
+    const userDoc = await getDoc(userDocRef);
+    
+    let data;
     if (userDoc.exists()) {
-        const data = userDoc.data();
-        displayNameInput.value = data.displayName || "";
-        usernameInput.value = data.username || "";
-        bioInput.value = data.bio || "";
-        userLinks = data.links || [];
-        
-        updateIdentityBadge(data);
-        renderLinks();
+        data = userDoc.data();
+    } else {
+        // Auto-populate defaults from Auth
+        const emailPrefix = currentUser.email.split('@')[0].toLowerCase().replace(/[^a-z0-9]/g, '');
+        data = {
+            displayName: currentUser.displayName || emailPrefix,
+            username: emailPrefix,
+            photoURL: currentUser.photoURL || "",
+            bio: "",
+            links: [],
+            createdAt: new Date().toISOString()
+        };
+        await updateDoc(userDocRef, data);
     }
+
+    displayNameInput.value = data.displayName || "";
+    usernameInput.value = data.username || "";
+    bioInput.value = data.bio || "";
+    userLinks = data.links || [];
+    
+    updateIdentityBadge(data);
+    renderLinks();
 }
 
 function updateIdentityBadge(data) {
     document.getElementById('badgeName').textContent = data.displayName || data.username;
     document.getElementById('badgeUsername').textContent = `@${data.username}`;
-    document.getElementById('badgeBio').textContent = data.bio || "No bio added yet.";
+    document.getElementById('badgeBio').textContent = data.bio || "No bio added yet. Tell the world who you are.";
     document.getElementById('linkCount').textContent = data.links?.length || 0;
     
-    if (data.photoURL) {
-        avatarPreview.innerHTML = `<img src="${data.photoURL}" class="w-full h-full object-cover">`;
-    } else {
-        avatarPreview.innerHTML = `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
-    }
+    const photoContent = data.photoURL 
+        ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
+        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
+    
+    avatarPreview.innerHTML = photoContent;
+    modalAvatarPreview.innerHTML = photoContent;
+    navAvatar.innerHTML = data.photoURL 
+        ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
+        : (data.displayName || data.username)[0].toUpperCase();
     
     if (data.createdAt) {
         const date = new Date(data.createdAt);
@@ -72,7 +112,15 @@ function updateIdentityBadge(data) {
     updateBioCounter();
 }
 
-// WebP Processor
+// Identity Modal Controls
+document.getElementById('editIdentityBtn').addEventListener('click', () => identityModal.classList.remove('hidden'));
+document.getElementById('editIdentityBtnQuick').addEventListener('click', () => {
+    identityModal.classList.remove('hidden');
+    profileDropdown.classList.add('hidden');
+});
+document.getElementById('closeIdentityModal').addEventListener('click', () => identityModal.classList.add('hidden'));
+
+// WebP Processor (Refined)
 async function processToWebP(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
@@ -80,7 +128,7 @@ async function processToWebP(file) {
             const img = new Image();
             img.onload = () => {
                 const canvas = document.createElement('canvas');
-                const MAX_SIZE = 800;
+                const MAX_SIZE = 1000;
                 let width = img.width;
                 let height = img.height;
 
@@ -100,7 +148,7 @@ async function processToWebP(file) {
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
-                canvas.toBlob((blob) => resolve(blob), 'image/webp', 0.8);
+                canvas.toBlob((blob) => resolve(blob), 'image/webp', 0.85); // Professional quality
             };
             img.src = e.target.result;
         };
@@ -160,7 +208,8 @@ saveProfileBtn.addEventListener('click', async () => {
 
         await updateDoc(doc(db, "users", currentUser.uid), updates);
         updateIdentityBadge(updates);
-        alert("Identity updated successfully!");
+        identityModal.classList.add('hidden');
+        alert("Digital Identity secured successfully!");
     } catch (error) {
         console.error(error);
         alert("Error updating identity.");
