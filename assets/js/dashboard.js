@@ -208,7 +208,7 @@ saveProfileBtn.addEventListener('click', async () => {
             bio: bioInput.value
         };
 
-        await updateDoc(doc(db, "users", currentUser.uid), updates);
+        await setDoc(doc(db, "users", currentUser.uid), updates, { merge: true });
         updateIdentityBadge(updates);
         identityModal.classList.add('hidden');
         alert("Digital Identity secured successfully!");
@@ -243,7 +243,7 @@ photoInput.addEventListener('change', async (e) => {
         const result = await response.json();
         const url = result.secure_url;
         
-        await updateDoc(doc(db, "users", currentUser.uid), { photoURL: url });
+        await setDoc(doc(db, "users", currentUser.uid), { photoURL: url }, { merge: true });
         avatarPreview.innerHTML = `<img src="${url}" class="w-full h-full object-cover">`;
         alert("Identity photo updated via Cloudinary!");
     } catch (error) {
@@ -292,7 +292,7 @@ function renderLinks() {
 window.deleteLink = async (index) => {
     if (!confirm("Remove this entry from your library?")) return;
     userLinks.splice(index, 1);
-    await updateDoc(doc(db, "users", currentUser.uid), { links: userLinks });
+    await setDoc(doc(db, "users", currentUser.uid), { links: userLinks }, { merge: true });
     renderLinks();
     document.getElementById('linkCount').textContent = userLinks.length;
 };
@@ -337,7 +337,7 @@ linkForm.addEventListener('submit', async (e) => {
     }
 
     try {
-        await updateDoc(doc(db, "users", currentUser.uid), { links: userLinks });
+        await setDoc(doc(db, "users", currentUser.uid), { links: userLinks }, { merge: true });
         linkModal.classList.add('hidden');
         renderLinks();
         document.getElementById('linkCount').textContent = userLinks.length;
