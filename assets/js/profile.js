@@ -30,17 +30,22 @@ async function loadPublicProfile() {
 }
 
 function renderProfile(data) {
-    document.getElementById('badgeName').textContent = data.displayName || data.username;
-    document.getElementById('badgeUsername').textContent = `@${data.username}`;
-    document.getElementById('badgeBio').textContent = data.bio || "";
+    const setElText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    };
+
+    setElText('badgeName', data.displayName || data.username);
+    setElText('badgeUsername', data.username ? `@${data.username}` : "@handle");
+    setElText('badgeBio', data.bio || "");
     
     // Expanded Fields
-    document.getElementById('badgeDOB').textContent = data.dob || "N/A";
-    document.getElementById('badgeAge').textContent = calculateAge(data.dob);
-    document.getElementById('badgeGender').textContent = data.gender || "N/A";
-    document.getElementById('badgeHome').textContent = data.home || "N/A";
-    document.getElementById('badgeTel').textContent = data.tel || "N/A";
-    document.getElementById('badgeEmail').textContent = data.email || "N/A";
+    setElText('badgeDOB', data.dob || "N/A");
+    setElText('badgeAge', calculateAge(data.dob));
+    setElText('badgeGender', data.gender || "N/A");
+    setElText('badgeHome', data.home || "N/A");
+    setElText('badgeTel', data.tel || "N/A");
+    setElText('badgeEmail', data.email || "N/A");
 
     const avatarPreview = document.getElementById('avatarPreview');
     const photoContent = data.photoURL 

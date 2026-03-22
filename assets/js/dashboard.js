@@ -107,18 +107,23 @@ async function loadUserData() {
 
 function updateIdentityBadge(data) {
     const name = data.displayName || data.username || "Creator";
-    document.getElementById('badgeName').textContent = name;
-    document.getElementById('badgeUsername').textContent = data.username ? `@${data.username}` : "@handle";
-    document.getElementById('badgeBio').textContent = data.bio || "Tell the world your story.";
-    document.getElementById('linkCount').textContent = data.links?.length || 0;
+    const setElText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    };
+
+    setElText('badgeName', name);
+    setElText('badgeUsername', data.username ? `@${data.username}` : "@handle");
+    setElText('badgeBio', data.bio || "Tell the world your story.");
+    setElText('linkCount', data.links?.length || 0);
     
     // Expanded Data
-    document.getElementById('badgeDOB').textContent = data.dob || "N/A";
-    document.getElementById('badgeAge').textContent = calculateAge(data.dob);
-    document.getElementById('badgeGender').textContent = data.gender || "N/A";
-    document.getElementById('badgeHome').textContent = data.home || "N/A";
-    document.getElementById('badgeTel').textContent = data.tel || "N/A";
-    document.getElementById('badgeEmail').textContent = data.email || currentUser?.email || "N/A";
+    setElText('badgeDOB', data.dob || "N/A");
+    setElText('badgeAge', calculateAge(data.dob));
+    setElText('badgeGender', data.gender || "N/A");
+    setElText('badgeHome', data.home || "N/A");
+    setElText('badgeTel', data.tel || "N/A");
+    setElText('badgeEmail', data.email || currentUser?.email || "N/A");
 
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
