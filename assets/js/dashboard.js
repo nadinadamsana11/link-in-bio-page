@@ -3,6 +3,7 @@ import {
     doc, 
     getDoc, 
     updateDoc, 
+    setDoc,
     collection,
     query,
     where,
@@ -76,7 +77,7 @@ async function loadUserData() {
             links: [],
             createdAt: new Date().toISOString()
         };
-        await updateDoc(userDocRef, data);
+        await setDoc(userDocRef, data);
     }
 
     displayNameInput.value = data.displayName || "";
