@@ -169,20 +169,32 @@ saveProfileBtn.addEventListener('click', async () => {
     }
 });
 
-// Photo Upload
+// Photo Upload (Cloudinary Integration)
 photoInput.addEventListener('change', async (e) => {
     const file = e.target.files[0];
     if (!file) return;
 
     try {
         const webpBlob = await processToWebP(file);
-        const storageRef = ref(storage, `profiles/${currentUser.uid}.webp`);
-        const snapshot = await uploadBytes(storageRef, webpBlob);
-        const url = await getDownloadURL(snapshot.ref);
+        
+        // Cloudinary Upload
+        const formData = new FormData();
+        formData.append('file', webpBlob);
+        formData.append('upload_preset', 'link-in-bio-page');
+
+        const response = await fetch('https://api.cloudinary.com/v1_1/dpwbixthd/image/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) throw new Error("Cloudinary upload failed");
+        
+        const result = await response.json();
+        const url = result.secure_url;
         
         await updateDoc(doc(db, "users", currentUser.uid), { photoURL: url });
         avatarPreview.innerHTML = `<img src="${url}" class="w-full h-full object-cover">`;
-        alert("Profile photo updated!");
+        alert("Identity photo updated via Cloudinary!");
     } catch (error) {
         console.error(error);
         alert("Photo upload failed.");
