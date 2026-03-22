@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | Link-in-Bio</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/theme.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -14,10 +15,10 @@
 </head>
 <body class="bg-black text-white min-h-screen flex flex-col">
     <!-- Nav -->
-    <nav class="border-b border-white/5 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+    <nav class="border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-[#1a1a1a] p-2 rounded-xl border border-white/10">
+                <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
                     <i data-lucide="zap" class="w-5 h-5 text-white"></i>
                 </div>
                 <a href="../index.html" class="font-bold text-xl tracking-tight leading-none hover:text-white/70 transition-colors">Link-in-Bio</a>
@@ -25,9 +26,9 @@
             
             <!-- Profile Dropdown -->
             <div class="relative">
-                <button id="profileDropdownBtn" class="flex items-center gap-3 bg-[#121212] border border-white/5 pl-4 pr-2 py-1.5 rounded-full hover:bg-[#1a1a1a] transition-all border-glow">
-                    <span id="navEmail" class="text-xs font-bold text-white/40 hidden md:block">loading...</span>
-                    <div id="navAvatar" class="w-8 h-8 rounded-full bg-[#1a1a1a] border border-white/10 overflow-hidden flex items-center justify-center text-[10px] font-black">
+                <button id="profileDropdownBtn" class="flex items-center gap-3 bg-[var(--bg-card)] border border-[var(--border-subtle)] pl-4 pr-2 py-1.5 rounded-full hover:bg-[var(--bg-card-hover)] transition-all border-glow">
+                    <span id="navEmail" class="text-xs font-bold text-[var(--text-muted)] hidden md:block">loading...</span>
+                    <div id="navAvatar" class="w-8 h-8 rounded-full bg-[var(--bg-card-hover)] border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center text-[10px] font-black">
                         ?
                     </div>
                 </button>
@@ -73,11 +74,11 @@
             <div class="relative z-10 flex flex-col md:flex-row gap-8 md:gap-14">
                 <!-- Avatar with Badge -->
                 <div class="relative mx-auto md:mx-0">
-                    <div id="avatarPreview" class="w-48 h-48 md:w-64 md:h-64 rounded-[3.5rem] bg-[#121212] border-8 border-white/5 overflow-hidden shadow-2xl relative">
+                    <div id="avatarPreview" class="w-48 h-48 md:w-64 md:h-64 rounded-[3.5rem] bg-[var(--bg-card)] border-8 border-[var(--border-subtle)] overflow-hidden shadow-2xl relative">
                         <!-- Image injected via JS -->
                     </div>
                     <div class="absolute -bottom-3 inset-x-0 flex justify-center">
-                        <div class="bg-[#ffd700] text-black px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase shadow-2xl ring-4 ring-black font-black">
+                        <div class="bg-[var(--accent-premium)] text-black px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase shadow-2xl ring-4 ring-[var(--bg-page)] font-black">
                             Verified Creator
                         </div>
                     </div>

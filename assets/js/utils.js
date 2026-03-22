@@ -18,9 +18,9 @@ export function showToast(message, type = 'info') {
 
     const toast = document.createElement('div');
     const colors = {
-        success: 'bg-[#0078d7] text-white border-white/20',
-        error: 'bg-black text-white border-white/40',
-        info: 'bg-[#1a1a1a] text-white border-white/10'
+        success: 'bg-[var(--accent-blue)] text-white border-white/20',
+        error: 'bg-[var(--bg-page)] text-white border-white/40',
+        info: 'bg-[var(--bg-card-hover)] text-white border-white/10'
     };
     
     const icons = {

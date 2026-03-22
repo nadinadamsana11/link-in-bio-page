@@ -1,19 +1,8 @@
-:root {
-  --primary: #0078d7; /* Windows 10 Blue */
-  --primary-hover: #0086f0;
-  --bg-deep: #000000; /* True Black */
-  --bg-card: #121212; /* Dark Gray */
-  --bg-slate: #1a1a1a; /* Lighter Gray */
-  --text-main: #ffffff; /* Pure White */
-  --text-muted: #a0a0a0;
-  --border: rgba(255, 255, 255, 0.05);
-  --accent: #0078d7;
-  --premium: #ffd700; /* Gold */
-}
+@import url('theme.css');
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: #334155 transparent;
+  scrollbar-color: var(--text-dim) transparent;
 }
 
 ::-webkit-scrollbar {
@@ -35,7 +24,7 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: var(--bg-deep);
+  background-color: var(--bg-page);
   color: var(--text-main);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -202,52 +191,39 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Responsive Refinements */
+@media (max-width: 768px) {
+  .scroll-section {
+    min-height: auto;
+    padding: 6rem 0;
+  }
+  
+  #hero-title {
+    font-size: clamp(3rem, 15vw, 5rem) !important;
+    line-height: 1 !important;
+  }
+  
+  .dot-nav {
+    display: none; /* Hide dots on mobile for cleaner UI */
+  }
+  
+  .detail-card {
+    padding: 2rem;
+    border-radius: 2.5rem;
+  }
+
+  .scroll-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
+  }
+}
+
 .dot-nav-item.active {
-  background: var(--primary);
+  background: var(--accent-blue);
   transform: scale(1.8);
   box-shadow: 0 0 15px rgba(0, 120, 215, 0.5);
-}
-
-/* Back to Top Button */
-.scroll-top-btn {
-  position: fixed;
-  bottom: 2rem;
-  right: 2rem;
-  background: white;
-  color: black;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 99;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-.scroll-top-btn.visible {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Simplified Text-First Layouts */
-.detail-card {
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 3.5rem;
-  border-radius: 4rem;
-  transition: all 0.4s ease;
-  height: 100%;
-}
-
-.detail-card:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-  transform: translateY(-10px);
-  background: rgba(15, 23, 42, 0.8);
 }
 
 .hero-overlay {

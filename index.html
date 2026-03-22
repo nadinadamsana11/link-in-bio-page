@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link-in-Bio | Professional Profile Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -24,8 +25,8 @@
     <!-- Hero Section -->
     <main id="hero" class="scroll-section">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div id="hero-badge" class="inline-flex items-center gap-3 bg-[#0078d7]/10 border border-[#0078d7]/20 px-6 py-2 rounded-full text-[#0078d7] text-[10px] font-black uppercase tracking-[0.2em] mb-10">
-                <span class="flex h-2 w-2 rounded-full bg-[#0078d7]"></span>
+            <div id="hero-badge" class="inline-flex items-center gap-3 bg-[var(--accent-blue)]/10 border border-[var(--accent-blue)]/20 px-6 py-2 rounded-full text-[var(--accent-blue)] text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+                <span class="flex h-2 w-2 rounded-full bg-[var(--accent-blue)]"></span>
                 Join 15,000+ people using this
             </div>
             <h1 id="hero-title" class="text-6xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-white">
@@ -38,7 +39,7 @@
                 <a href="auth/register.html" class="ripple-btn w-full sm:w-auto bg-white text-slate-950 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-200 transition-all hover:scale-105 shadow-2xl">
                     Get your name
                 </a>
-                <a href="pages/pro.html" class="ripple-btn w-full sm:w-auto bg-[#ffd700] text-black px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,215,0,0.15)]">
+                <a href="pages/pro.html" class="ripple-btn w-full sm:w-auto bg-[var(--accent-premium)] text-black px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(255,215,0,0.15)]">
                     <i data-lucide="sparkles" class="w-5 h-5 text-black"></i>
                     See Pro Features
                 </a>
@@ -51,21 +52,21 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div class="space-y-12">
-                    <p class="text-[10px] font-black text-[#0078d7] uppercase tracking-[0.4em]">Section 01 / Identity</p>
+                    <p class="text-[10px] font-black text-[var(--accent-blue)] uppercase tracking-[0.4em]">Section 01 / Identity</p>
                     <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-white">Your Profile,<br>Infinite Power.</h2>
                     <p class="text-slate-400 text-xl leading-relaxed max-w-xl">
                         We don't just build pages; we build digital homes. Our system uses advanced rendering technology to ensure your profile loads in under 100ms globally. No bloated scripts, no heavy images—just pure, blazing speed.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <span class="bg-slate-900 px-6 py-3 rounded-2xl border border-slate-800 font-bold text-xs uppercase tracking-widest text-[#0078d7] flex items-center gap-2">
-                             <i data-lucide="zap" class="w-4 h-4 text-[#0078d7]"></i> High Speed
+                        <span class="bg-[var(--bg-card)] px-6 py-3 rounded-2xl border border-[var(--border-subtle)] font-bold text-xs uppercase tracking-widest text-[var(--accent-blue)] flex items-center gap-2">
+                             <i data-lucide="zap" class="w-4 h-4 text-[var(--accent-blue)]"></i> High Speed
                         </span>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 gap-6">
-                    <div class="detail-card border-l-4 border-l-[#0078d7]">
+                    <div class="detail-card border-l-4 border-l-[var(--accent-blue)]">
                         <h4 class="text-2xl font-black mb-4 italic text-white">The Profile Maker</h4>
-                        <p class="text-slate-500 text-sm leading-relaxed">Craft your identity in minutes. Our 3-step wizard guides you from persona to professional access, ensuring every detail is perfect before you go live.</p>
+                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Craft your identity in minutes. Our 3-step wizard guides you from persona to professional access, ensuring every detail is perfect before you go live.</p>
                     </div>
                     <div class="detail-card">
                         <h4 class="text-2xl font-black mb-4 italic">Verified Creator Badges</h4>
@@ -77,33 +78,33 @@
     </section>
 
     <!-- Feature: Technical Excellence -->
-    <section id="tech" class="scroll-section bg-black border-t border-white/5">
+    <section id="tech" class="scroll-section bg-[var(--bg-page)] border-t border-[var(--border-subtle)]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24">
-                <p class="text-[10px] font-black text-[#0078d7] uppercase tracking-[0.4em]">Section 02 / Technology</p>
+                <p class="text-[10px] font-black text-[var(--accent-blue)] uppercase tracking-[0.4em]">Section 02 / Technology</p>
                 <h2 class="text-6xl md:text-8xl font-black tracking-tighter mt-4 text-white">Built for Everyone.</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="detail-card">
-                    <div class="bg-[#0078d7]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[#0078d7]/20">
-                        <i data-lucide="cpu" class="w-8 h-8 text-[#0078d7]"></i>
+                    <div class="bg-[var(--accent-blue)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-blue)]/20">
+                        <i data-lucide="cpu" class="w-8 h-8 text-[var(--accent-blue)]"></i>
                     </div>
                     <h4 class="text-2xl font-black mb-6 uppercase text-white">Fast Photos</h4>
-                    <p class="text-white/40 font-medium leading-relaxed">We use Cloudinary's global network to serve your images. This means faster loading for your fans, no matter where they are in the world.</p>
+                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">We use Cloudinary's global network to serve your images. This means faster loading for your fans, no matter where they are in the world.</p>
                 </div>
                 <div class="detail-card">
-                    <div class="bg-[#ffd700]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[#ffd700]/20">
-                        <i data-lucide="lock" class="w-8 h-8 text-[#ffd700]"></i>
+                    <div class="bg-[var(--accent-premium)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-premium)]/20">
+                        <i data-lucide="lock" class="w-8 h-8 text-[var(--accent-premium)]"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-6 uppercase text-[#ffd700]">Safe Account</h4>
-                    <p class="text-white/40 font-medium leading-relaxed">Your data is secured with Firebase's enterprise-grade encryption. Your password, your links, and your identity are for your eyes only.</p>
+                    <h4 class="text-2xl font-black mb-6 uppercase text-[var(--accent-premium)]">Safe Account</h4>
+                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">Your data is secured with Firebase's enterprise-grade encryption. Your password, your links, and your identity are for your eyes only.</p>
                 </div>
                 <div class="detail-card">
-                    <div class="bg-[#0078d7]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[#0078d7]/20">
-                        <i data-lucide="palette" class="w-8 h-8 text-[#0078d7]"></i>
+                    <div class="bg-[var(--accent-blue)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-blue)]/20">
+                        <i data-lucide="palette" class="w-8 h-8 text-[var(--accent-blue)]"></i>
                     </div>
                     <h4 class="text-2xl font-black mb-6 uppercase text-white">New Colors</h4>
-                    <p class="text-white/40 font-medium leading-relaxed">Customize your page with beautiful themes. Switch between dark mode, glassmorphism, or clean minimalist styles with one click.</p>
+                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">Customize your page with beautiful themes. Switch between dark mode, glassmorphism, or clean minimalist styles with one click.</p>
                 </div>
             </div>
         </div>

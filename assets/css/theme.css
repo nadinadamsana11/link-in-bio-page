@@ -1,0 +1,28 @@
+:root {
+  /* Core Palette */
+  --bg-page: #000000;
+  --bg-card: #121212;
+  --bg-card-hover: #1a1a1a;
+  --bg-elevated: #1e1e1e;
+  
+  /* Typography */
+  --text-main: #ffffff;
+  --text-muted: #a0a0a0;
+  --text-dim: #606060;
+  
+  /* Accents */
+  --accent-blue: #0078d7; /* Windows 10 Blue - SPECIAL ONLY */
+  --accent-gold: #ffd700; /* Premium/Gold */
+  
+  /* Borders & Misc */
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-active: rgba(255, 255, 255, 0.15);
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  --glass-blur: blur(12px);
+  
+  /* Interactive */
+  --btn-primary-bg: #ffffff;
+  --btn-primary-text: #000000;
+  --btn-secondary-bg: var(--bg-card);
+  --btn-secondary-border: var(--border-subtle);
+}

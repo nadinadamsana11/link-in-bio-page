@@ -24,21 +24,21 @@ function injectHeader() {
     if (isSpecialPage) return; // Dashboard or Profile handle their own complex headers
 
     header.innerHTML = `
-        <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-4 md:px-6">
             <div id="nav-logo" class="flex items-center gap-2">
-                <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
                     <i data-lucide="zap" class="w-6 h-6 text-white"></i>
                 </div>
-                <a href="${pathPrefix}index.html" class="font-bold text-2xl tracking-tighter hover:text-slate-300 transition-colors italic">Link-in-Bio</a>
+                <a href="${pathPrefix}index.html" class="font-bold text-xl md:text-2xl tracking-tighter hover:text-white/70 transition-colors italic">Link-in-Bio</a>
             </div>
             
-            <div id="nav-actions" class="flex items-center gap-4 md:gap-6">
-                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-[#ffd700]/10 text-[#ffd700] px-5 py-2 rounded-full border border-[#ffd700]/20 text-[10px] font-black uppercase tracking-widest hover:bg-[#ffd700] hover:text-black transition-all">
+            <div id="nav-actions" class="flex items-center gap-3 md:gap-6">
+                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] px-5 py-2 rounded-full border border-[var(--accent-premium)]/20 text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-black transition-all">
                     <i data-lucide="crown" class="w-3 h-3"></i>
                     Get Pro
                 </a>
                 ${!window.location.pathname.includes('/profile/') && !window.location.pathname.includes('@') ? `<a href="${pathPrefix}auth/login.html" class="text-white/60 hover:text-white transition-all font-bold text-xs uppercase tracking-widest px-2">Log In</a>` : ''}
-                <a href="${pathPrefix}auth/register.html" class="bg-white text-black px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Start Now</a>
+                <a href="${pathPrefix}auth/register.html" class="bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] px-5 md:px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Start Now</a>
             </div>
         </div>
     `;
@@ -60,7 +60,7 @@ function injectFooter() {
     }
 
     // Full-width background classes
-    footer.className = "w-full bg-black border-t border-white/5 pt-20 pb-10 mt-auto relative z-10 overflow-hidden";
+    footer.className = "w-full bg-[var(--bg-page)] border-t border-[var(--border-subtle)] pt-20 pb-10 mt-auto relative z-10 overflow-hidden";
     footer.innerHTML = `
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -93,13 +93,13 @@ function injectFooter() {
                 </div>
                 <div>
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Support the project</h4>
-                    <p class="text-white/40 text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
+                    <p class="text-[var(--text-muted)] text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
                     <div class="flex flex-col gap-3">
-                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[#ffd700] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[var(--accent-premium)] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
                             <i data-lucide="coffee" class="w-4 h-4"></i>
                             Buy me a coffee
                         </a>
-                        <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-[#121212] border border-white/5 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#1a1a1a] transition-all text-white">
+                        <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-[var(--bg-card)] border border-[var(--border-subtle)] px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[var(--bg-card-hover)] transition-all text-white">
                             Learn about us
                             <i data-lucide="arrow-right" class="w-3 h-3"></i>
                         </a>
