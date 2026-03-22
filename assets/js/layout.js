@@ -24,7 +24,7 @@ function injectHeader() {
     if (isSpecialPage) return; // Dashboard or Profile handle their own complex headers
 
     header.innerHTML = `
-        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full px-6">
             <div id="nav-logo" class="flex items-center gap-2">
                 <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
                     <i data-lucide="zap" class="w-6 h-6 text-white"></i>
@@ -32,15 +32,13 @@ function injectHeader() {
                 <a href="${pathPrefix}index.html" class="font-bold text-2xl tracking-tighter hover:text-slate-300 transition-colors">Link-in-Bio</a>
             </div>
             
-            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-400">
-                <a href="${pathPrefix}pages/about.html" class="hover:text-white transition-colors">About Us</a>
-                <a href="${pathPrefix}pages/contact.html" class="hover:text-white transition-colors">Contact</a>
-                <a href="${pathPrefix}pages/pro.html" class="text-indigo-400 hover:text-indigo-300 transition-colors">Pro Plan</a>
-            </div>
-
-            <div id="nav-actions" class="flex items-center gap-4">
-                <a href="${pathPrefix}auth/login.html" class="text-slate-400 hover:text-white transition-all font-medium text-sm px-4">Log In</a>
-                <a href="${pathPrefix}auth/register.html" class="bg-white text-slate-950 px-6 py-2.5 rounded-full shadow-sm transition-all font-black text-xs uppercase tracking-widest hover:bg-slate-200">Get Started</a>
+            <div id="nav-actions" class="flex items-center gap-4 md:gap-6">
+                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-indigo-500/10 text-indigo-400 px-5 py-2 rounded-full border border-indigo-500/20 text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all">
+                    <i data-lucide="crown" class="w-3 h-3"></i>
+                    Go Pro
+                </a>
+                <a href="${pathPrefix}auth/login.html" class="text-slate-400 hover:text-white transition-all font-bold text-xs uppercase tracking-widest px-2">Log In</a>
+                <a href="${pathPrefix}auth/register.html" class="bg-white text-slate-950 px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Get Started</a>
             </div>
         </div>
     `;

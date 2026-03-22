@@ -33,85 +33,146 @@
     </nav>
 
     <!-- Hero Section -->
-    <main class="max-w-7xl mx-auto px-6 pt-20 pb-32 text-center relative z-10">
-        <div id="hero-badge" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-slate-400 text-sm font-medium mb-8">
-            <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
-            Production Ready v1.0
-        </div>
-        <h1 id="hero-title" class="text-5xl md:text-8xl font-black tracking-tight mb-8 leading-[0.9] md:leading-[1.1] text-slate-100">
-            Elevate your <br>
-            <span class="text-slate-500">Digital Presence.</span>
-        </h1>
-        <p id="hero-subtitle" class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed">
-            The minimalist bio page designed for elite creators. Lighter, faster, and more professional than ever.
-        </p>
-        <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="auth/register.html" class="w-full sm:w-auto bg-white text-slate-950 px-12 py-5 rounded-2xl font-black text-xl hover:bg-slate-200 transition-all">
-                Claim your link
-            </a>
-            <a href="pages/pro.html" class="w-full sm:w-auto glass-dark px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-900 transition-all border border-slate-800 flex items-center justify-center gap-2">
-                <i data-lucide="crown" class="w-6 h-6 text-indigo-400"></i>
-                Get Pro Plan
-            </a>
+    <main class="relative pt-32 pb-48 overflow-hidden">
+        <div class="hero-overlay" style="background-image: url('C:/Users/Nadina%20Damsana/.gemini/antigravity/brain/7199f62f-7b64-4eee-bedb-097411c38b13/hero_background_dark_1774196232983.png');"></div>
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10 transition-all">
+            <div id="hero-badge" class="inline-flex items-center gap-3 bg-indigo-500/10 border border-indigo-500/20 px-6 py-2 rounded-full text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-10 animate-slide-up">
+                <span class="flex h-2 w-2 rounded-full bg-indigo-500 animate-pulse"></span>
+                Join 15,000+ top creators worldwide
+            </div>
+            <h1 id="hero-title" class="text-6xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-white animate-slide-up">
+                Elevate your <br>
+                <span class="text-slate-500">Digital Identity.</span>
+            </h1>
+            <p id="hero-subtitle" class="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-medium animate-slide-up">
+                The most elegant, fastest-loading bio page built for elite creators who demand perfection. Your link, your brand, your rules.
+            </p>
+            <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-slide-up">
+                <a href="auth/register.html" class="w-full sm:w-auto bg-white text-slate-950 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-200 transition-all hover:scale-105 shadow-2xl">
+                    Claim your handle
+                </a>
+                <a href="pages/pro.html" class="w-full sm:w-auto bg-slate-900 border border-slate-800 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
+                    <i data-lucide="sparkles" class="w-5 h-5 text-indigo-400"></i>
+                    Explore Pro
+                </a>
+            </div>
         </div>
     </main>
 
-    <!-- Features Section -->
-    <section class="max-w-7xl mx-auto px-6 py-32 border-t border-slate-900">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="space-y-4">
-                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
-                    <i data-lucide="zap" class="text-white"></i>
+    <!-- Z-Pattern Sections -->
+    <section class="py-32 border-t border-slate-900/50">
+        <div class="max-w-7xl mx-auto px-6 space-y-48">
+            
+            <!-- Section 1: Persona Builder (Text Left, Image Right) -->
+            <div class="z-pattern-section">
+                <div class="space-y-8 animate-slide-up">
+                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Section 01 / Identity</p>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">Your Identity,<br>Perfected.</h2>
+                    <p class="text-slate-400 text-xl leading-relaxed">Our advanced Persona Builder allows you to craft a digital identity that reflects your true professional self. From verified badges to custom aesthetics, every detail is engineered for impact.</p>
+                    <ul class="space-y-4 pt-6">
+                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> 3-Step Identity Wizard</li>
+                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> Verified Creator Badges</li>
+                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> Premium WebP Photo Processing</li>
+                    </ul>
                 </div>
-                <h3 class="text-xl font-bold">Turbo Loading</h3>
-                <p class="text-slate-400 leading-relaxed">Engineered with zero-overhead architecture for instant page loads. Never keep your followers waiting.</p>
-            </div>
-            <div class="space-y-4">
-                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
-                    <i data-lucide="layout" class="text-white"></i>
+                <div class="relative animate-slide-up">
+                    <div class="absolute inset-0 bg-indigo-500/20 blur-[120px] rounded-full"></div>
+                    <img src="C:/Users/Nadina%20Damsana/.gemini/antigravity/brain/7199f62f-7b64-4eee-bedb-097411c38b13/feature_mockup_bio_1774196373843.png" alt="Identity Builder" class="relative z-10 w-full hover:scale-105 transition-transform duration-700">
                 </div>
-                <h3 class="text-xl font-bold">Clean Design</h3>
-                <p class="text-slate-400 leading-relaxed">A minimalist, aesthetic interface that puts your content first. Beautiful on every device.</p>
             </div>
-            <div class="space-y-4">
-                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
-                    <i data-lucide="bar-chart-3" class="text-white"></i>
+
+            <!-- Section 2: Analytics (Image Left, Text Right - Reverse) -->
+            <div class="z-pattern-section reverse">
+                <div class="space-y-8 animate-slide-up">
+                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Section 02 / Insights</p>
+                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">Insights that<br>Matter.</h2>
+                    <p class="text-slate-400 text-xl leading-relaxed">Stop guessing. Get detailed analytics on every link click, profile view, and conversion. Our real-time dashboard gives you the edge to grow your influence.</p>
+                    <div class="grid grid-cols-2 gap-8 pt-6">
+                        <div class="bg-slate-900/50 p-6 rounded-3xl border border-slate-800">
+                            <h4 class="text-3xl font-black text-white mb-2">10ms</h4>
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Load Delay</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-6 rounded-3xl border border-slate-800">
+                            <h4 class="text-3xl font-black text-white mb-2">100%</h4>
+                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Privacy Protection</p>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold">Real Analytics</h3>
-                <p class="text-slate-400 leading-relaxed">Track your engagement with precision. See where your traffic comes from and what they click.</p>
+                <div class="relative animate-slide-up">
+                    <div class="absolute inset-0 bg-slate-800/30 blur-[100px] rounded-full"></div>
+                    <img src="C:/Users/Nadina%20Damsana/.gemini/antigravity/brain/7199f62f-7b64-4eee-bedb-097411c38b13/feature_mockup_analytics_1774196419474.png" alt="Analytics Dashboard" class="relative z-10 w-full hover:rotate-3 transition-transform duration-700">
+                </div>
             </div>
+
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-24 border-t border-slate-900/50 animate-slide-up">
+                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
+                    <i data-lucide="cloud-lightning" class="w-8 h-8 text-indigo-400"></i>
+                    <h4 class="text-xl font-bold">Cloudinary Integrated</h4>
+                    <p class="text-slate-500 text-sm">Automated image optimization and global CDN delivery for your portraits.</p>
+                </div>
+                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
+                    <i data-lucide="shield-check" class="w-8 h-8 text-emerald-400"></i>
+                    <h4 class="text-xl font-bold">Encrypted Auth</h4>
+                    <p class="text-slate-500 text-sm">Production-grade Firebase security ensuring your creator data is always safe.</p>
+                </div>
+                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
+                    <i data-lucide="layout-template" class="w-8 h-8 text-amber-400"></i>
+                    <h4 class="text-xl font-bold">Custom Themes</h4>
+                    <p class="text-slate-500 text-sm">Switch between minimalist, glassmorphic, and high-contrast professional themes.</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="max-w-3xl mx-auto px-6 py-32">
-        <h2 class="text-4xl font-black text-center mb-16">Common Questions</h2>
-        <div class="space-y-4">
-            <div class="faq-item group">
-                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
-                    <span class="font-bold text-lg">Is Link-in-Bio really free?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 py-4 text-slate-400">
-                    Yes! Our basic plan is free forever. We offer premium features in our Pro plan for power users.
-                </div>
+    <!-- FAQ Section (Smooth & Refined) -->
+    <section class="py-32 bg-slate-950">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-20 space-y-4">
+                <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Support / Center</p>
+                <h2 class="text-5xl md:text-6xl font-black tracking-tighter">Common Questions</h2>
+                <p class="text-slate-500 text-lg">Everything you need to know about your new digital home.</p>
             </div>
-            <div class="faq-item group">
-                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
-                    <span class="font-bold text-lg">How many links can I add?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 py-4 text-slate-400">
-                    Unlimited! Even on our free plan, you can showcase as many links as you need.
+            
+            <div class="space-y-6">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item group">
+                    <button class="w-full flex justify-between items-center bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 text-left hover:border-slate-700 transition-all">
+                        <span class="font-black text-xl tracking-tight">Is Link-in-Bio really enterprise-ready?</span>
+                        <div class="bg-slate-800 p-2 rounded-full transition-transform group-[.active]:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-10 text-slate-400 text-lg leading-relaxed">
+                        Absolutely. We use a globally distributed edge network to ensure 99.99% uptime and zero-latency loading for creators with millions of followers.
+                    </div>
                 </div>
-            </div>
-            <div class="faq-item group">
-                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
-                    <span class="font-bold text-lg">Can I use my own domain?</span>
-                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 py-4 text-slate-400">
-                    Pro users can connect their own custom domains for a fully branded experience.
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item group">
+                    <button class="w-full flex justify-between items-center bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 text-left hover:border-slate-700 transition-all">
+                        <span class="font-black text-xl tracking-tight">Can I secure a custom vanity @handle?</span>
+                        <div class="bg-slate-800 p-2 rounded-full transition-transform group-[.active]:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-10 text-slate-400 text-lg leading-relaxed">
+                        Yes! Upon registration, you can claim your unique handle. Vanity URLs like linkinbio.com/@yourname are standard for all verified creators.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item group">
+                    <button class="w-full flex justify-between items-center bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 text-left hover:border-slate-700 transition-all">
+                        <span class="font-black text-xl tracking-tight">How does the Pro Plan differ?</span>
+                        <div class="bg-slate-800 p-2 rounded-full transition-transform group-[.active]:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-10 text-slate-400 text-lg leading-relaxed">
+                        Pro users unlock custom domains, advanced analytics, priority support, and exclusive aesthetics including glassmorphism and premium gradients.
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,24 +183,19 @@
 
     <script type="module" src="assets/js/layout.js"></script>
     <script>
-        lucide.createIcons();
-
-        // FAQ Toggle Logic
+        // Smooth FAQ Toggle Logic
         document.querySelectorAll('.faq-item button').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
-                const answer = item.querySelector('.faq-answer');
                 const isActive = item.classList.contains('active');
                 
                 // Close all others
                 document.querySelectorAll('.faq-item').forEach(i => {
                     i.classList.remove('active');
-                    i.querySelector('.faq-answer').classList.add('hidden');
                 });
 
                 if (!isActive) {
                     item.classList.add('active');
-                    answer.classList.remove('hidden');
                 }
             });
         });
