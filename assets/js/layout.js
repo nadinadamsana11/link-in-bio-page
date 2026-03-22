@@ -33,12 +33,12 @@ function injectHeader() {
             </div>
             
             <div id="nav-actions" class="flex items-center gap-4 md:gap-6">
-                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-indigo-500/10 text-indigo-400 px-5 py-2 rounded-full border border-indigo-500/20 text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500 hover:text-white transition-all">
+                <a href="${pathPrefix}pages/pro.html" class="hidden sm:flex items-center gap-2 bg-[#ffd700]/10 text-[#ffd700] px-5 py-2 rounded-full border border-[#ffd700]/20 text-[10px] font-black uppercase tracking-widest hover:bg-[#ffd700] hover:text-black transition-all">
                     <i data-lucide="crown" class="w-3 h-3"></i>
                     Get Pro
                 </a>
-                ${!window.location.pathname.includes('/profile/') && !window.location.pathname.includes('@') ? `<a href="${pathPrefix}auth/login.html" class="text-slate-400 hover:text-white transition-all font-bold text-xs uppercase tracking-widest px-2">Log In</a>` : ''}
-                <a href="${pathPrefix}auth/register.html" class="bg-white text-slate-950 px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Start Now</a>
+                ${!window.location.pathname.includes('/profile/') && !window.location.pathname.includes('@') ? `<a href="${pathPrefix}auth/login.html" class="text-white/60 hover:text-white transition-all font-bold text-xs uppercase tracking-widest px-2">Log In</a>` : ''}
+                <a href="${pathPrefix}auth/register.html" class="bg-white text-black px-7 py-2.5 rounded-full shadow-xl transition-all font-black text-[10px] uppercase tracking-widest hover:bg-slate-200">Start Now</a>
             </div>
         </div>
     `;
@@ -60,7 +60,7 @@ function injectFooter() {
     }
 
     // Full-width background classes
-    footer.className = "w-full bg-slate-950 border-t border-slate-900 pt-20 pb-10 mt-auto relative z-10 overflow-hidden";
+    footer.className = "w-full bg-black border-t border-white/5 pt-20 pb-10 mt-auto relative z-10 overflow-hidden";
     footer.innerHTML = `
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
@@ -93,13 +93,13 @@ function injectFooter() {
                 </div>
                 <div>
                     <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Support the project</h4>
-                    <p class="text-slate-500 text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
+                    <p class="text-white/40 text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
                     <div class="flex flex-col gap-3">
-                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[#FFDD00] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[#ffd700] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
                             <i data-lucide="coffee" class="w-4 h-4"></i>
                             Buy me a coffee
                         </a>
-                        <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all text-white">
+                        <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-[#121212] border border-white/5 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-[#1a1a1a] transition-all text-white">
                             Learn about us
                             <i data-lucide="arrow-right" class="w-3 h-3"></i>
                         </a>

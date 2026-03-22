@@ -127,7 +127,7 @@ function updateIdentityBadge(data) {
 
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${name[0].toUpperCase()}</div>`;
+        : `<div class="w-full h-full bg-[#1a1a1a] flex items-center justify-center text-4xl font-black text-white/10 italic">${name[0].toUpperCase()}</div>`;
     
     avatarPreview.innerHTML = photoContent;
     modalAvatarPreview.innerHTML = photoContent;
@@ -246,7 +246,7 @@ const setLoading = (btn, isLoading, originalContent) => {
     if (isLoading) {
         btn.disabled = true;
         btn.classList.add('opacity-70', 'cursor-not-allowed');
-        btn.innerHTML = `<span class="flex items-center justify-center gap-2 font-bold mb-0.5"><i data-lucide="loader-2" class="w-4 h-4 animate-spin text-white"></i> SECURING...</span>`;
+        btn.innerHTML = `<span class="flex items-center justify-center gap-2 font-bold mb-0.5"><i data-lucide="loader-2" class="w-4 h-4 animate-spin text-[#0078d7]"></i> SECURING...</span>`;
         if (window.lucide) window.lucide.createIcons();
     } else {
         btn.disabled = false;

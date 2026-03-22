@@ -1,12 +1,14 @@
 :root {
-  --primary: #94a3b8; /* Sophisticated Gray/Slate */
-  --primary-hover: #f1f5f9;
-  --bg-deep: #020617; /* Slate 950 */
-  --bg-card: #0f172a; /* Slate 900 */
-  --text-main: #f8fafc;
-  --text-muted: #64748b;
-  --border: rgba(255, 255, 255, 0.03);
-  --accent: #334155;
+  --primary: #0078d7; /* Windows 10 Blue */
+  --primary-hover: #0086f0;
+  --bg-deep: #000000; /* True Black */
+  --bg-card: #121212; /* Dark Gray */
+  --bg-slate: #1a1a1a; /* Lighter Gray */
+  --text-main: #ffffff; /* Pure White */
+  --text-muted: #a0a0a0;
+  --border: rgba(255, 255, 255, 0.05);
+  --accent: #0078d7;
+  --premium: #ffd700; /* Gold */
 }
 
 * {
@@ -102,16 +104,20 @@ body {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
-/* Premium Button */
+/* Premium Button (Gold) */
 .btn-premium-grad {
-  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
-  color: #020617 !important;
-  box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+  color: #000000 !important;
+  box-shadow: 0 10px 30px -10px rgba(255, 215, 0, 0.3);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .btn-premium-grad:hover {
   transform: translateY(-2px);
-  box-shadow: 0 15px 35px -10px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 35px -10px rgba(255, 215, 0, 0.5);
+  filter: brightness(1.1);
 }
 
 .border-glow {
@@ -197,9 +203,9 @@ body {
 }
 
 .dot-nav-item.active {
-  background: #6366f1; /* Indigo-500 */
+  background: var(--primary);
   transform: scale(1.8);
-  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 15px rgba(0, 120, 215, 0.5);
 }
 
 /* Back to Top Button */
