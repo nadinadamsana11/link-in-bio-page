@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-950 text-white min-h-screen flex items-center justify-center p-4">
-    <div id="auth-card" class="glass-dark p-8 rounded-3xl w-full max-w-md shadow-2xl border border-slate-800/10">
+<body class="bg-slate-950 text-white min-h-screen flex flex-col">
+    <main class="flex-grow flex items-center justify-center p-6 bg-slate-950 relative overflow-hidden">
+        <div class="hero-overlay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80'); opacity: 0.1;"></div>
+        <div id="auth-card" class="glass-dark p-8 md:p-12 rounded-[2.5rem] w-full max-w-md shadow-2xl border border-slate-800/10 relative z-10 transition-all">
         <div class="text-center mb-8">
             <div id="logo-box" class="bg-slate-800 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-slate-700">
                 <i data-lucide="log-in" class="w-8 h-8 text-white"></i>
             </div>
-            <h1 class="text-3xl font-bold tracking-tight">Welcome Back</h1>
-            <p class="text-slate-400 mt-2">Sign in to manage your profile</p>
+            <h1 class="text-3xl font-black tracking-tight">Welcome back</h1>
+            <p class="text-slate-400 mt-2">Sign in to manage your page</p>
         </div>
 
         <form id="loginForm" class="space-y-4">
@@ -68,6 +70,7 @@
             Don't have an account? 
             <a href="register.html" class="text-slate-100 font-bold ml-1">Sign Up</a>
         </div>
+    </main>
     <footer></footer>
     <script type="module" src="../assets/js/layout.js"></script>
     <script type="module" src="../assets/js/auth.js"></script>
