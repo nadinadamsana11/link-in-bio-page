@@ -92,12 +92,18 @@ function injectFooter() {
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">About the app</h4>
-                    <p class="text-slate-500 text-xs mb-6 leading-relaxed">This app helps you put all your social links on one simple page.</p>
-                    <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all text-white">
-                        Learn about us
-                        <i data-lucide="arrow-right" class="w-3 h-3"></i>
-                    </a>
+                    <h4 class="font-bold mb-6 text-white text-sm uppercase tracking-widest">Support the project</h4>
+                    <p class="text-slate-500 text-xs mb-6 leading-relaxed">Help us keep the app free for everyone.</p>
+                    <div class="flex flex-col gap-3">
+                        <a href="https://www.buymeacoffee.com" target="_blank" class="inline-flex items-center gap-3 bg-[#FFDD00] text-black px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all shadow-xl">
+                            <i data-lucide="coffee" class="w-4 h-4"></i>
+                            Buy me a coffee
+                        </a>
+                        <a href="${pathPrefix}pages/about.html" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all text-white">
+                            Learn about us
+                            <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="text-center pt-10 border-t border-slate-900 text-slate-700 text-[10px] font-black uppercase tracking-[0.2em]">

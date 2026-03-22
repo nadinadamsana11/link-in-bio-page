@@ -122,33 +122,126 @@ body {
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
 }
-/* FAQ Smooth Transitions */
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 300px;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-/* Z-Pattern Layout Utilities */
-.z-pattern-section {
-  display: grid;
-  grid-template-cols: 1fr;
-  gap: 4rem;
+/* Animative UI & Interactive Effects */
+.scroll-section {
+  min-height: 100vh;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-@media (min-width: 768px) {
-  .z-pattern-section { grid-template-cols: 1fr 1fr; }
-  .z-pattern-section.reverse { direction: rtl; }
-  .z-pattern-section.reverse > * { direction: ltr; }
+/* Floating Letters Animation */
+.char-float {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(100px) rotate(10deg);
+  filter: blur(10px);
+  animation: floatIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes floatIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+    filter: blur(0);
+  }
+}
+
+/* Liquid Ripple Button Effect */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ripple-btn .ripple-wave {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleAnimation 0.6s linear;
+}
+
+@keyframes rippleAnimation {
+  to {
+    transform: scale(8);
+    opacity: 0;
+  }
+}
+
+/* Vertical Dot Navigation */
+.dot-nav {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dot-nav-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dot-nav-item.active {
+  background: #6366f1; /* Indigo-500 */
+  transform: scale(1.8);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+/* Back to Top Button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: white;
+  color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 99;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Simplified Text-First Layouts */
+.detail-card {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 3.5rem;
+  border-radius: 4rem;
+  transition: all 0.4s ease;
+  height: 100%;
+}
+
+.detail-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-10px);
+  background: rgba(15, 23, 42, 0.8);
 }
 
 .hero-overlay {
@@ -160,4 +253,16 @@ body {
   opacity: 0.15;
   filter: blur(100px);
   z-index: -1;
+}
+
+/* FAQ Overwrite (Keeping simple) */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.active .faq-answer {
+  max-height: 200px;
+  padding: 2rem 0;
 }

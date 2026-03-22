@@ -13,26 +13,32 @@
     <nav class="w-full h-20 flex items-center border-b border-slate-900 sticky top-0 bg-slate-950/80 backdrop-blur-xl z-50">
     </nav>
 
+    <!-- Vertical Dot Navigation -->
+    <div class="dot-nav" id="dotNav"></div>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top-btn" id="scrollTop">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </div>
+
     <!-- Hero Section -->
-    <main class="relative pt-32 pb-48 overflow-hidden bg-slate-950">
-        <div class="hero-overlay" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');"></div>
+    <main id="hero" class="scroll-section">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
             <div id="hero-badge" class="inline-flex items-center gap-3 bg-indigo-500/10 border border-indigo-500/20 px-6 py-2 rounded-full text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] mb-10">
                 <span class="flex h-2 w-2 rounded-full bg-indigo-500"></span>
                 Join 15,000+ people using this
             </div>
             <h1 id="hero-title" class="text-6xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-white">
-                Make your profile <br>
-                <span class="text-slate-500">look great.</span>
+                <!-- Spanned by JS -->
             </h1>
             <p id="hero-subtitle" class="text-slate-400 text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-medium">
-                Easy and fast page for all your links. Simple for you, great for your fans.
+                The most elegant, fastest-loading bio page built for everyone. Simple for you, great for your fans.
             </p>
             <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <a href="auth/register.html" class="w-full sm:w-auto bg-white text-slate-950 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-200 transition-all hover:scale-105 shadow-2xl">
+                <a href="auth/register.html" class="ripple-btn w-full sm:w-auto bg-white text-slate-950 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-200 transition-all hover:scale-105 shadow-2xl">
                     Get your name
                 </a>
-                <a href="pages/pro.html" class="w-full sm:w-auto bg-slate-900 border border-slate-800 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
+                <a href="pages/pro.html" class="ripple-btn w-full sm:w-auto bg-slate-900 border border-slate-800 px-14 py-6 rounded-3xl font-black text-xs uppercase tracking-[0.3em] hover:bg-slate-800 transition-all flex items-center justify-center gap-3">
                     <i data-lucide="sparkles" class="w-5 h-5 text-indigo-400"></i>
                     See Pro Features
                 </a>
@@ -40,76 +46,106 @@
         </div>
     </main>
 
-    <!-- Z-Pattern Sections -->
-    <section class="py-32 border-t border-slate-900/50">
-        <div class="max-w-7xl mx-auto px-6 space-y-48">
-            
-            <div class="z-pattern-section">
-                <div class="space-y-8">
-                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Step 1: Your Profile</p>
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">Make your page<br>fast.</h2>
-                    <p class="text-slate-400 text-xl leading-relaxed">Our profile maker helps you create a professional page in seconds. Add your photos, links, and colors easily.</p>
-                    <ul class="space-y-4 pt-6">
-                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> Easy 3-step setup</li>
-                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> Check marks for your profile</li>
-                        <li class="flex items-center gap-4 text-slate-300 font-bold"><i data-lucide="check-circle-2" class="w-6 h-6 text-emerald-500"></i> Fast photo loading</li>
-                    </ul>
-                </div>
-                <div class="relative bg-slate-900/50 rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center">
-                    <div class="absolute inset-0 bg-indigo-500/10 blur-[120px]"></div>
-                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80" alt="Identity Builder" class="relative z-10 w-full max-w-sm hover:scale-105 transition-transform duration-700">
-                </div>
-            </div>
-
-            <div class="z-pattern-section reverse">
-                <div class="space-y-8">
-                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Step 2: Clicks</p>
-                    <h2 class="text-5xl md:text-7xl font-black tracking-tighter leading-none">See who <br>clicks you.</h2>
-                    <p class="text-slate-400 text-xl leading-relaxed">Know where your fans come from. See which links are popular and track your growth in a simple way.</p>
-                    <div class="grid grid-cols-2 gap-8 pt-6">
-                        <div class="bg-slate-900/50 p-6 rounded-3xl border border-slate-800">
-                            <h4 class="text-3xl font-black text-white mb-2">Fast</h4>
-                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Global Speed</p>
-                        </div>
-                        <div class="bg-slate-900/50 p-6 rounded-3xl border border-slate-800">
-                            <h4 class="text-3xl font-black text-white mb-2">Safe</h4>
-                            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest">Privacy for all</p>
-                        </div>
+    <!-- Feature: Digital Identity -->
+    <section id="identity" class="scroll-section border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-12">
+                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Section 01 / Identity</p>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">Your Profile,<br>Infinite Power.</h2>
+                    <p class="text-slate-400 text-xl leading-relaxed max-w-xl">
+                        We don't just build pages; we build digital homes. Our system uses advanced rendering technology to ensure your profile loads in under 100ms globally. No bloated scripts, no heavy images—just pure, blazing speed.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-slate-900 px-6 py-3 rounded-2xl border border-slate-800 font-bold text-xs uppercase tracking-widest text-emerald-400 flex items-center gap-2">
+                             <i data-lucide="zap" class="w-4 h-4"></i> High Speed
+                        </span>
+                        <span class="bg-slate-900 px-6 py-3 rounded-2xl border border-slate-800 font-bold text-xs uppercase tracking-widest text-indigo-400 flex items-center gap-2">
+                             <i data-lucide="shield" class="w-4 h-4"></i> Safe Data
+                        </span>
                     </div>
                 </div>
-                <div class="relative bg-slate-900/50 rounded-3xl overflow-hidden min-h-[400px] flex items-center justify-center">
-                    <div class="absolute inset-0 bg-slate-800/30 blur-[100px]"></div>
-                    <img src="https://images.unsplash.com/photo-1551288049-bbbda5366392?auto=format&fit=crop&w=800&q=80" alt="Analytics Dashboard" class="relative z-10 w-full max-w-sm hover:rotate-3 transition-transform duration-700">
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="detail-card">
+                        <h4 class="text-2xl font-black mb-4 italic">The Profile Maker</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Craft your identity in minutes. Our 3-step wizard guides you from persona to professional access, ensuring every detail is perfect before you go live.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h4 class="text-2xl font-black mb-4 italic">Verified Creator Badges</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Stand out with official check marks. Our platform verifies your identity to build trust with your audience instantly.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Features Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-24 border-t border-slate-900/50 animate-slide-up">
-                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
-                    <i data-lucide="cloud-lightning" class="w-8 h-8 text-indigo-400"></i>
-                    <h4 class="text-xl font-bold">Fast Photos</h4>
-                    <p class="text-slate-500 text-sm">Your photos load very fast on any device.</p>
+    <!-- Feature: Technical Excellence -->
+    <section id="tech" class="scroll-section bg-slate-950 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-24">
+                <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Section 02 / Technology</p>
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mt-4">Built for Everyone.</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="detail-card">
+                    <div class="bg-indigo-500/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-indigo-500/20">
+                        <i data-lucide="cpu" class="w-8 h-8 text-indigo-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6 uppercase">Fast Photos</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed">We use Cloudinary's global network to serve your images. This means faster loading for your fans, no matter where they are in the world.</p>
                 </div>
-                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
-                    <i data-lucide="shield-check" class="w-8 h-8 text-emerald-400"></i>
-                    <h4 class="text-xl font-bold">Safe Account</h4>
-                    <p class="text-slate-500 text-sm">Your data and password are always kept private and safe.</p>
+                <div class="detail-card">
+                    <div class="bg-emerald-500/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-emerald-500/20">
+                        <i data-lucide="lock" class="w-8 h-8 text-emerald-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6 uppercase">Safe Account</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed">Your data is secured with Firebase's enterprise-grade encryption. Your password, your links, and your identity are for your eyes only.</p>
                 </div>
-                <div class="space-y-4 p-8 bg-slate-900/20 rounded-[2.5rem] border border-slate-800/30">
-                    <i data-lucide="layout-template" class="w-8 h-8 text-amber-400"></i>
-                    <h4 class="text-xl font-bold">New Colors</h4>
-                    <p class="text-slate-500 text-sm">Change how your page looks with simple colors and themes.</p>
+                <div class="detail-card">
+                    <div class="bg-amber-500/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-amber-500/20">
+                        <i data-lucide="palette" class="w-8 h-8 text-amber-400"></i>
+                    </div>
+                    <h4 class="text-2xl font-black mb-6 uppercase">New Colors</h4>
+                    <p class="text-slate-500 font-medium leading-relaxed">Customize your page with beautiful themes. Switch between dark mode, glassmorphism, or clean minimalist styles with one click.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
+    <!-- Feature: Insights -->
+    <section id="insights" class="scroll-section border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+                <div class="order-2 md:order-1 grid grid-cols-1 gap-6">
+                    <div class="detail-card">
+                        <h4 class="text-2xl font-black mb-4 italic">Real-time Data</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">See every click as it happens. Our analytics engine tracks traffic, sources, and conversion rates without compromising privacy.</p>
+                    </div>
+                    <div class="detail-card">
+                        <h4 class="text-2xl font-black mb-4 italic">Global Reach</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed">Understand your global audience. See which countries your fans are visiting from and optimize your content for them.</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 space-y-12">
+                    <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.4em]">Section 03 / Analytics</p>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none">See who <br>clicks you.</h2>
+                    <p class="text-slate-400 text-xl leading-relaxed">
+                        Data is the key to growth. We provide detailed charts and insights into your link performance, helping you understand what your audience loves most.
+                    </p>
+                    <a href="auth/register.html" class="ripple-btn inline-flex items-center gap-4 bg-white text-slate-950 px-10 py-5 rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-slate-200 transition-all">
+                        Start Tracking Now
+                        <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-32 bg-slate-950">
+    <section id="faq" class="scroll-section bg-slate-950 border-t border-slate-900 py-32">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-20 space-y-4">
-                <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em]">Questions?</p>
+                <p class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em]">Help / Center</p>
                 <h2 class="text-5xl md:text-6xl font-black tracking-tighter">Common Questions</h2>
                 <p class="text-slate-500 text-lg">Everything you need to know about your new home.</p>
             </div>
@@ -149,20 +185,76 @@
 
     <script type="module" src="assets/js/layout.js"></script>
     <script>
-        // Smooth FAQ Toggle Logic
-        document.querySelectorAll('.faq-item button').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
-                
-                // Close all others
-                document.querySelectorAll('.faq-item').forEach(i => {
-                    i.classList.remove('active');
-                });
+        document.addEventListener('DOMContentLoaded', () => {
+            // Floating Letters Initialization
+            const title = document.getElementById('hero-title');
+            const text = "Make your profile look great.";
+            title.innerHTML = text.split('').map((char, index) => {
+                if (char === ' ') return ' ';
+                return `<span class="char-float" style="animation-delay: ${index * 0.03}s">${char}</span>`;
+            }).join('');
 
-                if (!isActive) {
-                    item.classList.add('active');
+            // Vertical Dot Navigation Logic
+            const sections = document.querySelectorAll('.scroll-section');
+            const dotNav = document.getElementById('dotNav');
+            
+            sections.forEach((section, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'dot-nav-item';
+                dot.onclick = () => section.scrollIntoView({ behavior: 'smooth' });
+                dotNav.appendChild(dot);
+            });
+
+            const dots = document.querySelectorAll('.dot-nav-item');
+            const observerOptions = { threshold: 0.5 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const index = Array.from(sections).indexOf(entry.target);
+                        dots.forEach(d => d.classList.remove('active'));
+                        dots[index].classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // Liquid Ripple Button Effect
+            document.querySelectorAll('.ripple-btn').forEach(btn => {
+                btn.onmouseenter = (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.className = 'ripple-wave';
+                    ripple.style.left = `${x}px`;
+                    ripple.style.top = `${y}px`;
+                    
+                    btn.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                };
+            });
+
+            // Back to Top Logic
+            const scrollTopBtn = document.getElementById('scrollTop');
+            window.onscroll = () => {
+                if (window.scrollY > 500) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
                 }
+            };
+            scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // FAQ Toggle
+            document.querySelectorAll('.faq-item button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.parentElement;
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                    if (!isActive) item.classList.add('active');
+                });
             });
         });
     </script>
