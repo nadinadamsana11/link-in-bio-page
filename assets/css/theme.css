@@ -13,6 +13,7 @@
   /* Accents */
   --accent-blue: #0078d7; /* Windows 10 Blue - SPECIAL ONLY */
   --accent-gold: #ffd700; /* Premium/Gold */
+  --accent-vibrant: #ffff00; /* Neon Yellow */
   
   /* Borders & Misc */
   --border-subtle: rgba(255, 255, 255, 0.05);
