@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link-in-Bio | Professional Profile Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <!-- Navbar -->
+    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center relative z-10">
+        <div id="nav-logo" class="flex items-center gap-2">
+            <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+            </div>
+            <a href="index.html" class="font-bold text-2xl tracking-tighter">Link-in-Bio</a>
+        </div>
+        
+        <!-- Center Links -->
+        <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-400">
+            <a href="pages/about.html" class="hover:text-white transition-colors">About Us</a>
+            <a href="pages/contact.html" class="hover:text-white transition-colors">Contact</a>
+            <a href="pages/privacy.html" class="hover:text-white transition-colors">Privacy</a>
+            <a href="pages/pro.html" class="text-indigo-400 hover:text-indigo-300 transition-colors">Pro Plan</a>
+        </div>
+
+        <div id="nav-links" class="flex items-center gap-4">
+            <a href="auth/login.html" class="text-slate-400 hover:text-white transition-all font-medium">Log In</a>
+            <a href="auth/register.html" class="premium-btn px-6 py-2.5 rounded-full shadow-sm transition-all">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="max-w-7xl mx-auto px-6 pt-20 pb-32 text-center relative z-10">
+        <div id="hero-badge" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-4 py-1.5 rounded-full text-slate-400 text-sm font-medium mb-8">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            Production Ready v1.0
+        </div>
+        <h1 id="hero-title" class="text-5xl md:text-8xl font-black tracking-tight mb-8 leading-[0.9] md:leading-[1.1] text-slate-100">
+            Elevate your <br>
+            <span class="text-slate-500">Digital Presence.</span>
+        </h1>
+        <p id="hero-subtitle" class="text-slate-400 text-lg md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed">
+            The minimalist bio page designed for elite creators. Lighter, faster, and more professional than ever.
+        </p>
+        <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <a href="auth/register.html" class="w-full sm:w-auto bg-white text-slate-950 px-12 py-5 rounded-2xl font-black text-xl hover:bg-slate-200 transition-all">
+                Claim your link
+            </a>
+            <a href="pages/pro.html" class="w-full sm:w-auto glass-dark px-12 py-5 rounded-2xl font-bold text-xl hover:bg-slate-900 transition-all border border-slate-800 flex items-center justify-center gap-2">
+                <i data-lucide="crown" class="w-6 h-6 text-indigo-400"></i>
+                Get Pro Plan
+            </a>
+        </div>
+    </main>
+
+    <!-- Features Section -->
+    <section class="max-w-7xl mx-auto px-6 py-32 border-t border-slate-900">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="space-y-4">
+                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
+                    <i data-lucide="zap" class="text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold">Turbo Loading</h3>
+                <p class="text-slate-400 leading-relaxed">Engineered with zero-overhead architecture for instant page loads. Never keep your followers waiting.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
+                    <i data-lucide="layout" class="text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold">Clean Design</h3>
+                <p class="text-slate-400 leading-relaxed">A minimalist, aesthetic interface that puts your content first. Beautiful on every device.</p>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-slate-900 w-12 h-12 rounded-xl flex items-center justify-center border border-slate-800">
+                    <i data-lucide="bar-chart-3" class="text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold">Real Analytics</h3>
+                <p class="text-slate-400 leading-relaxed">Track your engagement with precision. See where your traffic comes from and what they click.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="max-w-3xl mx-auto px-6 py-32">
+        <h2 class="text-4xl font-black text-center mb-16">Common Questions</h2>
+        <div class="space-y-4">
+            <div class="faq-item group">
+                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
+                    <span class="font-bold text-lg">Is Link-in-Bio really free?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 py-4 text-slate-400">
+                    Yes! Our basic plan is free forever. We offer premium features in our Pro plan for power users.
+                </div>
+            </div>
+            <div class="faq-item group">
+                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
+                    <span class="font-bold text-lg">How many links can I add?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 py-4 text-slate-400">
+                    Unlimited! Even on our free plan, you can showcase as many links as you need.
+                </div>
+            </div>
+            <div class="faq-item group">
+                <button class="w-full flex justify-between items-center bg-slate-900 p-6 rounded-2xl border border-slate-800 text-left hover:border-slate-700 transition-colors">
+                    <span class="font-bold text-lg">Can I use my own domain?</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-slate-500 group-[.active]:rotate-180 transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 py-4 text-slate-400">
+                    Pro users can connect their own custom domains for a fully branded experience.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/50 border-t border-slate-900 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-1 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        <span class="font-bold text-xl">Link-in-Bio</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">Empowering creators with the world's most elegant bio pages.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="auth/login.html" class="hover:text-white">Login</a></li>
+                        <li><a href="auth/register.html" class="hover:text-white">Register</a></li>
+                        <li><a href="pages/pro.html" class="hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="pages/about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="pages/contact.html" class="hover:text-white">Support</a></li>
+                        <li><a href="pages/privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Subscribe</h4>
+                    <p class="text-sm text-slate-400 mb-4">Get the latest updates on new features.</p>
+                    <div class="flex gap-2">
+                        <input type="email" autocomplete="email" placeholder="Email" class="bg-slate-800 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-slate-500 outline-none w-full">
+                        <button class="bg-white text-slate-950 px-4 py-2 rounded-lg font-bold text-sm">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-800 text-slate-600 text-xs">
+                &copy; 2026 Link-in-Bio Platform. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // FAQ Toggle Logic
+        document.querySelectorAll('.faq-item button').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const answer = item.querySelector('.faq-answer');
+                const isActive = item.classList.contains('active');
+                
+                // Close all others
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').classList.add('hidden');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

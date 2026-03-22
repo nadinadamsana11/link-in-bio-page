@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Pro | Link-in-Bio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen">
+    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center">
+        <a href="../index.html" class="flex items-center gap-2">
+            <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+            </div>
+            <span class="font-bold text-2xl tracking-tighter">Link-in-Bio</span>
+        </a>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-black mb-6">Choose Your Plan</h1>
+        <p class="text-slate-400 text-xl max-w-2xl mx-auto mb-16">Unlock the full power of your digital presence with premium features.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <!-- Free Plan -->
+            <div class="glass-dark p-8 rounded-[2.5rem] border border-slate-800 text-left">
+                <h3 class="text-2xl font-bold mb-2">Free</h3>
+                <div class="text-4xl font-black mb-6">$0<span class="text-lg text-slate-500 font-medium">/forever</span></div>
+                <ul class="space-y-4 mb-12 text-slate-400">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Custom Bio Link</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Standard Themes</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Basic Analytics</li>
+                </ul>
+                <a href="../auth/register.html" class="block w-full text-center bg-slate-800 py-4 rounded-2xl font-bold hover:bg-slate-700">Current Plan</a>
+            </div>
+            
+            <!-- Pro Plan -->
+            <div class="bg-white text-slate-950 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-left">
+                <div class="absolute top-6 right-6 bg-slate-950 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recommended</div>
+                <h3 class="text-2xl font-bold mb-2">Pro</h3>
+                <div class="text-4xl font-black mb-6">$9<span class="text-lg text-slate-500 font-medium">/month</span></div>
+                <ul class="space-y-4 mb-12">
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Everything in Free</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Custom Domains</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Advanced Analytics</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> White-label Profiles</li>
+                </ul>
+                <button class="w-full bg-slate-950 text-white py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] transition-transform">Get Started with Pro</button>
+            </div>
+        </div>
+    </main>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

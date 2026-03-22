@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link-in-Bio | Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-950 text-white min-h-screen selection:bg-white selection:text-slate-950">
+    <!-- Profile Content -->
+    <main id="profileContent" class="hidden max-w-2xl mx-auto px-6 py-10 md:py-20">
+        <!-- Identity Badge (NIC Style) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-[2.5rem] p-8 md:p-12 mb-10 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <i data-lucide="zap" class="w-32 h-32"></i>
+            </div>
+            
+            <div class="relative z-10 flex flex-col items-center text-center space-y-6">
+                <!-- Avatar -->
+                <div class="relative">
+                    <div id="profilePhoto" class="w-40 h-40 md:w-48 md:h-48 rounded-[2.5rem] bg-slate-800 border-8 border-slate-800/50 overflow-hidden shadow-2xl">
+                        <!-- Image injected via JS -->
+                    </div>
+                    <div class="absolute -bottom-2 right-4 bg-emerald-500 text-slate-950 px-4 py-1.5 rounded-full text-[10px] font-black tracking-widest uppercase shadow-xl ring-4 ring-slate-900">
+                        Official
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="space-y-4 w-full">
+                    <div class="space-y-1">
+                        <h1 id="profileName" class="text-4xl md:text-5xl font-black tracking-tight leading-none">Loading...</h1>
+                        <p id="profileUsername" class="text-slate-500 font-mono text-lg font-bold tracking-tighter">@username</p>
+                    </div>
+                    
+                    <div class="bg-slate-950/50 border border-slate-800/50 p-6 rounded-3xl">
+                        <p id="profileBio" class="text-slate-400 text-lg leading-relaxed italic">
+                            No bio added yet.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Grid -->
+        <div id="profileLinks" class="grid grid-cols-1 gap-4">
+            <!-- Link Cards injected via JS -->
+        </div>
+
+        <!-- Branding -->
+        <div class="mt-20 text-center pb-10">
+            <a href="../index.html" class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-6 py-3 rounded-2xl hover:bg-slate-800 transition-all group">
+                <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                <span class="text-slate-400 font-bold text-sm tracking-tight group-hover:text-white">Create your own Link-in-Bio</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Loading State -->
+    <div id="loading" class="fixed inset-0 flex items-center justify-center bg-slate-950 z-[100]">
+        <div class="flex flex-col items-center gap-6">
+            <div class="w-16 h-16 border-4 border-slate-800 border-t-white rounded-full animate-spin"></div>
+            <p class="text-slate-500 font-bold uppercase tracking-widest text-xs">Fetching Identity...</p>
+        </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="errorState" class="hidden fixed inset-0 flex items-center justify-center bg-slate-950">
+        <div class="text-center space-y-6 px-6">
+            <div class="bg-red-500/10 w-20 h-20 rounded-full flex items-center justify-center mx-auto border border-red-500/20">
+                <i data-lucide="user-x" class="w-10 h-10 text-red-500"></i>
+            </div>
+            <h2 class="text-3xl font-black text-white">Identity Not Found</h2>
+            <p class="text-slate-500 max-w-sm mx-auto">This profile doesn't exist or has been moved. Check the username and try again.</p>
+            <a href="../index.html" class="inline-block bg-white text-slate-950 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-sm">Return Home</a>
+        </div>
+    </div>
+
+    <script type="module" src="../assets/js/profile.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
