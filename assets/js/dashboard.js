@@ -19,6 +19,7 @@ import { showToast, calculateAge } from './utils.js';
 
 let currentUser = null;
 let userLinks = [];
+let currentStep = 1;
 
 const avatarPreview = document.getElementById('avatarPreview');
 const modalAvatarPreview = document.getElementById('modalAvatarPreview');
@@ -105,9 +106,10 @@ async function loadUserData() {
 }
 
 function updateIdentityBadge(data) {
-    document.getElementById('badgeName').textContent = data.displayName || data.username;
-    document.getElementById('badgeUsername').textContent = `@${data.username}`;
-    document.getElementById('badgeBio').textContent = data.bio || "No bio added yet. Tell the world who you are.";
+    const name = data.displayName || data.username || "Creator";
+    document.getElementById('badgeName').textContent = name;
+    document.getElementById('badgeUsername').textContent = data.username ? `@${data.username}` : "@handle";
+    document.getElementById('badgeBio').textContent = data.bio || "Tell the world your story.";
     document.getElementById('linkCount').textContent = data.links?.length || 0;
     
     // Expanded Data
@@ -116,27 +118,69 @@ function updateIdentityBadge(data) {
     document.getElementById('badgeGender').textContent = data.gender || "N/A";
     document.getElementById('badgeHome').textContent = data.home || "N/A";
     document.getElementById('badgeTel').textContent = data.tel || "N/A";
-    document.getElementById('badgeEmail').textContent = data.email || currentUser.email;
+    document.getElementById('badgeEmail').textContent = data.email || currentUser?.email || "N/A";
 
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
+        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-4xl font-black text-slate-700">${name[0].toUpperCase()}</div>`;
     
     avatarPreview.innerHTML = photoContent;
     modalAvatarPreview.innerHTML = photoContent;
+    
+    const navInitial = name[0].toUpperCase();
     navAvatar.innerHTML = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : (data.displayName || data.username)[0].toUpperCase();
+        : navInitial;
     
-    if (data.createdAt) {
+    if (data.username) {
         document.getElementById('publicProfileBtn').href = `../profile/view.html?u=${data.username}`;
     }
     updateBioCounter();
 }
 
-// Identity Modal Controls
-document.getElementById('editIdentityBtn').addEventListener('click', () => identityModal.classList.remove('hidden'));
+// Identity Modal & Wizard Controls
+const wizardTitle = document.getElementById('wizardTitle');
+const nextStepBtn = document.getElementById('nextStepBtn');
+const prevStepBtn = document.getElementById('prevStepBtn');
+
+const showStep = (step) => {
+    currentStep = step;
+    document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.progress-bar-step').forEach(p => p.classList.remove('active'));
+    
+    document.getElementById(`step${step}`).classList.add('active');
+    for (let i = 1; i <= step; i++) {
+        document.getElementById(`step${i}-indicator`).classList.add('active');
+    }
+
+    if (step === 1) {
+        wizardTitle.textContent = "Persona Setup";
+        prevStepBtn.classList.add('hidden');
+        nextStepBtn.classList.remove('hidden');
+        saveProfileBtn.classList.add('hidden');
+    } else if (step === 2) {
+        wizardTitle.textContent = "Professional Bio";
+        prevStepBtn.classList.remove('hidden');
+        nextStepBtn.classList.remove('hidden');
+        saveProfileBtn.classList.add('hidden');
+    } else if (step === 3) {
+        wizardTitle.textContent = "Access & Contact";
+        prevStepBtn.classList.remove('hidden');
+        nextStepBtn.classList.add('hidden');
+        saveProfileBtn.classList.remove('hidden');
+    }
+    if (window.lucide) window.lucide.createIcons();
+};
+
+nextStepBtn.addEventListener('click', () => showStep(currentStep + 1));
+prevStepBtn.addEventListener('click', () => showStep(currentStep - 1));
+
+document.getElementById('editIdentityBtn').addEventListener('click', () => {
+    showStep(1);
+    identityModal.classList.remove('hidden');
+});
 document.getElementById('editIdentityBtnQuick').addEventListener('click', () => {
+    showStep(1);
     identityModal.classList.remove('hidden');
     profileDropdown.classList.add('hidden');
 });

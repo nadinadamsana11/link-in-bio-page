@@ -1,0 +1,116 @@
+/**
+ * Layout.js - Global UI Orchestration
+ * Handles unified Header, Footer, and Vanity URL Routing
+ */
+
+import { auth } from './firebase-config.js';
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const isRoot = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') && !window.location.pathname.includes('/dashboard/') && !window.location.pathname.includes('/admin/');
+const pathPrefix = isRoot ? '' : (window.location.pathname.includes('/pages/') || window.location.pathname.includes('/auth/') || window.location.pathname.includes('/dashboard/') || window.location.pathname.includes('/profile/') || window.location.pathname.includes('/admin/')) ? '../' : './';
+
+export function renderGlobalUI() {
+    injectHeader();
+    injectFooter();
+    handleVanityURL();
+}
+
+function injectHeader() {
+    const header = document.querySelector('nav'); // Targeting existing nav for replacement or just finding/injecting
+    if (!header) return;
+
+    // We keep specific headers for Dashboard and Profile but unify the Landing/Auth/Pages
+    const isSpecialPage = window.location.pathname.includes('/dashboard/') || window.location.pathname.includes('/profile/') || window.location.pathname.includes('/admin/');
+    if (isSpecialPage) return; // Dashboard or Profile handle their own complex headers
+
+    header.innerHTML = `
+        <div class="max-w-7xl mx-auto flex justify-between items-center w-full">
+            <div id="nav-logo" class="flex items-center gap-2">
+                <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
+                    <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                </div>
+                <a href="${pathPrefix}index.html" class="font-bold text-2xl tracking-tighter hover:text-slate-300 transition-colors">Link-in-Bio</a>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-400">
+                <a href="${pathPrefix}pages/about.html" class="hover:text-white transition-colors">About Us</a>
+                <a href="${pathPrefix}pages/contact.html" class="hover:text-white transition-colors">Contact</a>
+                <a href="${pathPrefix}pages/pro.html" class="text-indigo-400 hover:text-indigo-300 transition-colors">Pro Plan</a>
+            </div>
+
+            <div id="nav-actions" class="flex items-center gap-4">
+                <a href="${pathPrefix}auth/login.html" class="text-slate-400 hover:text-white transition-all font-medium text-sm px-4">Log In</a>
+                <a href="${pathPrefix}auth/register.html" class="bg-white text-slate-950 px-6 py-2.5 rounded-full shadow-sm transition-all font-black text-xs uppercase tracking-widest hover:bg-slate-200">Get Started</a>
+            </div>
+        </div>
+    `;
+    if (window.lucide) window.lucide.createIcons();
+}
+
+function injectFooter() {
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+
+    footer.className = "bg-slate-900/50 border-t border-slate-900 pt-20 pb-10 mt-auto";
+    footer.innerHTML = `
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-1 space-y-6">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+                        <span class="font-bold text-xl">Link-in-Bio</span>
+                    </div>
+                    <p class="text-slate-500 text-sm">Empowering creators with the world's most elegant bio pages.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-500 hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Explore</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="${pathPrefix}index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="${pathPrefix}pages/about.html" class="hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="${pathPrefix}pages/pro.html" class="hover:text-white transition-colors">Pro Plan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm text-slate-400">
+                        <li><a href="${pathPrefix}pages/contact.html" class="hover:text-white transition-colors">Support</a></li>
+                        <li><a href="${pathPrefix}pages/privacy.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="${pathPrefix}auth/register.html" class="hover:text-white transition-colors">Join Platform</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Newsletter</h4>
+                    <p class="text-sm text-slate-400 mb-4">Stay tuned for new features.</p>
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="Email" class="bg-slate-800 border-none rounded-lg px-4 py-2 text-sm focus:ring-1 focus:ring-slate-500 outline-none w-full">
+                        <button class="bg-white text-slate-950 px-4 py-2 rounded-lg font-bold text-sm">Join</button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-800 text-slate-600 text-xs">
+                &copy; 2026 Link-in-Bio Platform. All rights reserved.
+            </div>
+        </div>
+    `;
+    if (window.lucide) window.lucide.createIcons();
+}
+
+function handleVanityURL() {
+    // If the path is just /@username, redirect to profile/view.html?u=username
+    const path = window.location.pathname;
+    const parts = path.split('/');
+    const lastPart = parts[parts.length - 1] || parts[parts.length - 2];
+    
+    if (lastPart && lastPart.startsWith('@')) {
+        const username = lastPart.substring(1);
+        window.location.href = `${pathPrefix}profile/view.html?u=${username}`;
+    }
+}
+
+// Auto-run if imported without calling specifically
+renderGlobalUI();

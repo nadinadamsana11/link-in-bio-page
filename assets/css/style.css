@@ -69,3 +69,52 @@ body {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(255, 255, 255, 0.1);
 }
+
+/* Wizard Styles */
+.wizard-step {
+  display: none;
+  animation: slideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.wizard-step.active {
+  display: block;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.progress-bar-step {
+  height: 4px;
+  flex: 1;
+  background: #1e293b;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.progress-bar-step.active {
+  background: #f8fafc;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Premium Button */
+.btn-premium-grad {
+  background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 100%);
+  color: #020617 !important;
+  box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.2);
+}
+
+.btn-premium-grad:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -10px rgba(255, 255, 255, 0.3);
+}
+
+.border-glow {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.border-glow:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
+}
