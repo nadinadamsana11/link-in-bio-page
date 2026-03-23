@@ -23,20 +23,13 @@ let currentStep = 1;
 
 const avatarPreview = document.getElementById('avatarPreview');
 const coverPhoto = document.getElementById('coverPhoto');
-const modalAvatarPreview = document.getElementById('modalAvatarPreview');
 const photoInput = document.getElementById('photoInput');
-const displayNameInput = document.getElementById('displayName');
-const usernameInput = document.getElementById('dashboardUsername');
-const dobInput = document.getElementById('dob');
-const homeInput = document.getElementById('home');
 const editPhotoBtn = document.getElementById('editPhotoBtn');
 const coverPhotoInput = document.getElementById('coverPhotoInput');
 const editCoverBtn = document.getElementById('editCoverBtn');
-const bioCounter = document.getElementById('bioCounter');
 const linksListEl = document.getElementById('linksList');
 const linkModal = document.getElementById('linkModal');
 const linkForm = document.getElementById('linkForm');
-const identityModal = document.getElementById('identityModal');
 
 // Dropdown Elements
 const profileDropdownBtn = document.getElementById('profileDropdownBtn');
@@ -93,13 +86,6 @@ async function loadUserData() {
         showToast("Welcome! Your Identity Badge has been initialized.", "success");
     }
 
-    displayNameInput.value = data.displayName || "";
-    usernameInput.value = data.username || "";
-    dobInput.value = data.dob || "";
-    homeInput.value = data.home || "";
-    telInput.value = data.tel || "";
-    genderInput.value = data.gender || "";
-    bioInput.value = data.bio || "";
     userLinks = data.links || [];
     
     updateIdentityBadge(data);
@@ -166,64 +152,14 @@ function updateIdentityBadge(data) {
             : `<div class="w-full h-full bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-page)]"></div>`;
         coverPhoto.innerHTML = coverContent;
         coverPhoto.classList.remove('skeleton');
-    }
-    
     if (data.username) {
         const publicBtn = document.getElementById('publicProfileBtn');
         if (publicBtn) publicBtn.href = `../profile/view.html?u=${data.username}`;
     }
-    updateBioCounter();
+}
 }
 
-// Identity Modal & Wizard Controls
-const wizardTitle = document.getElementById('wizardTitle');
-const nextStepBtn = document.getElementById('nextStepBtn');
-const prevStepBtn = document.getElementById('prevStepBtn');
-
-const showStep = (step) => {
-    currentStep = step;
-    document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.progress-bar-step').forEach(p => p.classList.remove('active'));
-    
-    document.getElementById(`step${step}`).classList.add('active');
-    for (let i = 1; i <= step; i++) {
-        document.getElementById(`step${i}-indicator`).classList.add('active');
-    }
-
-    if (step === 1) {
-        wizardTitle.textContent = "Persona Setup";
-        prevStepBtn.classList.add('hidden');
-        nextStepBtn.classList.remove('hidden');
-        saveProfileBtn.classList.add('hidden');
-    } else if (step === 2) {
-        wizardTitle.textContent = "Professional Bio";
-        prevStepBtn.classList.remove('hidden');
-        nextStepBtn.classList.remove('hidden');
-        saveProfileBtn.classList.add('hidden');
-    } else if (step === 3) {
-        wizardTitle.textContent = "Access & Contact";
-        prevStepBtn.classList.remove('hidden');
-        nextStepBtn.classList.add('hidden');
-        saveProfileBtn.classList.remove('hidden');
-    }
-    if (window.lucide) window.lucide.createIcons();
-};
-
-nextStepBtn.addEventListener('click', () => showStep(currentStep + 1));
-prevStepBtn.addEventListener('click', () => showStep(currentStep - 1));
-
-document.getElementById('editIdentityBtn').addEventListener('click', () => {
-    showStep(1);
-    identityModal.classList.remove('hidden');
-});
-document.getElementById('editIdentityBtnQuick').addEventListener('click', () => {
-    showStep(1);
-    identityModal.classList.remove('hidden');
-    profileDropdown.classList.add('hidden');
-});
-document.getElementById('closeIdentityModal').addEventListener('click', () => identityModal.classList.add('hidden'));
-
-// WebP Processor (Refined)
+// WebP Processor
 async function processToWebP(file) {
     return new Promise((resolve) => {
         const reader = new FileReader();
@@ -251,7 +187,7 @@ async function processToWebP(file) {
                 canvas.height = height;
                 const ctx = canvas.getContext('2d');
                 ctx.drawImage(img, 0, 0, width, height);
-                canvas.toBlob((blob) => resolve(blob), 'image/webp', 0.85); // Professional quality
+                canvas.toBlob((blob) => resolve(blob), 'image/webp', 0.85);
             };
             img.src = e.target.result;
         };
@@ -259,26 +195,16 @@ async function processToWebP(file) {
     });
 }
 
-// Username Uniqueness
-async function isUsernameAvailable(username, uid) {
-    const q = query(collection(db, "users"), where("username", "==", username.toLowerCase()));
-    const snapshot = await getDocs(q);
-    if (snapshot.empty) return true;
-    return snapshot.docs[0].id === uid;
+function updateBioCounter() {
+    // This is now purely for visual sync if bio is displayed
 }
-
-// Bio Counter
-const updateBioCounter = () => {
-    bioCounter.textContent = `${bioInput.value.length}/150`;
-};
-bioInput.addEventListener('input', updateBioCounter);
 
 const setLoading = (btn, isLoading, originalContent) => {
     if (!btn) return;
     if (isLoading) {
         btn.disabled = true;
         btn.classList.add('opacity-70', 'cursor-not-allowed');
-        btn.innerHTML = `<span class="flex items-center justify-center gap-2 font-bold mb-0.5"><i data-lucide="loader-2" class="w-4 h-4 animate-spin text-[var(--accent-blue)]"></i> SECURING...</span>`;
+        btn.innerHTML = `<span class="flex items-center justify-center gap-2 font-bold mb-0.5"><i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> SECURING...</span>`;
         if (window.lucide) window.lucide.createIcons();
     } else {
         btn.disabled = false;
@@ -288,43 +214,7 @@ const setLoading = (btn, isLoading, originalContent) => {
     }
 };
 
-// Profile Updates
-const saveProfileBtn = document.getElementById('saveProfileBtn');
-saveProfileBtn.addEventListener('click', async () => {
-    const newUsername = usernameInput.value.trim().toLowerCase();
-    const originalText = saveProfileBtn.innerHTML;
 
-    if (!newUsername) return showToast("Handle required for production identity", "error");
-    
-    setLoading(saveProfileBtn, true, originalText);
-    try {
-        if (!(await isUsernameAvailable(newUsername, currentUser.uid))) {
-            showToast("This Handle is already claimed by another creator", "error");
-            return;
-        }
-
-        const updates = {
-            displayName: displayNameInput.value,
-            username: newUsername,
-            bio: bioInput.value,
-            dob: dobInput.value,
-            home: homeInput.value,
-            tel: telInput.value,
-            gender: genderInput.value,
-            email: currentUser.email
-        };
-
-        await setDoc(doc(db, "users", currentUser.uid), updates, { merge: true });
-        updateIdentityBadge(updates);
-        identityModal.classList.add('hidden');
-        showToast("Production Identity secured successfully!", "success");
-    } catch (error) {
-        console.error(error);
-        showToast("Identity sync failed. Please try again.", "error");
-    } finally {
-        setLoading(saveProfileBtn, false, originalText);
-    }
-});
 
 // Portrait Update Logic
 if (editPhotoBtn) {
