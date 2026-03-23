@@ -109,6 +109,8 @@ function updateIdentityBadge(data) {
 
     setElText('badgeName', name);
     setElText('badgeUsername', data.username ? `@${data.username}` : "@handle");
+    const unameEl = document.getElementById('badgeUsername');
+    if (unameEl) unameEl.style.color = 'var(--text-on-light)'; // Ensure color sync
     setElText('badgeBio', data.bio || "Tell the world your story.");
     setElText('linkCount', data.links?.length || 0);
     
