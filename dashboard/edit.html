@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Identity | Digital Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .animate-slide-up { animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body class="bg-[var(--bg-page)] text-[var(--text-main)] min-h-screen flex flex-col">
+    <div class="bg-dot-matrix"></div>
+    
+    <!-- Nav -->
+    <nav class="border-b border-[var(--border-subtle)] bg-[var(--bg-card)] sticky top-0 z-[100] shadow-sm">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="bg-[var(--bg-page)]/10 p-1.5 rounded-lg border border-[var(--border-subtle)]">
+                    <i data-lucide="arrow-left" class="w-4 h-4 text-[var(--c-primary)]"></i>
+                </a>
+                <span class="font-black text-lg tracking-tighter italic text-[var(--c-primary)]">Edit Profile</span>
+            </div>
+            
+            <button id="saveEditBtn" class="bg-[var(--c-primary)] text-[var(--c-bg)] px-8 py-2 rounded-xl font-black text-xs uppercase tracking-widest hover:brightness-110 transition-all shadow-lg flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4"></i>
+                Save Changes
+            </button>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 py-12 w-full animate-slide-up">
+        <div class="card-social p-8 md:p-12 space-y-12">
+            <!-- Section: Identity -->
+            <section class="space-y-8">
+                <div>
+                    <h2 class="text-3xl font-black tracking-tighter text-[var(--text-on-light)]">Personal Branding</h2>
+                    <p class="text-xs text-[var(--text-muted)] font-bold uppercase tracking-widest mt-2">How the world sees you</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Display Name</label>
+                        <input type="text" id="editDisplayName" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold placeholder:opacity-30" placeholder="e.g. Nadina Damsana">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Universal Handle (@)</label>
+                        <input type="text" id="editUsername" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold placeholder:opacity-30" placeholder="username">
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex justify-between items-end px-1">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)]">Profile Bio</label>
+                        <span id="bioCounter" class="text-[9px] font-bold text-[var(--text-muted)] opacity-50">0/150</span>
+                    </div>
+                    <textarea id="editBio" rows="4" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-[2.5rem] focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold placeholder:opacity-30 resize-none" placeholder="Tell your story..."></textarea>
+                </div>
+            </section>
+
+            <!-- Section: Particulars -->
+            <section class="space-y-8 pt-10 border-t border-[var(--border-subtle)]">
+                <div>
+                    <h2 class="text-3xl font-black tracking-tighter text-[var(--text-on-light)]">Badge Particulars</h2>
+                    <p class="text-xs text-[var(--text-muted)] font-bold uppercase tracking-widest mt-2">Personal Identity Data</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Date of Birth</label>
+                        <input type="date" id="editDob" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold dark:[color-scheme:dark]">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Gender Expression</label>
+                        <select id="editGender" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold appearance-none cursor-pointer">
+                            <option value="">Select...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other / Non-binary</option>
+                            <option value="Private">Prefer not to say</option>
+                        </select>
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Hometown / City</label>
+                        <input type="text" id="editHome" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold placeholder:opacity-30" placeholder="e.g. Colombo, Sri Lanka">
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-[var(--text-muted)] ml-1">Public Phone</label>
+                        <input type="tel" id="editTel" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] px-6 py-4 rounded-2xl focus:border-[var(--c-primary)] focus:ring-4 focus:ring-[var(--c-primary)]/10 transition-all text-sm font-bold placeholder:opacity-30" placeholder="+94 11 234 5678">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="../assets/js/edit-profile.js"></script>
+</body>
+</html>

@@ -29,9 +29,9 @@ const displayNameInput = document.getElementById('displayName');
 const usernameInput = document.getElementById('dashboardUsername');
 const dobInput = document.getElementById('dob');
 const homeInput = document.getElementById('home');
-const telInput = document.getElementById('tel');
-const genderInput = document.getElementById('gender');
-const bioInput = document.getElementById('bio');
+const editPhotoBtn = document.getElementById('editPhotoBtn');
+const coverPhotoInput = document.getElementById('coverPhotoInput');
+const editCoverBtn = document.getElementById('editCoverBtn');
 const bioCounter = document.getElementById('bioCounter');
 const linksListEl = document.getElementById('linksList');
 const linkModal = document.getElementById('linkModal');
@@ -326,39 +326,83 @@ saveProfileBtn.addEventListener('click', async () => {
     }
 });
 
-// Photo Upload (Cloudinary Integration)
-photoInput.addEventListener('change', async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+// Portrait Update Logic
+if (editPhotoBtn) {
+    editPhotoBtn.addEventListener('click', () => photoInput.click());
+}
 
-    try {
-        const webpBlob = await processToWebP(file);
-        const formData = new FormData();
-        formData.append('file', webpBlob);
-        formData.append('upload_preset', 'link-in-bio-page');
+if (photoInput) {
+    photoInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
 
-        const response = await fetch('https://api.cloudinary.com/v1_1/dpwbixthd/image/upload', {
-            method: 'POST',
-            body: formData
-        });
+        try {
+            const webpBlob = await processToWebP(file);
+            const formData = new FormData();
+            formData.append('file', webpBlob);
+            formData.append('upload_preset', 'link-in-bio-page');
 
-        if (!response.ok) throw new Error("Cloudinary upload failed");
-        
-        const result = await response.json();
-        const url = result.secure_url;
-        
-        await setDoc(doc(db, "users", currentUser.uid), { photoURL: url }, { merge: true });
-        
-        // Update local badge instantly
-        const userDoc = await getDoc(doc(db, "users", currentUser.uid));
-        updateIdentityBadge(userDoc.data());
-        
-        showToast("Identity Portrait updated via Cloudinary!", "success");
-    } catch (error) {
-        console.error(error);
-        showToast("Portrait upload failed.", "error");
-    }
-});
+            const response = await fetch('https://api.cloudinary.com/v1_1/dpwbixthd/image/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error("Cloudinary upload failed");
+            
+            const result = await response.json();
+            const url = result.secure_url;
+            
+            await setDoc(doc(db, "users", currentUser.uid), { photoURL: url }, { merge: true });
+            
+            const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+            updateIdentityBadge(userDoc.data());
+            
+            showToast("Identity Portrait Secured!", "success");
+        } catch (error) {
+            console.error(error);
+            showToast("Portrait upload failed.", "error");
+        }
+    });
+}
+
+// Cover Photo Update Logic
+if (editCoverBtn) {
+    editCoverBtn.addEventListener('click', () => coverPhotoInput.click());
+}
+
+if (coverPhotoInput) {
+    coverPhotoInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        try {
+            const webpBlob = await processToWebP(file);
+            const formData = new FormData();
+            formData.append('file', webpBlob);
+            formData.append('upload_preset', 'link-in-bio-page');
+
+            const response = await fetch('https://api.cloudinary.com/v1_1/dpwbixthd/image/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error("Cloudinary upload failed");
+            
+            const result = await response.json();
+            const url = result.secure_url;
+            
+            await setDoc(doc(db, "users", currentUser.uid), { coverURL: url }, { merge: true });
+            
+            const userDoc = await getDoc(doc(db, "users", currentUser.uid));
+            updateIdentityBadge(userDoc.data());
+            
+            showToast("Cover Presence Secured!", "success");
+        } catch (error) {
+            console.error(error);
+            showToast("Cover upload failed.", "error");
+        }
+    });
+}
 
 // Link Management
 function renderLinks() {
