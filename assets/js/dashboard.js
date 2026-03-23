@@ -132,7 +132,7 @@ function updateIdentityBadge(data) {
         avatarPreview.innerHTML = photoContent;
         avatarPreview.classList.remove('skeleton');
     }
-    if (modalAvatarPreview) modalAvatarPreview.innerHTML = photoContent;
+
     
     // Nav Avatar
     if (navAvatar) {
