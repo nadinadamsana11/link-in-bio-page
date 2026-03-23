@@ -122,9 +122,6 @@ function updateIdentityBadge(data) {
     setElText('badgeTel', data.tel || "N/A");
     setElText('badgeEmail', data.email || currentUser?.email || "N/A");
     
-    // Follower Stats (Simulation for UI)
-    setElText('followerCount', "4.6K followers • 2.8K following");
-
     // Avatar
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
