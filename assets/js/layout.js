@@ -21,6 +21,7 @@ function injectHeader() {
 
     // We keep specific headers for Dashboard and Profile but unify the Landing/Auth/Pages
     const isSpecialPage = window.location.pathname.includes('/dashboard/') || window.location.pathname.includes('/profile/') || window.location.pathname.includes('/admin/');
+    if (isSpecialPage && !header.classList.contains('global-nav')) return;
     header.className = "fixed top-0 w-full z-[100] transition-all duration-500 bg-[var(--glass-bg)] backdrop-blur-xl border-b border-[var(--border-subtle)]";
     header.innerHTML = `
         <div class="w-full flex justify-between items-center px-6 md:px-12 h-20">
