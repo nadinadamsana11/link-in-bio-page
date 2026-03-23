@@ -152,11 +152,12 @@ function updateIdentityBadge(data) {
             : `<div class="w-full h-full bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-page)]"></div>`;
         coverPhoto.innerHTML = coverContent;
         coverPhoto.classList.remove('skeleton');
+    }
+    
     if (data.username) {
         const publicBtn = document.getElementById('publicProfileBtn');
         if (publicBtn) publicBtn.href = `../profile/view.html?u=${data.username}`;
     }
-}
 }
 
 // WebP Processor
@@ -289,7 +290,7 @@ if (coverPhotoInput) {
             showToast("Cover Presence Secured!", "success");
         } catch (error) {
             console.error(error);
-            showToast("Cover upload failed.", "error");
+            showToast("Cover upload failed: " + (error.message || "Unknown error"), "error");
         }
     });
 }
