@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link-in-Bio | Professional Profile Page</title>
+    <title>Digital Profile | Every Human's Digital Identity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/theme.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -18,9 +18,15 @@
     <!-- Vertical Dot Navigation -->
     <div class="dot-nav" id="dotNav"></div>
 
-    <!-- Scroll to Top -->
-    <div class="scroll-top-btn" id="scrollTop">
-        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    <!-- Scroll to Top with Circular Progress -->
+    <div class="scroll-top-wrapper" id="scrollTop">
+        <svg class="progress-circle" width="100%" height="100%" viewBox="0 0 100 100">
+            <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
+            <circle class="progress-bar" id="progressPath" cx="50" cy="50" r="45"></circle>
+        </svg>
+        <button class="scroll-top-btn" aria-label="Scroll to top">
+            <i data-lucide="arrow-up" class="w-5 h-5"></i>
+        </button>
     </div>
 
     <!-- Hero Section -->
@@ -28,13 +34,13 @@
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
             <div id="hero-badge" class="inline-flex items-center gap-3 bg-[var(--c-bg)]/20 border border-[var(--c-bg)]/30 px-6 py-2 rounded-full text-[var(--c-bg)] text-[10px] font-black uppercase tracking-[0.2em] mb-10">
                 <span class="flex h-2 w-2 rounded-full bg-[var(--c-secondary)] animate-pulse"></span>
-                Join 15,000+ people using this
+                Join 15,000+ people building their digital identity
             </div>
             <h1 id="hero-title" class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-[var(--c-bg)]">
-                Make your profile look great.
+                Your Digital Identity,<br>Unified.
             </h1>
              <p id="hero-subtitle" class="text-[var(--c-bg)]/90 text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-bold">
-                The most elegant, fastest-loading bio page built for everyone. Simple for you, great for your fans.
+                Digital Profile provides every human the power to create a verified, high-performance identity on the internet. Simple, fast, and for everyone.
             </p>
             <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6">
                 <a href="auth/register.html" class="creative-btn-primary w-full sm:w-auto px-14 py-6 rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all">
@@ -148,27 +154,61 @@
             <div class="space-y-6">
                 <!-- FAQ Item 1 -->
                 <div class="faq-item group">
-                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--border-active)] transition-all font-black text-xl tracking-tight text-[var(--text-on-light)]">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--c-secondary)]/50 transition-all font-black text-xl tracking-tight text-[var(--text-on-light)] shadow-sm hover:shadow-xl">
                         Is this page really free?
-                        <div class="bg-[var(--c-secondary)]/10 p-2 rounded-full transition-transform group-[.active]:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--c-secondary)]"></i>
+                        <div class="faq-icon-wrapper bg-[var(--c-secondary)]/10 p-2 rounded-full transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5 text-[var(--c-secondary)] faq-icon"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-10 text-[var(--text-muted)] text-lg leading-relaxed">
-                        Yes! You can use it for free to share your links. We have a Pro plan for extra features.
+                    <div class="faq-answer px-10">
+                        <div class="py-10 text-[var(--text-on-light)]/70 text-lg leading-relaxed border-t border-[var(--border-subtle)] mt-2">
+                            Yes! You can use it for free to share your links. We have a Pro plan for extra features like custom domains and deep analytics.
+                        </div>
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
                 <div class="faq-item group">
-                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--border-active)] transition-all font-black text-xl tracking-tight text-[var(--text-on-light)]">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--c-secondary)]/50 transition-all font-black text-xl tracking-tight text-[var(--text-on-light)] shadow-sm hover:shadow-xl">
                         Can I get my own link?
-                        <div class="bg-[var(--c-secondary)]/10 p-2 rounded-full transition-transform group-[.active]:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--c-secondary)]"></i>
+                        <div class="faq-icon-wrapper bg-[var(--c-secondary)]/10 p-2 rounded-full transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5 text-[var(--c-secondary)] faq-icon"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-10 text-[var(--text-muted)] text-lg leading-relaxed">
-                        Yes! Just join and pick your name. It will look like linkinbio.com/@yourname.
+                    <div class="faq-answer px-10">
+                        <div class="py-10 text-[var(--text-on-light)]/70 text-lg leading-relaxed border-t border-[var(--border-subtle)] mt-2">
+                            Yes! Just join and pick your name. It will look like linkinbio.com/@yourname or you can use your custom domain with Pro.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW FAQ Item 3 -->
+                <div class="faq-item group">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--c-secondary)]/50 transition-all font-black text-xl tracking-tight text-[var(--text-on-light)] shadow-sm hover:shadow-xl">
+                        Is it mobile friendly?
+                        <div class="faq-icon-wrapper bg-[var(--c-secondary)]/10 p-2 rounded-full transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5 text-[var(--c-secondary)] faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-10">
+                        <div class="py-10 text-[var(--text-on-light)]/70 text-lg leading-relaxed border-t border-[var(--border-subtle)] mt-2">
+                            Absolutely. Your profile is automatically optimized for phones, tablets, and desktops to ensure a perfect experience everywhere.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEW FAQ Item 4 -->
+                <div class="faq-item group">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--c-secondary)]/50 transition-all font-black text-xl tracking-tight text-[var(--text-on-light)] shadow-sm hover:shadow-xl">
+                        Can I track my visitors?
+                        <div class="faq-icon-wrapper bg-[var(--c-secondary)]/10 p-2 rounded-full transition-all duration-300">
+                            <i data-lucide="plus" class="w-5 h-5 text-[var(--c-secondary)] faq-icon"></i>
+                        </div>
+                    </button>
+                    <div class="faq-answer px-10">
+                        <div class="py-10 text-[var(--text-on-light)]/70 text-lg leading-relaxed border-t border-[var(--border-subtle)] mt-2">
+                            Yes! Even on the free plan you get basic stats. The Pro plan unlocks professional analytics to see countries, devices, and link performance.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -233,16 +273,36 @@
                 };
             });
 
-            // Back to Top Logic
-            const scrollTopBtn = document.getElementById('scrollTop');
-            window.onscroll = () => {
-                if (window.scrollY > 500) {
-                    scrollTopBtn.classList.add('visible');
+            // Scroll Progress & Scroll Top Logic
+            const scrollTopWrapper = document.getElementById('scrollTop');
+            const progressPath = document.getElementById('progressPath');
+            const pathLength = progressPath.getTotalLength();
+            
+            progressPath.style.strokeDasharray = `${pathLength} ${pathLength}`;
+            progressPath.style.strokeDashoffset = pathLength;
+
+            const updateScroll = () => {
+                const scrollPos = window.scrollY;
+                const height = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = pathLength - (scrollPos * pathLength) / height;
+                progressPath.style.strokeDashoffset = progress;
+
+                // Show/Hide and Style change at bottom
+                if (scrollPos > 300) {
+                    scrollTopWrapper.classList.add('visible');
                 } else {
-                    scrollTopBtn.classList.remove('visible');
+                    scrollTopWrapper.classList.remove('visible');
+                }
+
+                if (scrollPos + window.innerHeight >= document.documentElement.scrollHeight - 10) {
+                    scrollTopWrapper.classList.add('is-bottom');
+                } else {
+                    scrollTopWrapper.classList.remove('is-bottom');
                 }
             };
-            scrollTopBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            window.addEventListener('scroll', updateScroll);
+            scrollTopWrapper.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
             // FAQ Toggle
             document.querySelectorAll('.faq-item button').forEach(button => {

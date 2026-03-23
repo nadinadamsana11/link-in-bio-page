@@ -28,7 +28,7 @@ function injectHeader() {
                 <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
                     <i data-lucide="zap" class="w-6 h-6 text-[var(--text-on-light)]"></i>
                 </div>
-                <a href="${pathPrefix}index.html" class="font-black text-xl md:text-2xl tracking-tighter hover:opacity-70 transition-colors italic text-[var(--text-main)]">Link-in-Bio</a>
+                <a href="${pathPrefix}index.html" class="font-black text-xl md:text-2xl tracking-tighter hover:opacity-70 transition-colors italic text-[var(--text-main)]">Digital Profile</a>
             </div>
             
             <div id="nav-actions" class="flex items-center gap-3 md:gap-8">
@@ -66,7 +66,7 @@ function injectFooter() {
                 <div class="col-span-1 md:col-span-1 space-y-6">
                     <div class="flex items-center gap-2 text-[var(--text-main)]">
                         <i data-lucide="zap" class="w-6 h-6"></i>
-                        <span class="font-bold text-xl italic">Link-in-Bio</span>
+                        <span class="font-bold text-xl italic">Digital Profile</span>
                     </div>
                     <p class="text-[var(--text-muted)] text-sm">The easy way to share all your links in one place.</p>
                     <div class="flex gap-4">
@@ -105,8 +105,8 @@ function injectFooter() {
                     </div>
                 </div>
             </div>
-            <div class="text-center pt-10 border-t border-[var(--border-subtle)] text-[var(--text-dim)] text-[10px] font-black uppercase tracking-[0.2em]">
-                &copy; 2026 Link-in-Bio Platform. Made for everyone.
+            <div class="text-center pt-10 border-t border-[var(--border-subtle)] text-[var(--c-bg)]/70 text-[10px] font-black uppercase tracking-[0.2em]">
+                &copy; 2026 Digital Profile Platform. Made for everyone.
             </div>
         </div>
     `;
