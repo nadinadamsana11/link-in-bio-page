@@ -16,62 +16,45 @@
 <body class="bg-[var(--bg-page)] text-[var(--text-main)] min-h-screen flex flex-col">
     <div class="bg-dot-matrix"></div>
     <!-- Nav -->
-    <nav class="border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/50 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
+    <nav class="border-b border-[var(--border-subtle)] bg-[var(--bg-card)] sticky top-0 z-[100] shadow-sm">
+        <div class="max-w-[1200px] mx-auto px-6 h-16 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
-                    <i data-lucide="zap" class="w-5 h-5 text-[var(--text-on-light)]"></i>
+                <div class="bg-[var(--bg-page)]/10 p-1.5 rounded-lg border border-[var(--border-subtle)]">
+                    <i data-lucide="zap" class="w-4 h-4 text-[var(--c-primary)]"></i>
                 </div>
-                <a href="../index.html" class="font-bold text-xl tracking-tight leading-none hover:text-[var(--text-main)]/70 transition-colors text-[var(--text-main)]">Digital Profile</a>
+                <a href="../index.html" class="font-black text-lg tracking-tighter italic text-[var(--c-primary)]">Digital Profile</a>
             </div>
             
+            <!-- Global Search Placeholder (Facebook style) -->
+            <div class="hidden lg:flex flex-1 max-w-md mx-10">
+                <div class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-full px-4 py-2 flex items-center gap-3">
+                    <i data-lucide="search" class="w-4 h-4 text-[var(--text-muted)]"></i>
+                    <span class="text-xs text-[var(--text-muted)] font-medium">Search Identity...</span>
+                </div>
+            </div>
+
             <!-- Profile Dropdown -->
             <div class="relative">
-                <button id="profileDropdownBtn" class="flex items-center gap-3 bg-[var(--bg-card)] border border-[var(--border-subtle)] pl-4 pr-1.5 py-1.5 rounded-full hover:shadow-xl hover:border-[var(--c-primary)]/30 transition-all group overflow-hidden border-glow group">
-                    <div class="hidden md:flex flex-col items-end text-right">
-                        <span id="navEmail" class="text-[10px] font-black text-[var(--text-on-light)] uppercase tracking-widest leading-none">loading...</span>
-                        <span class="text-[8px] font-bold text-[var(--c-secondary)] uppercase tracking-[0.2em] mt-1">Personal Account</span>
+                <button id="profileDropdownBtn" class="flex items-center gap-2 p-1 rounded-full hover:bg-[var(--bg-page)]/5 transition-all">
+                    <div id="navAvatar" class="w-9 h-9 rounded-full bg-[var(--bg-page)]/10 border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center">
+                        <div class="skeleton w-full h-full"></div>
                     </div>
-                    <div id="navAvatar" class="w-10 h-10 rounded-full bg-[var(--bg-page)]/10 border-2 border-[var(--border-subtle)] overflow-hidden flex items-center justify-center text-xs font-black text-[var(--text-on-light)] shadow-inner group-hover:scale-105 transition-transform">
-                        ?
-                    </div>
+                    <i data-lucide="chevron-down" class="w-4 h-4 text-[var(--text-muted)] mr-1"></i>
                 </button>
 
                 <!-- Dropdown Menu -->
-                <div id="profileDropdown" class="hidden absolute right-0 mt-4 w-72 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] z-50 overflow-hidden animate-slide-up">
-                    <div class="p-6 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/5 relative overflow-hidden">
-                        <div class="absolute top-0 right-0 p-4 opacity-5">
-                            <i data-lucide="user" class="w-20 h-20"></i>
-                        </div>
-                        <p class="text-[9px] font-black text-[var(--c-secondary)] uppercase tracking-[0.3em] mb-2">Member Identity</p>
-                        <p id="dropdownEmail" class="text-sm font-black text-[var(--text-on-light)] truncate">email@example.com</p>
+                <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-72 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl shadow-2xl z-[110] overflow-hidden animate-slide-up">
+                    <div class="p-4 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/5">
+                        <p id="dropdownEmail" class="text-xs font-black text-[var(--text-on-light)] truncate">loading...</p>
                     </div>
-                    <div class="p-3 grid grid-cols-1 gap-1">
-                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-[var(--bg-page)]/10 text-[var(--text-on-light)] transition-all group/item">
-                            <div class="p-2 bg-[var(--bg-page)]/5 rounded-lg group-hover/item:bg-[var(--c-primary)] group-hover/item:text-white transition-colors">
-                                <i data-lucide="external-link" class="w-4 h-4"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] font-black uppercase tracking-widest">Public Profile</span>
-                                <span class="text-[8px] opacity-60 font-medium">View your live presence</span>
-                            </div>
+                    <div class="p-2">
+                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-page)]/5 text-[var(--text-on-light)] transition-all">
+                            <i data-lucide="external-link" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-black uppercase tracking-widest">View Presence</span>
                         </a>
-                        <button id="editIdentityBtnQuick" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-[var(--bg-page)]/10 text-[var(--text-on-light)] transition-all text-left group/item">
-                            <div class="p-2 bg-[var(--bg-page)]/5 rounded-lg group-hover/item:bg-[var(--c-primary)] group-hover/item:text-white transition-colors">
-                                <i data-lucide="settings" class="w-4 h-4"></i>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="text-[10px] font-black uppercase tracking-widest">Preferences</span>
-                                <span class="text-[8px] opacity-60 font-medium">Edit badge details</span>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-page)]/5">
-                        <button id="logoutBtn" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-red-500/10 text-red-500 transition-all text-left group/item">
-                            <div class="p-2 bg-red-500/5 rounded-lg group-hover/item:bg-red-500 group-hover/item:text-white transition-colors">
-                                <i data-lucide="log-out" class="w-4 h-4"></i>
-                            </div>
-                            <span class="text-[10px] font-black uppercase tracking-widest">Secure Sign Out</span>
+                        <button id="logoutBtn" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-500/5 text-red-500 transition-all text-left">
+                            <i data-lucide="log-out" class="w-4 h-4"></i>
+                            <span class="text-[10px] font-black uppercase tracking-widest">Sign Out</span>
                         </button>
                     </div>
                 </div>
@@ -79,107 +62,114 @@
         </div>
     </nav>
 
-    <main class="flex-grow max-w-4xl mx-auto px-6 py-8 md:py-16">
-        <!-- Expanded Identity Badge -->
-        <div id="identityBadge" class="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[3rem] p-8 md:p-14 mb-12 shadow-2xl relative overflow-hidden group border-glow animate-slide-up text-[var(--text-on-light)]">
-            <div class="absolute top-0 right-0 p-8 opacity-10">
-                <i data-lucide="id-card" class="w-48 h-48 text-[var(--c-primary)]"></i>
+    <!-- Cover Photo Section -->
+    <div class="cover-photo-container">
+        <div id="coverPhoto" class="w-full h-full skeleton"></div>
+        <input type="file" id="coverPhotoInput" class="hidden" accept="image/*">
+        <button id="editCoverBtn" class="absolute bottom-4 right-4 bg-white/90 hover:bg-white text-black px-4 py-2 rounded-lg font-bold text-xs flex items-center gap-2 shadow-lg transition-all">
+            <i data-lucide="camera" class="w-4 h-4"></i>
+            Edit cover photo
+        </button>
+    </div>
+
+    <!-- Profile Header -->
+    <div class="bg-[var(--bg-card)] border-b border-[var(--border-subtle)] shadow-sm">
+        <div class="profile-header-wrapper">
+            <div class="flex flex-col md:flex-row items-center md:items-end gap-6 pb-6">
+                <!-- Avatar -->
+                <div class="relative group">
+                    <div id="avatarPreview" class="profile-avatar-large shadow-xl flex items-center justify-center">
+                        <div class="skeleton w-full h-full"></div>
+                    </div>
+                    <button class="absolute bottom-2 right-2 bg-[var(--bg-page)] p-2 rounded-full border border-[var(--border-subtle)] shadow-lg hover:scale-110 transition-all">
+                        <i data-lucide="camera" class="w-5 h-5 text-[var(--text-main)]"></i>
+                    </button>
+                </div>
+
+                <!-- Info -->
+                <div class="flex-1 text-center md:text-left mb-2">
+                    <h1 id="badgeName" class="text-4xl font-black tracking-tight text-[var(--text-on-light)] mb-1">
+                        <div class="skeleton w-48 h-10 mx-auto md:mx-0"></div>
+                    </h1>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm font-bold text-[var(--text-muted)]">
+                        <span id="followerCount"><div class="skeleton w-24 h-4"></div></span>
+                        <span id="badgeUsername"><div class="skeleton w-20 h-4"></div></span>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex gap-2 mb-4">
+                    <button id="dashboardTabBtn" class="bg-[var(--c-primary)] text-[var(--c-bg)] px-6 py-2.5 rounded-lg font-black text-xs uppercase tracking-widest flex items-center gap-2 shadow-lg hover:brightness-110 transition-all">
+                        <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                        Dashboard
+                    </button>
+                    <button id="editIdentityBtn" class="bg-[var(--bg-page)]/10 text-[var(--text-on-light)] px-4 py-2.5 rounded-lg font-black text-xs uppercase tracking-widest flex items-center gap-2 border border-[var(--border-subtle)] hover:bg-[var(--bg-page)]/20 transition-all">
+                        <i data-lucide="edit-3" class="w-4 h-4"></i>
+                        Edit
+                    </button>
+                </div>
             </div>
-            
-            <button id="editIdentityBtn" class="absolute top-8 right-8 bg-[var(--bg-card-hover)] hover:bg-[var(--c-primary)] hover:text-[var(--c-bg)] text-[var(--text-on-light)] w-12 h-12 rounded-full flex items-center justify-center transition-all z-20 shadow-lg border border-[var(--border-subtle)]">
-                <i data-lucide="edit-3" class="w-5 h-5"></i>
-            </button>
 
-            <div class="relative z-10 flex flex-col md:flex-row gap-8 md:gap-14">
-                <!-- Avatar with Badge -->
-                <div class="relative mx-auto md:mx-0">
-                    <div id="avatarPreview" class="w-48 h-48 md:w-64 md:h-64 rounded-[3.5rem] bg-[var(--bg-card)] border-8 border-[var(--border-subtle)] overflow-hidden shadow-2xl relative">
-                        <!-- Image injected via JS -->
-                    </div>
-                    <div class="absolute -bottom-3 inset-x-0 flex justify-center">
-                        <div class="bg-[var(--accent-premium)] text-black px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase shadow-2xl ring-4 ring-[var(--bg-page)] font-black">
-                            Verified Creator
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex-1 space-y-8">
-                    <div class="text-center md:text-left">
-                        <div class="flex flex-col md:flex-row md:items-center gap-4">
-                            <h2 id="badgeName" class="text-5xl md:text-6xl font-black tracking-tighter text-[var(--text-on-light)]">Loading...</h2>
-                            <span id="badgeUsername" class="bg-[var(--bg-card-hover)] text-[var(--text-on-light)] px-5 py-2 rounded-2xl text-sm font-mono tracking-tighter border border-[var(--border-subtle)]">@username</span>
-                        </div>
-                        <p class="text-[10px] text-[var(--text-on-light)]/60 font-black tracking-[0.4em] uppercase mt-3">Identity Production Document</p>
-                    </div>
-                    
-                    <div class="bg-[var(--bg-page)]/10 border border-[var(--border-subtle)] p-8 rounded-[2.5rem] backdrop-blur-sm shadow-inner">
-                        <p id="badgeBio" class="text-[var(--text-on-light)] text-xl leading-relaxed italic opacity-80">
-                            Tell the world your story.
-                        </p>
-                    </div>
-
-                    <!-- Expanded Data Grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 pt-6 border-t border-[var(--border-subtle)]">
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Date of Birth</p>
-                            <p id="badgeDOB" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Current Age</p>
-                            <p id="badgeAge" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Gender</p>
-                            <p id="badgeGender" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Home / City</p>
-                            <p id="badgeHome" class="text-xs font-bold text-[var(--text-on-light)] truncate">N/A</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Contact Tel</p>
-                            <p id="badgeTel" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
-                        </div>
-                        <div class="space-y-1">
-                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Public Email</p>
-                            <p id="badgeEmail" class="text-xs font-bold text-[var(--text-on-light)] truncate">N/A</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Tabs -->
+            <div class="flex border-t border-[var(--border-subtle)] mt-2">
+                <button class="tab-nav-item active">About</button>
+                <button class="tab-nav-item">Links</button>
+                <button class="tab-nav-item">Photos</button>
+                <button class="tab-nav-item">Presence</button>
             </div>
         </div>
+    </div>
 
-        <!-- Links Section -->
-        <div class="space-y-10">
-            <div class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-8 py-10">
-                <div class="space-y-4">
-                    <p class="text-[var(--text-muted)] text-[10px] font-black tracking-[0.4em] uppercase">Control Center / Profile</p>
-                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-[var(--text-main)]">Manage<br>Your Presence.</h1>
-                </div>
-                <div class="flex gap-4">
-                    <a href="../pages/pro.html" class="bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] border border-[var(--accent-premium)]/30 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-[var(--c-bg)] transition-all">
-                        Upgrade Pro
-                    </a>
-                </div>
-            </div>
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div class="flex items-center gap-5">
-                    <div class="bg-[var(--bg-card)] p-4 rounded-2xl border border-[var(--border-subtle)]">
-                        <i data-lucide="layers" class="w-8 h-8 text-[var(--text-on-light)]"></i>
+    <main class="max-w-[1200px] mx-auto px-6 py-8">
+        <div class="social-grid">
+            <!-- Left Sidebar -->
+            <aside class="social-sidebar space-y-6">
+                <!-- Intro Card -->
+                <div class="card-social space-y-6">
+                    <h3 class="text-xl font-black tracking-tight text-[var(--text-on-light)]">Intro</h3>
+                    <div id="badgeBio" class="text-sm font-medium text-center md:text-left leading-relaxed opacity-80">
+                        <div class="skeleton w-full h-4 mb-2"></div>
+                        <div class="skeleton w-3/4 h-4"></div>
                     </div>
-                    <div>
-                        <h3 class="text-4xl font-black tracking-tighter text-[var(--text-main)]">Link Library</h3>
-                        <p class="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-widest mt-1"><span id="linkCount" class="text-[var(--c-bg)]">0</span> Direct destination entries</p>
+                    
+                    <div class="space-y-4 pt-4 border-t border-[var(--border-subtle)]">
+                        <div class="flex items-center gap-3 text-[var(--text-on-light)]">
+                            <i data-lucide="map-pin" class="w-5 h-5 opacity-60"></i>
+                            <span id="badgeHome" class="text-sm font-bold"><div class="skeleton w-32 h-4"></div></span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[var(--text-on-light)]">
+                            <i data-lucide="cake" class="w-5 h-5 opacity-60"></i>
+                            <span id="badgeDOB" class="text-sm font-bold"><div class="skeleton w-24 h-4"></div></span>
+                        </div>
+                        <div class="flex items-center gap-3 text-[var(--text-on-light)]">
+                            <i data-lucide="clock" class="w-5 h-5 opacity-60"></i>
+                            <span id="badgeAge" class="text-sm font-bold"><div class="skeleton w-16 h-4"></div></span>
+                        </div>
                     </div>
                 </div>
-                <button id="addLinkBtn" class="btn-premium-grad px-10 py-4.5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center gap-3 shadow-2xl whitespace-nowrap">
-                    <i data-lucide="plus" class="w-5 h-5"></i>
-                    Add New Entry
-                </button>
-            </div>
+            </aside>
 
-            <div id="linksList" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Links rendered here -->
+            <!-- Main Content Area -->
+            <div class="space-y-6 mt-6 lg:mt-0">
+                <!-- Links Library -->
+                <div class="card-social space-y-8">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-2xl font-black tracking-tight text-[var(--text-on-light)]">Link Library</h3>
+                            <p class="text-[9px] text-[var(--text-muted)] font-black uppercase tracking-widest mt-1"><span id="linkCount">0</span> Destination Entries</p>
+                        </div>
+                        <button id="addLinkBtn" class="bg-[var(--c-primary)] text-white px-6 py-2.5 rounded-xl font-black text-[10px] uppercase tracking-widest flex items-center gap-2 hover:brightness-110 transition-all shadow-lg">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                            Add Entry
+                        </button>
+                    </div>
+
+                    <div id="linksList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Skeleton Links -->
+                        <div class="skeleton h-24 rounded-2xl"></div>
+                        <div class="skeleton h-24 rounded-2xl"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>

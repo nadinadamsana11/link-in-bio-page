@@ -22,6 +22,7 @@ let userLinks = [];
 let currentStep = 1;
 
 const avatarPreview = document.getElementById('avatarPreview');
+const coverPhoto = document.getElementById('coverPhoto');
 const modalAvatarPreview = document.getElementById('modalAvatarPreview');
 const photoInput = document.getElementById('photoInput');
 const displayNameInput = document.getElementById('displayName');
@@ -48,8 +49,8 @@ const dropdownEmail = document.getElementById('dropdownEmail');
 onAuthStateChanged(auth, async (user) => {
     if (user) {
         currentUser = user;
-        navEmail.textContent = user.email;
-        dropdownEmail.textContent = user.email;
+        if (navEmail) navEmail.textContent = user.email;
+        if (dropdownEmail) dropdownEmail.textContent = user.email;
         loadUserData();
     } else {
         window.location.href = '../auth/login.html';
@@ -107,9 +108,17 @@ async function loadUserData() {
 
 function updateIdentityBadge(data) {
     const name = data.displayName || data.username || "Creator";
+    
     const setElText = (id, text) => {
         const el = document.getElementById(id);
-        if (el) el.textContent = text;
+        if (el) {
+            el.textContent = text;
+            el.classList.remove('skeleton');
+            // Remove skeleton from parent/children if they have it
+            const skel = el.querySelector('.skeleton') || (el.classList.contains('skeleton') ? el : null);
+            if (skel) skel.classList.remove('skeleton');
+            if (el.parentElement.classList.contains('skeleton')) el.parentElement.classList.remove('skeleton');
+        }
     };
 
     setElText('badgeName', name);
@@ -124,21 +133,44 @@ function updateIdentityBadge(data) {
     setElText('badgeHome', data.home || "N/A");
     setElText('badgeTel', data.tel || "N/A");
     setElText('badgeEmail', data.email || currentUser?.email || "N/A");
+    
+    // Follower Stats (Simulation for UI)
+    setElText('followerCount', "4.6K followers • 2.8K following");
 
+    // Avatar
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
         : `<div class="w-full h-full bg-[var(--c-accent)] flex items-center justify-center text-4xl font-black text-[var(--c-bg)] italic">${name[0].toUpperCase()}</div>`;
     
-    avatarPreview.innerHTML = photoContent;
-    modalAvatarPreview.innerHTML = photoContent;
+    if (avatarPreview) {
+        avatarPreview.innerHTML = photoContent;
+        avatarPreview.classList.remove('skeleton');
+    }
+    if (modalAvatarPreview) modalAvatarPreview.innerHTML = photoContent;
     
-    const navInitial = name[0].toUpperCase();
-    navAvatar.innerHTML = data.photoURL 
-        ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : navInitial;
+    // Nav Avatar
+    if (navAvatar) {
+        const navInitial = name[0].toUpperCase();
+        navAvatar.innerHTML = data.photoURL 
+            ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
+            : navInitial;
+        navAvatar.classList.remove('skeleton');
+        const navSkel = navAvatar.querySelector('.skeleton');
+        if (navSkel) navSkel.remove();
+    }
+
+    // Cover Photo
+    if (coverPhoto) {
+        const coverContent = data.coverURL 
+            ? `<img src="${data.coverURL}" class="w-full h-full object-cover">`
+            : `<div class="w-full h-full bg-gradient-to-br from-[var(--bg-card)] to-[var(--bg-page)]"></div>`;
+        coverPhoto.innerHTML = coverContent;
+        coverPhoto.classList.remove('skeleton');
+    }
     
     if (data.username) {
-        document.getElementById('publicProfileBtn').href = `../profile/view.html?u=${data.username}`;
+        const publicBtn = document.getElementById('publicProfileBtn');
+        if (publicBtn) publicBtn.href = `../profile/view.html?u=${data.username}`;
     }
     updateBioCounter();
 }
