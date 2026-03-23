@@ -13,7 +13,7 @@ const username = urlParams.get('u');
 if (username) {
     loadPublicProfile();
 } else {
-    document.body.innerHTML = `<div class="p-20 text-center font-black text-slate-500 uppercase tracking-widest">Ghost Identity: No User Found</div>`;
+    document.body.innerHTML = `<div class="p-20 text-center font-black text-[var(--text-muted)] uppercase tracking-widest">Ghost Identity: No User Found</div>`;
 }
 
 async function loadPublicProfile() {
@@ -21,7 +21,7 @@ async function loadPublicProfile() {
     const snapshot = await getDocs(q);
 
     if (snapshot.empty) {
-        document.body.innerHTML = `<div class="p-20 text-center font-black text-slate-500 uppercase tracking-widest">Ghost Identity: No User Found</div>`;
+        document.body.innerHTML = `<div class="p-20 text-center font-black text-[var(--text-muted)] uppercase tracking-widest">Ghost Identity: No User Found</div>`;
         return;
     }
 
@@ -50,25 +50,25 @@ function renderProfile(data) {
     const avatarPreview = document.getElementById('avatarPreview');
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : `<div class="w-full h-full bg-slate-800 flex items-center justify-center text-5xl font-black text-slate-700">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
+        : `<div class="w-full h-full bg-[var(--c-accent)] flex items-center justify-center text-5xl font-black text-[var(--c-bg)]">${(data.displayName || data.username)[0].toUpperCase()}</div>`;
     
     avatarPreview.innerHTML = photoContent;
 
     const linksList = document.getElementById('linksList');
     if (data.links && data.links.length > 0) {
         linksList.innerHTML = data.links.map(link => `
-            <a href="${link.url}" target="_blank" class="bg-slate-900 border border-slate-800 p-8 rounded-[2.5rem] flex flex-col gap-5 group hover:scale-[1.03] hover:border-emerald-500/30 transition-all border-glow">
+            <a href="${link.url}" target="_blank" class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-8 rounded-[2.5rem] flex flex-col gap-5 group hover:scale-[1.03] hover:border-[var(--c-primary)]/30 transition-all border-glow text-[var(--text-main)]">
                 <div class="flex justify-between items-start">
-                    <div class="bg-slate-800 p-5 rounded-2xl text-slate-300 group-hover:text-white transition-colors">
+                    <div class="bg-[var(--bg-card-hover)] p-5 rounded-2xl text-[var(--text-muted)] group-hover:text-[var(--text-main)] transition-colors">
                         <i data-lucide="${link.icon || 'link'}" class="w-7 h-7"></i>
                     </div>
-                    <div class="bg-slate-800/40 p-2 rounded-lg group-hover:bg-emerald-500/10 transition-colors">
-                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-500 group-hover:text-emerald-400"></i>
+                    <div class="bg-[var(--bg-card-hover)]/40 p-2 rounded-lg group-hover:bg-[var(--c-primary)]/10 transition-colors">
+                        <i data-lucide="arrow-up-right" class="w-4 h-4 text-[var(--text-dim)] group-hover:text-[var(--c-primary)]"></i>
                     </div>
                 </div>
                 <div>
-                    <h4 class="font-black text-xl text-slate-100 mb-1 group-hover:text-emerald-400 transition-colors">${link.title}</h4>
-                    <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest truncate">${link.url.replace('https://', '')}</p>
+                    <h4 class="font-black text-xl text-[var(--text-main)] mb-1 group-hover:text-[var(--c-primary)] transition-colors">${link.title}</h4>
+                    <p class="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-widest truncate">${link.url.replace('https://', '')}</p>
                 </div>
             </a>
         `).join('');

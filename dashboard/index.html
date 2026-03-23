@@ -13,16 +13,16 @@
         @keyframes slideUp { from { transform: translateY(2rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col">
+<body class="bg-[var(--bg-page)] text-[var(--text-main)] min-h-screen flex flex-col">
     <div class="bg-dot-matrix"></div>
     <!-- Nav -->
     <nav class="border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
-                    <i data-lucide="zap" class="w-5 h-5 text-white"></i>
+                    <i data-lucide="zap" class="w-5 h-5 text-[var(--text-on-light)]"></i>
                 </div>
-                <a href="../index.html" class="font-bold text-xl tracking-tight leading-none hover:text-white/70 transition-colors">Link-in-Bio</a>
+                <a href="../index.html" class="font-bold text-xl tracking-tight leading-none hover:text-[var(--text-main)]/70 transition-colors text-[var(--text-main)]">Link-in-Bio</a>
             </div>
             
             <!-- Profile Dropdown -->
@@ -35,22 +35,22 @@
                 </button>
 
                 <!-- Dropdown Menu -->
-                <div id="profileDropdown" class="hidden absolute right-0 mt-3 w-64 bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl z-50 overflow-hidden">
-                    <div class="p-5 border-b border-slate-800 bg-slate-950/50">
-                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1">Authenticated as</p>
-                        <p id="dropdownEmail" class="text-xs font-bold text-white truncate">email@example.com</p>
+                <div id="profileDropdown" class="hidden absolute right-0 mt-3 w-64 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl shadow-2xl z-50 overflow-hidden">
+                    <div class="p-5 border-b border-[var(--border-subtle)] bg-[var(--bg-card-hover)]/30">
+                        <p class="text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest mb-1">Authenticated as</p>
+                        <p id="dropdownEmail" class="text-xs font-bold text-[var(--text-main)] truncate">email@example.com</p>
                     </div>
                     <div class="p-2">
-                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all">
+                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all">
                             <i data-lucide="external-link" class="w-4 h-4"></i>
                             <span class="text-xs font-bold uppercase tracking-widest">View Profile</span>
                         </a>
-                        <button id="editIdentityBtnQuick" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-slate-800 text-slate-300 hover:text-white transition-all text-left">
+                        <button id="editIdentityBtnQuick" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all text-left">
                             <i data-lucide="settings" class="w-4 h-4"></i>
                             <span class="text-xs font-bold uppercase tracking-widest">Profile Settings</span>
                         </button>
                     </div>
-                    <div class="p-2 border-t border-slate-800">
+                    <div class="p-2 border-t border-[var(--border-subtle)]">
                         <button id="logoutBtn" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-500/10 text-red-500 transition-all text-left">
                             <i data-lucide="log-out" class="w-4 h-4"></i>
                             <span class="text-xs font-bold uppercase tracking-widest">Sign Out</span>
@@ -63,12 +63,12 @@
 
     <main class="flex-grow max-w-4xl mx-auto px-6 py-8 md:py-16">
         <!-- Expanded Identity Badge -->
-        <div id="identityBadge" class="bg-slate-900 border border-slate-800 rounded-[3rem] p-8 md:p-14 mb-12 shadow-2xl relative overflow-hidden group border-glow animate-slide-up">
+        <div id="identityBadge" class="bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[3rem] p-8 md:p-14 mb-12 shadow-2xl relative overflow-hidden group border-glow animate-slide-up text-[var(--text-on-light)]">
             <div class="absolute top-0 right-0 p-8 opacity-10">
-                <i data-lucide="id-card" class="w-48 h-48"></i>
+                <i data-lucide="id-card" class="w-48 h-48 text-[var(--c-primary)]"></i>
             </div>
             
-            <button id="editIdentityBtn" class="absolute top-8 right-8 bg-slate-800 hover:bg-white hover:text-slate-950 text-slate-400 w-12 h-12 rounded-full flex items-center justify-center transition-all z-20 shadow-lg border border-slate-700">
+            <button id="editIdentityBtn" class="absolute top-8 right-8 bg-[var(--bg-card-hover)] hover:bg-[var(--c-primary)] hover:text-[var(--c-bg)] text-[var(--text-on-light)] w-12 h-12 rounded-full flex items-center justify-center transition-all z-20 shadow-lg border border-[var(--border-subtle)]">
                 <i data-lucide="edit-3" class="w-5 h-5"></i>
             </button>
 
@@ -88,43 +88,43 @@
                 <div class="flex-1 space-y-8">
                     <div class="text-center md:text-left">
                         <div class="flex flex-col md:flex-row md:items-center gap-4">
-                            <h2 id="badgeName" class="text-5xl md:text-6xl font-black tracking-tighter text-white">Loading...</h2>
-                            <span id="badgeUsername" class="bg-slate-800 text-slate-400 px-5 py-2 rounded-2xl text-sm font-mono tracking-tighter border border-slate-700">@username</span>
+                            <h2 id="badgeName" class="text-5xl md:text-6xl font-black tracking-tighter text-[var(--text-on-light)]">Loading...</h2>
+                            <span id="badgeUsername" class="bg-[var(--bg-card-hover)] text-[var(--text-on-light)] px-5 py-2 rounded-2xl text-sm font-mono tracking-tighter border border-[var(--border-subtle)]">@username</span>
                         </div>
-                        <p class="text-[10px] text-slate-500 font-black tracking-[0.4em] uppercase mt-3">Identity Production Document</p>
+                        <p class="text-[10px] text-[var(--text-on-light)]/60 font-black tracking-[0.4em] uppercase mt-3">Identity Production Document</p>
                     </div>
                     
-                    <div class="bg-slate-950/40 border border-slate-800/50 p-8 rounded-[2.5rem] backdrop-blur-sm shadow-inner">
-                        <p id="badgeBio" class="text-slate-400 text-xl leading-relaxed italic">
+                    <div class="bg-[var(--bg-page)]/10 border border-[var(--border-subtle)] p-8 rounded-[2.5rem] backdrop-blur-sm shadow-inner">
+                        <p id="badgeBio" class="text-[var(--text-on-light)] text-xl leading-relaxed italic opacity-80">
                             Tell the world your story.
                         </p>
                     </div>
 
                     <!-- Expanded Data Grid -->
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 pt-6 border-t border-slate-800/50">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-y-8 gap-x-4 pt-6 border-t border-[var(--border-subtle)]">
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Date of Birth</p>
-                            <p id="badgeDOB" class="text-xs font-bold text-slate-300">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Date of Birth</p>
+                            <p id="badgeDOB" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
                         </div>
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Current Age</p>
-                            <p id="badgeAge" class="text-xs font-bold text-slate-300">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Current Age</p>
+                            <p id="badgeAge" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
                         </div>
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Gender</p>
-                            <p id="badgeGender" class="text-xs font-bold text-slate-300">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Gender</p>
+                            <p id="badgeGender" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
                         </div>
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Home / City</p>
-                            <p id="badgeHome" class="text-xs font-bold text-slate-300 truncate">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Home / City</p>
+                            <p id="badgeHome" class="text-xs font-bold text-[var(--text-on-light)] truncate">N/A</p>
                         </div>
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Contact Tel</p>
-                            <p id="badgeTel" class="text-xs font-bold text-slate-300">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Contact Tel</p>
+                            <p id="badgeTel" class="text-xs font-bold text-[var(--text-on-light)]">N/A</p>
                         </div>
                         <div class="space-y-1">
-                            <p class="text-[10px] font-black text-slate-600 uppercase tracking-widest">Public Email</p>
-                            <p id="badgeEmail" class="text-xs font-bold text-slate-300 truncate">N/A</p>
+                            <p class="text-[10px] font-black text-[var(--c-secondary)] uppercase tracking-widest">Public Email</p>
+                            <p id="badgeEmail" class="text-xs font-bold text-[var(--text-on-light)] truncate">N/A</p>
                         </div>
                     </div>
                 </div>
@@ -136,22 +136,22 @@
             <header class="mb-14 flex flex-col md:flex-row md:items-end justify-between gap-8 py-10">
                 <div class="space-y-4">
                     <p class="text-[var(--text-muted)] text-[10px] font-black tracking-[0.4em] uppercase">Control Center / Profile</p>
-                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-white">Manage<br>Your Presence.</h1>
+                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter text-[var(--text-main)]">Manage<br>Your Presence.</h1>
                 </div>
                 <div class="flex gap-4">
-                    <a href="../pages/pro.html" class="bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] border border-[var(--accent-premium)]/30 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-black transition-all">
+                    <a href="../pages/pro.html" class="bg-[var(--accent-premium)]/10 text-[var(--accent-premium)] border border-[var(--accent-premium)]/30 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-premium)] hover:text-[var(--c-bg)] transition-all">
                         Upgrade Pro
                     </a>
                 </div>
             </header>
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div class="flex items-center gap-5">
-                    <div class="bg-[#121212] p-4 rounded-2xl border border-white/5">
-                        <i data-lucide="layers" class="w-8 h-8 text-white"></i>
+                    <div class="bg-[var(--bg-card)] p-4 rounded-2xl border border-[var(--border-subtle)]">
+                        <i data-lucide="layers" class="w-8 h-8 text-[var(--text-on-light)]"></i>
                     </div>
                     <div>
-                        <h3 class="text-4xl font-black tracking-tighter text-white">Link Library</h3>
-                        <p class="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-widest mt-1"><span id="linkCount" class="text-[#0078d7]">0</span> Direct destination entries</p>
+                        <h3 class="text-4xl font-black tracking-tighter text-[var(--text-main)]">Link Library</h3>
+                        <p class="text-[10px] text-[var(--text-muted)] font-bold uppercase tracking-widest mt-1"><span id="linkCount" class="text-[var(--c-bg)]">0</span> Direct destination entries</p>
                     </div>
                 </div>
                 <button id="addLinkBtn" class="btn-premium-grad px-10 py-4.5 rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center gap-3 shadow-2xl whitespace-nowrap">
@@ -167,9 +167,9 @@
     </main>
 
     <!-- 3-STEP IDENTITY WIZARD MODAL -->
-    <div id="identityModal" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-3xl z-[100] flex items-center justify-center p-6">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-[3rem] p-10 md:p-14 relative shadow-2xl overflow-hidden">
-            <button id="closeIdentityModal" class="absolute top-10 right-10 text-[var(--text-muted)] hover:text-white bg-slate-800 w-12 h-12 rounded-full flex items-center justify-center transition-all z-[110]">
+    <div id="identityModal" class="hidden fixed inset-0 bg-[var(--bg-page)]/95 backdrop-blur-3xl z-[100] flex items-center justify-center p-6">
+        <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] w-full max-w-2xl rounded-[3rem] p-10 md:p-14 relative shadow-2xl overflow-hidden text-[var(--text-on-light)]">
+            <button id="closeIdentityModal" class="absolute top-10 right-10 text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-card-hover)] w-12 h-12 rounded-full flex items-center justify-center transition-all z-[110]">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             
@@ -185,9 +185,9 @@
             <!-- STEP 1: Persona -->
             <div class="wizard-step active" id="step1">
                 <div class="space-y-10">
-                    <div class="flex flex-col items-center gap-5 py-8 bg-slate-950/50 rounded-[2.5rem] border border-slate-800/50 group">
-                        <div id="modalAvatarPreview" class="w-32 h-32 rounded-[2.5rem] bg-slate-800 border-4 border-slate-700 overflow-hidden shadow-2xl group-hover:scale-105 transition-transform"></div>
-                        <label class="cursor-pointer bg-slate-800 px-8 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] hover:bg-white hover:text-slate-950 transition-all">
+                    <div class="flex flex-col items-center gap-5 py-8 bg-[var(--bg-page)]/50 rounded-[2.5rem] border border-[var(--border-subtle)] group">
+                        <div id="modalAvatarPreview" class="w-32 h-32 rounded-[2.5rem] bg-[var(--bg-card-hover)] border-4 border-[var(--border-subtle)] overflow-hidden shadow-2xl group-hover:scale-105 transition-transform"></div>
+                        <label class="cursor-pointer bg-[var(--bg-card-hover)] px-8 py-3 rounded-2xl font-black text-[10px] uppercase tracking-widest text-[var(--text-muted)] hover:bg-[var(--c-primary)] hover:text-[var(--c-bg)] transition-all">
                             Change Portrait
                             <input type="file" id="photoInput" class="hidden" accept="image/*">
                         </label>
@@ -197,15 +197,15 @@
                         <div>
                             <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Identity Name</label>
                             <input type="text" id="displayName"
-                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold"
+                                class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-on-light)]"
                                 placeholder="Your Name">
                         </div>
                         <div>
                             <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Unique Handle</label>
                             <div class="relative">
-                                <span class="absolute inset-y-0 left-0 pl-6 flex items-center text-slate-800 font-black">@</span>
+                                <span class="absolute inset-y-0 left-0 pl-6 flex items-center text-[var(--text-dim)] font-black">@</span>
                                 <input type="text" id="dashboardUsername"
-                                    class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 pl-12 pr-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-mono font-bold"
+                                    class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-5 pl-12 pr-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-mono font-bold text-[var(--text-on-light)]"
                                     placeholder="handle">
                             </div>
                         </div>
@@ -220,11 +220,11 @@
                         <div>
                             <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Date of Birth</label>
                             <input type="date" id="dob"
-                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold text-[var(--text-muted)]">
+                                class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-muted)]">
                         </div>
                         <div>
-                            <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Gender</label>
-                            <select id="gender" class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold appearance-none">
+                            <label class="block text-[10px] font-black text-[var(--text-on-light)]/60 uppercase tracking-[0.2em] mb-3 ml-1">Gender</label>
+                            <select id="gender" class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold appearance-none text-[var(--text-on-light)]">
                                 <option value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -239,7 +239,7 @@
                             <span id="bioCounter">0/150</span>
                         </div>
                         <textarea id="bio" maxlength="150" rows="4" 
-                            class="w-full bg-slate-950 border border-slate-800 rounded-[2rem] py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all text-sm leading-relaxed"
+                            class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-[2rem] py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all text-sm leading-relaxed text-[var(--text-on-light)]"
                             placeholder="Tell the world who you are..."></textarea>
                     </div>
                 </div>
@@ -252,17 +252,17 @@
                         <div>
                             <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Public Phone</label>
                             <input type="tel" id="tel"
-                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold"
+                                class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-main)]"
                                 placeholder="+00 000 000 000">
                         </div>
                         <div>
                             <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">City / Home</label>
                             <input type="text" id="home"
-                                class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold"
+                                class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-main)]"
                                 placeholder="e.g. Colombo, SL">
                         </div>
                     </div>
-                    <div class="bg-slate-950/50 p-6 rounded-2xl border border-dashed border-slate-800">
+                    <div class="bg-[var(--bg-page)]/50 p-6 rounded-2xl border border-dashed border-[var(--border-subtle)]">
                         <p class="text-[10px] font-black text-[var(--text-muted)] uppercase tracking-widest text-center mb-2">Notice</p>
                         <p class="text-xs text-[var(--text-muted)] text-center leading-relaxed italic">By securing this identity, you confirm that all provided details are accurate for professional verification purposes.</p>
                     </div>
@@ -270,14 +270,14 @@
             </div>
 
             <!-- Wizard Controls -->
-            <div class="flex gap-4 mt-12 pt-10 border-t border-slate-800">
-                <button id="prevStepBtn" class="hidden flex-1 bg-slate-800 text-slate-300 py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-slate-700 transition-all">
+            <div class="flex gap-4 mt-12 pt-10 border-t border-[var(--border-subtle)]">
+                <button id="prevStepBtn" class="hidden flex-1 bg-[var(--bg-card-hover)] text-[var(--text-muted)] py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-[var(--bg-card)] transition-all">
                     Back to previous
                 </button>
-                <button id="nextStepBtn" class="flex-1 bg-white text-slate-950 py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all shadow-xl">
+                <button id="nextStepBtn" class="flex-1 creative-btn-primary py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest transition-all shadow-xl">
                     Continue Setup
                 </button>
-                <button id="saveProfileBtn" class="hidden flex-1 bg-white text-slate-950 py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all shadow-xl">
+                <button id="saveProfileBtn" class="hidden flex-1 creative-btn-primary py-5 rounded-[2rem] font-black text-[10px] uppercase tracking-widest transition-all shadow-xl">
                     Secure production ID
                 </button>
             </div>
@@ -285,9 +285,9 @@
     </div>
 
     <!-- Link Modal -->
-    <div id="linkModal" class="hidden fixed inset-0 bg-slate-950/95 backdrop-blur-3xl z-[100] flex items-center justify-center p-6">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-lg rounded-[3rem] p-10 md:p-14 relative shadow-2xl">
-            <button id="closeModalBtn" class="absolute top-10 right-10 text-slate-500 hover:text-white bg-slate-800 w-12 h-12 rounded-full flex items-center justify-center">
+    <div id="linkModal" class="hidden fixed inset-0 bg-[var(--bg-page)]/95 backdrop-blur-3xl z-[100] flex items-center justify-center p-6">
+        <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] w-full max-w-lg rounded-[3rem] p-10 md:p-14 relative shadow-2xl text-[var(--text-on-light)]">
+            <button id="closeModalBtn" class="absolute top-10 right-10 text-[var(--text-muted)] hover:text-[var(--text-main)] bg-[var(--bg-card-hover)] w-12 h-12 rounded-full flex items-center justify-center">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
             <h3 id="modalTitle" class="text-4xl font-black tracking-tighter mb-12">Add New Entry</h3>
@@ -295,20 +295,20 @@
             <form id="linkForm" class="space-y-8">
                 <input type="hidden" id="linkIndex">
                 <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 ml-1">Identity Label</label>
+                    <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Identity Label</label>
                     <input type="text" id="linkTitle" required
-                        class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold"
+                        class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-main)]"
                         placeholder="e.g. Official Portfolio">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 ml-1">Destination URL</label>
+                    <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Destination URL</label>
                     <input type="url" id="linkUrl" required
-                        class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold"
+                        class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold text-[var(--text-main)]"
                         placeholder="https://example.com">
                 </div>
                 <div>
-                    <label class="block text-[10px] font-black text-slate-500 uppercase tracking-[0.2em] mb-3 ml-1">Icon Identity</label>
-                    <select id="linkIcon" class="w-full bg-slate-950 border border-slate-800 rounded-2xl py-5 px-6 focus:ring-1 focus:ring-white/20 outline-none transition-all font-bold appearance-none">
+                    <label class="block text-[10px] font-black text-[var(--text-muted)] uppercase tracking-[0.2em] mb-3 ml-1">Icon Identity</label>
+                    <select id="linkIcon" class="w-full bg-[var(--bg-page)] border border-[var(--border-subtle)] rounded-2xl py-5 px-6 focus:ring-1 focus:ring-[var(--c-primary)] outline-none transition-all font-bold appearance-none text-[var(--text-main)]">
                         <option value="link">General</option>
                         <option value="globe">Web</option>
                         <option value="twitter">Twitter</option>
@@ -318,7 +318,7 @@
                         <option value="youtube">YouTube</option>
                     </select>
                 </div>
-                <button type="submit" class="w-full bg-white text-slate-950 py-6 rounded-3xl font-black text-sm uppercase tracking-[0.3em] transition-all hover:scale-[1.02] mt-6 shadow-2xl">
+                <button type="submit" class="w-full creative-btn-primary py-6 rounded-3xl font-black text-sm uppercase tracking-[0.3em] transition-all hover:scale-[1.02] mt-6 shadow-2xl">
                     Secure & Save Entry
                 </button>
             </form>

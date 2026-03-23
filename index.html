@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22white%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polygon points=%2213 2 3 14 12 14 11 22 21 10 12 10 13 2%22/></svg>">
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col">
+<body class="bg-[var(--bg-page)] text-[var(--text-main)] min-h-screen flex flex-col">
     <div class="bg-dot-matrix"></div>
     <header class="fixed top-0 w-full z-50 transition-all duration-500 py-6"></header>
     <!-- Navigation (Injected by layout.js) -->
@@ -26,14 +26,14 @@
     <!-- Hero Section -->
     <main id="hero" class="scroll-section">
         <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
-            <div id="hero-badge" class="inline-flex items-center gap-3 bg-[var(--accent-blue)]/10 border border-[var(--accent-blue)]/20 px-6 py-2 rounded-full text-[var(--accent-blue)] text-[10px] font-black uppercase tracking-[0.2em] mb-10">
-                <span class="flex h-2 w-2 rounded-full bg-[var(--accent-blue)]"></span>
+            <div id="hero-badge" class="inline-flex items-center gap-3 bg-[var(--c-bg)]/20 border border-[var(--c-bg)]/30 px-6 py-2 rounded-full text-[var(--c-bg)] text-[10px] font-black uppercase tracking-[0.2em] mb-10">
+                <span class="flex h-2 w-2 rounded-full bg-[var(--c-secondary)] animate-pulse"></span>
                 Join 15,000+ people using this
             </div>
-            <h1 id="hero-title" class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-[var(--accent-premium)]">
+            <h1 id="hero-title" class="text-6xl md:text-8xl font-black tracking-tighter mb-10 leading-[0.85] md:leading-[0.9] text-[var(--c-bg)]">
                 Make your profile look great.
             </h1>
-             <p id="hero-subtitle" class="text-[var(--text-muted)] text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-medium">
+             <p id="hero-subtitle" class="text-[var(--c-bg)]/90 text-xl md:text-2xl max-w-3xl mx-auto mb-14 leading-relaxed font-bold">
                 The most elegant, fastest-loading bio page built for everyone. Simple for you, great for your fans.
             </p>
             <div id="hero-actions" class="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -53,24 +53,24 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div class="space-y-12">
-                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-white">Your Profile,<br>Infinite Power.</h2>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-[var(--text-main)]">Your Profile,<br>Infinite Power.</h2>
                     <p class="text-[var(--text-muted)] text-xl leading-relaxed max-w-xl">
                         We don't just build pages; we build digital homes. Our system uses advanced rendering technology to ensure your profile loads in under 100ms globally. No bloated scripts, no heavy images—just pure, blazing speed.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <span class="bg-[var(--bg-card)] px-6 py-3 rounded-2xl border border-[var(--border-subtle)] font-bold text-xs uppercase tracking-widest text-[var(--accent-blue)] flex items-center gap-2">
-                             <i data-lucide="zap" class="w-4 h-4 text-[var(--accent-blue)]"></i> High Speed
+                        <span class="bg-[var(--bg-card)] px-6 py-3 rounded-2xl border border-[var(--border-subtle)] font-bold text-xs uppercase tracking-widest text-[var(--text-on-light)] flex items-center gap-2">
+                             <i data-lucide="zap" class="w-4 h-4 text-[var(--c-secondary)]"></i> <span class="text-[var(--text-on-light)]">High Speed</span>
                         </span>
                     </div>
                 </div>
                 <div class="grid grid-cols-1 gap-6">
-                    <div class="detail-card border-l-4 border-l-[var(--accent-blue)]">
-                        <h4 class="text-2xl font-black mb-4 italic text-white">The Profile Maker</h4>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Craft your identity in minutes. Our 3-step wizard guides you from persona to professional access, ensuring every detail is perfect before you go live.</p>
+                    <div class="detail-card border-l-4 border-l-[var(--c-secondary)] text-[var(--text-on-light)]">
+                        <h4 class="text-2xl font-black mb-4 italic">The Profile Maker</h4>
+                        <p class="opacity-80 text-sm leading-relaxed">Craft your identity in minutes. Our 3-step wizard guides you from persona to professional access, ensuring every detail is perfect before you go live.</p>
                     </div>
-                    <div class="detail-card">
-                        <h4 class="text-2xl font-black mb-4 italic text-white">Verified Creator Badges</h4>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Our platform verifies your identity to build trust with your audience instantly. Stand out with official check marks.</p>
+                    <div class="detail-card text-[var(--text-on-light)]">
+                        <h4 class="text-2xl font-black mb-4 italic">Verified Creator Badges</h4>
+                        <p class="opacity-80 text-sm leading-relaxed">Our platform verifies your identity to build trust with your audience instantly. Stand out with official check marks.</p>
                     </div>
                 </div>
             </div>
@@ -81,29 +81,29 @@
     <section id="tech" class="scroll-section bg-[var(--bg-page)]">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-24">
-                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mt-4 text-white">Built for Everyone.</h2>
+                <h2 class="text-6xl md:text-8xl font-black tracking-tighter mt-4 text-[var(--text-main)]">Built for Everyone.</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="detail-card">
-                    <div class="bg-[var(--accent-blue)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-blue)]/20">
-                        <i data-lucide="cpu" class="w-8 h-8 text-[var(--accent-blue)]"></i>
+                <div class="detail-card text-[var(--text-on-light)]">
+                    <div class="bg-[var(--c-secondary)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--c-secondary)]/20">
+                        <i data-lucide="cpu" class="w-8 h-8 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-6 uppercase text-white">Fast Photos</h4>
-                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">We use Cloudinary's global network to serve your images. This means faster loading for your fans, no matter where they are in the world.</p>
+                    <h4 class="text-2xl font-black mb-6 uppercase">Fast Photos</h4>
+                    <p class="opacity-80 font-medium leading-relaxed">We use Cloudinary's global network to serve your images. This means faster loading for your fans, no matter where they are in the world.</p>
                 </div>
-                <div class="detail-card">
-                    <div class="bg-[var(--accent-premium)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-premium)]/20">
-                        <i data-lucide="lock" class="w-8 h-8 text-[var(--accent-premium)]"></i>
+                <div class="detail-card text-[var(--text-on-light)]">
+                    <div class="bg-[var(--c-secondary)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--c-secondary)]/20">
+                        <i data-lucide="lock" class="w-8 h-8 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-6 uppercase text-[var(--accent-premium)]">Safe Account</h4>
-                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">Your data is secured with Firebase's enterprise-grade encryption. Your password, your links, and your identity are for your eyes only.</p>
+                    <h4 class="text-2xl font-black mb-6 uppercase">Safe Account</h4>
+                    <p class="opacity-80 font-medium leading-relaxed">Your data is secured with Firebase's enterprise-grade encryption. Your password, your links, and your identity are for your eyes only.</p>
                 </div>
-                <div class="detail-card">
-                    <div class="bg-[var(--accent-blue)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--accent-blue)]/20">
-                        <i data-lucide="palette" class="w-8 h-8 text-[var(--accent-blue)]"></i>
+                <div class="detail-card text-[var(--text-on-light)]">
+                    <div class="bg-[var(--c-secondary)]/10 w-16 h-16 rounded-3xl flex items-center justify-center mb-8 border border-[var(--c-secondary)]/20">
+                        <i data-lucide="palette" class="w-8 h-8 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h4 class="text-2xl font-black mb-6 uppercase text-white">New Colors</h4>
-                    <p class="text-[var(--text-muted)] font-medium leading-relaxed">Customize your page with beautiful themes. Switch between dark mode, glassmorphism, or clean minimalist styles with one click.</p>
+                    <h4 class="text-2xl font-black mb-6 uppercase">New Colors</h4>
+                    <p class="opacity-80 font-medium leading-relaxed">Customize your page with beautiful themes. Switch between dark mode, glassmorphism, or clean minimalist styles with one click.</p>
                 </div>
             </div>
         </div>
@@ -114,21 +114,21 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                 <div class="order-2 md:order-1 grid grid-cols-1 gap-6">
-                    <div class="detail-card">
-                        <h4 class="text-2xl font-black mb-4 italic text-white">Real-time Data</h4>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">See every click as it happens. Our analytics engine tracks traffic, sources, and conversion rates without compromising privacy.</p>
+                    <div class="detail-card text-[var(--text-on-light)]">
+                        <h4 class="text-2xl font-black mb-4 italic">Real-time Data</h4>
+                        <p class="opacity-80 text-sm leading-relaxed">See every click as it happens. Our analytics engine tracks traffic, sources, and conversion rates without compromising privacy.</p>
                     </div>
-                    <div class="detail-card">
-                        <h4 class="text-2xl font-black mb-4 italic text-white">Global Reach</h4>
-                        <p class="text-[var(--text-muted)] text-sm leading-relaxed">Understand your global audience. See which countries your fans are visiting from and optimize your content for them.</p>
+                    <div class="detail-card text-[var(--text-on-light)]">
+                        <h4 class="text-2xl font-black mb-4 italic">Global Reach</h4>
+                        <p class="opacity-80 text-sm leading-relaxed">Understand your global audience. See which countries your fans are visiting from and optimize your content for them.</p>
                     </div>
                 </div>
                 <div class="order-1 md:order-2 space-y-12">
-                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-white">See who <br>clicks you.</h2>
+                    <h2 class="text-6xl md:text-8xl font-black tracking-tighter leading-none text-[var(--text-main)]">See who <br>clicks you.</h2>
                     <p class="text-[var(--text-muted)] text-xl leading-relaxed">
                         Data is the key to growth. We provide detailed charts and insights into your link performance, helping you understand what your audience loves most.
                     </p>
-                    <a href="auth/register.html" class="ripple-btn inline-flex items-center gap-4 bg-white text-black px-10 py-5 rounded-3xl font-black text-xs uppercase tracking-widest hover:bg-white/90 transition-all">
+                    <a href="auth/register.html" class="ripple-btn inline-flex items-center gap-4 bg-[var(--btn-primary-bg)] text-[var(--btn-primary-text)] px-10 py-5 rounded-3xl font-black text-xs uppercase tracking-widest hover:scale-105 transition-all">
                         Start Tracking Now
                         <i data-lucide="bar-chart-3" class="w-5 h-5"></i>
                     </a>
@@ -138,33 +138,33 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="scroll-section bg-black py-32">
+    <section id="faq" class="scroll-section bg-[var(--bg-page)] py-32">
         <div class="max-w-3xl mx-auto px-6">
             <div class="text-center mb-20 space-y-4">
-                <h2 class="text-5xl md:text-6xl font-black tracking-tighter text-white">Common Questions</h2>
-                <p class="text-white/40 text-lg">Everything you need to know about your new home.</p>
+                <h2 class="text-5xl md:text-6xl font-black tracking-tighter text-[var(--text-main)]">Common Questions</h2>
+                <p class="text-[var(--text-muted)] text-lg">Everything you need to know about your new home.</p>
             </div>
             
             <div class="space-y-6">
                 <!-- FAQ Item 1 -->
                 <div class="faq-item group">
-                    <button class="w-full flex justify-between items-center bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 text-left hover:border-slate-700 transition-all font-black text-xl tracking-tight">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--border-active)] transition-all font-black text-xl tracking-tight text-[var(--text-on-light)]">
                         Is this page really free?
-                        <div class="bg-slate-800 p-2 rounded-full transition-transform group-[.active]:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        <div class="bg-[var(--c-secondary)]/10 p-2 rounded-full transition-transform group-[.active]:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--c-secondary)]"></i>
                         </div>
                     </button>
-                    <div class="faq-answer px-10 text-slate-400 text-lg leading-relaxed">
+                    <div class="faq-answer px-10 text-[var(--text-muted)] text-lg leading-relaxed">
                         Yes! You can use it for free to share your links. We have a Pro plan for extra features.
                     </div>
                 </div>
 
                 <!-- FAQ Item 2 -->
                 <div class="faq-item group">
-                    <button class="w-full flex justify-between items-center bg-slate-900/40 p-10 rounded-[2.5rem] border border-slate-800/50 text-left hover:border-slate-700 transition-all font-black text-xl tracking-tight">
+                    <button class="w-full flex justify-between items-center bg-[var(--bg-card)] p-10 rounded-[2.5rem] border border-[var(--border-subtle)] text-left hover:border-[var(--border-active)] transition-all font-black text-xl tracking-tight text-[var(--text-on-light)]">
                         Can I get my own link?
-                        <div class="bg-slate-800 p-2 rounded-full transition-transform group-[.active]:rotate-180">
-                            <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400"></i>
+                        <div class="bg-[var(--c-secondary)]/10 p-2 rounded-full transition-transform group-[.active]:rotate-180">
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-[var(--c-secondary)]"></i>
                         </div>
                     </button>
                     <div class="faq-answer px-10 text-[var(--text-muted)] text-lg leading-relaxed">

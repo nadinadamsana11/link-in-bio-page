@@ -127,7 +127,7 @@ function updateIdentityBadge(data) {
 
     const photoContent = data.photoURL 
         ? `<img src="${data.photoURL}" class="w-full h-full object-cover">`
-        : `<div class="w-full h-full bg-[var(--bg-card-hover)] flex items-center justify-center text-4xl font-black text-white/10 italic">${name[0].toUpperCase()}</div>`;
+        : `<div class="w-full h-full bg-[var(--c-accent)] flex items-center justify-center text-4xl font-black text-[var(--c-bg)] italic">${name[0].toUpperCase()}</div>`;
     
     avatarPreview.innerHTML = photoContent;
     modalAvatarPreview.innerHTML = photoContent;
@@ -332,32 +332,32 @@ photoInput.addEventListener('change', async (e) => {
 function renderLinks() {
     if (userLinks.length === 0) {
         linksListEl.innerHTML = `
-            <div class="col-span-1 md:col-span-2 text-center py-20 border-2 border-dashed border-slate-900 rounded-[2rem]">
-                <p class="text-slate-600 font-medium">Your link library is empty.</p>
+            <div class="col-span-1 md:col-span-2 text-center py-20 border-2 border-dashed border-[var(--border-subtle)] rounded-[2rem]">
+                <p class="text-[var(--text-dim)] font-medium">Your link library is empty.</p>
             </div>`;
         return;
     }
 
     linksListEl.innerHTML = userLinks.map((link, index) => `
-        <div class="bg-slate-900 border border-slate-800 p-6 rounded-[2rem] flex flex-col gap-4 group hover:scale-[1.03] transition-all cursor-default">
+        <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-6 rounded-[2rem] flex flex-col gap-4 group hover:scale-[1.03] transition-all cursor-default">
             <div class="flex justify-between items-start">
-                <div class="bg-slate-800 p-4 rounded-2xl text-slate-300">
+                <div class="bg-[var(--bg-card-hover)] p-4 rounded-2xl text-[var(--text-muted)]">
                     <i data-lucide="${link.icon || 'link'}" class="w-6 h-6"></i>
                 </div>
                 <div class="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <button onclick="editLink(${index})" class="p-2 hover:bg-slate-800 rounded-lg text-slate-500 hover:text-white transition-all">
+                    <button onclick="editLink(${index})" class="p-2 hover:bg-[var(--bg-card-hover)] rounded-lg text-[var(--text-dim)] hover:text-[var(--text-main)] transition-all">
                         <i data-lucide="edit-2" class="w-4 h-4"></i>
                     </button>
-                    <button onclick="deleteLink(${index})" class="p-2 hover:bg-red-400/10 rounded-lg text-slate-500 hover:text-red-400 transition-all">
+                    <button onclick="deleteLink(${index})" class="p-2 hover:bg-red-400/10 rounded-lg text-[var(--text-dim)] hover:text-red-400 transition-all">
                         <i data-lucide="trash" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
             <div class="space-y-1">
-                <h4 class="font-black text-lg text-slate-100">${link.title}</h4>
-                <p class="text-xs text-slate-500 truncate pb-2 uppercase tracking-widest font-bold">${link.url.replace('https://', '')}</p>
+                <h4 class="font-black text-lg text-[var(--text-main)]">${link.title}</h4>
+                <p class="text-xs text-[var(--text-muted)] truncate pb-2 uppercase tracking-widest font-bold">${link.url.replace('https://', '')}</p>
             </div>
-            <a href="${link.url}" target="_blank" class="mt-2 text-xs font-bold bg-slate-800 py-3 rounded-xl text-center hover:bg-slate-700 transition-colors uppercase tracking-widest">
+            <a href="${link.url}" target="_blank" class="mt-2 text-xs font-bold bg-[var(--bg-card-hover)] py-3 rounded-xl text-center hover:bg-[var(--bg-page)] transition-colors uppercase tracking-widest text-[var(--text-main)]">
                 Test Destination
             </a>
         </div>

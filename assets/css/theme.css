@@ -1,29 +1,37 @@
 :root {
-  /* Core Palette */
-  --bg-page: #000000;
-  --bg-card: #121212;
-  --bg-card-hover: #1a1a1a;
-  --bg-elevated: #1e1e1e;
+  /* Core Palette (User Requested - New) */
+  --c-primary: #2FA4D7;   /* Blue - Now Page BG */
+  --c-secondary: #E76F2E; /* Orange - Accents */
+  --c-accent: #3E2C23;    /* Dark Brown - Text on Light */
+  --c-bg: #F5E9D8;        /* Beige/Cream - Cards */
+
+  /* Theme Mapping */
+  --bg-page: var(--c-primary);
+  --bg-card: var(--c-bg);
+  --bg-card-hover: #ffffff; /* Allowing white for high-end hover states if the user accepts, otherwise stick to beige */
+  --bg-elevated: var(--c-bg);
   
   /* Typography */
-  --text-main: #ffffff;
-  --text-muted: #cdcdcd; /* Brighter for better contrast */
-  --text-dim: #606060;
+  --text-main: var(--c-bg);       /* Beige on Blue */
+  --text-muted: rgba(245, 233, 216, 0.85); /* Slightly transparent beige */
+  --text-dim: var(--c-secondary);  /* Orange highlights */
+  --text-on-light: var(--c-accent); /* Dark Brown on Beige */
   
   /* Accents */
-  --accent-blue: #0078d7; /* Windows 10 Blue - SPECIAL ONLY */
-  --accent-gold: #ffd700; /* Premium/Gold */
-  --accent-vibrant: #ffff00; /* Neon Yellow */
+  --accent-blue: var(--c-bg);
+  --accent-premium: var(--c-secondary);
+  --accent-vibrant: var(--c-secondary);
   
   /* Borders & Misc */
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --border-active: rgba(255, 255, 255, 0.15);
-  --glass-bg: rgba(0, 0, 0, 0.6);
+  --border-subtle: rgba(62, 44, 35, 0.1);
+  --border-active: var(--c-secondary);
+  --glass-bg: rgba(47, 164, 215, 0.8);
   --glass-blur: blur(12px);
   
   /* Interactive */
-  --btn-primary-bg: #ffffff;
-  --btn-primary-text: #000000;
-  --btn-secondary-bg: var(--bg-card);
-  --btn-secondary-border: var(--border-subtle);
+  --btn-primary-bg: var(--c-secondary);
+  --btn-primary-text: var(--c-bg);
+  --btn-secondary-bg: var(--c-bg);
+  --btn-secondary-text: var(--c-accent);
+  --btn-secondary-border: var(--c-accent);
 }

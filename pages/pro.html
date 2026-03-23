@@ -8,77 +8,77 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-950 text-white min-h-screen">
+<body class="bg-[var(--bg-page)] text-[var(--text-main)] min-h-screen">
     <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center">
         <a href="../index.html" class="flex items-center gap-2">
-            <div class="bg-slate-800 p-2 rounded-xl border border-slate-700">
-                <i data-lucide="zap" class="w-6 h-6 text-white"></i>
+            <div class="bg-[var(--bg-card)] p-2 rounded-xl border border-[var(--border-subtle)]">
+                <i data-lucide="zap" class="w-6 h-6 text-[var(--text-on-light)]"></i>
             </div>
-            <span class="font-bold text-2xl tracking-tighter">Link-in-Bio</span>
+            <span class="font-bold text-2xl tracking-tighter text-[var(--text-main)]">Link-in-Bio</span>
         </a>
     </nav>
 
     <main class="max-w-5xl mx-auto px-6 py-20 text-center">
-        <h1 class="text-5xl md:text-7xl font-black mb-6">Choose Your Plan</h1>
-        <p class="text-slate-400 text-xl max-w-2xl mx-auto mb-16">Unlock the full power of your digital presence with premium features.</p>
+        <h1 class="text-5xl md:text-7xl font-black mb-6 text-[var(--text-main)]">Choose Your Plan</h1>
+        <p class="text-[var(--text-muted)] text-xl max-w-2xl mx-auto mb-16">Unlock the full power of your digital presence with premium features.</p>
                 <div id="pro-features" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Feature 1 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="check-circle" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="check-circle" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">Verified Badge</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">Verified Badge</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Stand out with the official gold checkmark next to your name. Build instant trust with your audience.
                     </p>
                 </div>
                 <!-- Feature 2 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="globe" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="globe" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">Custom Domains</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">Custom Domains</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Personalize your link-in-bio with your own domain name. Brand consistency across all platforms.
                     </p>
                 </div>
                 <!-- Feature 3 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="bar-chart-2" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="bar-chart-2" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">Advanced Analytics</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">Advanced Analytics</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Gain deeper insights into your audience and link performance. Optimize your strategy with data.
                     </p>
                 </div>
                 <!-- Feature 4 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="palette" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="palette" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">Premium Themes</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">Premium Themes</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Access exclusive, high-quality themes to make your profile truly unique and professional.
                     </p>
                 </div>
                 <!-- Feature 5 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="image" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="image" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">No Watermark</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">No Watermark</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Remove all Link-in-Bio branding for a completely white-label experience. Your brand, front and center.
                     </p>
                 </div>
                 <!-- Feature 6 -->
-                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6">
-                    <div class="w-14 h-14 bg-[var(--accent-premium)]/10 rounded-2xl flex items-center justify-center border border-[var(--accent-premium)]/20">
-                        <i data-lucide="users" class="w-7 h-7 text-[var(--accent-premium)]"></i>
+                <div class="bg-[var(--bg-card)] border border-[var(--border-subtle)] p-10 rounded-[3rem] space-y-6 text-[var(--text-on-light)]">
+                    <div class="w-14 h-14 bg-[var(--c-secondary)]/10 rounded-2xl flex items-center justify-center border border-[var(--c-secondary)]/20">
+                        <i data-lucide="users" class="w-7 h-7 text-[var(--c-secondary)]"></i>
                     </div>
-                    <h3 class="text-2xl font-black italic text-white">Priority Support</h3>
-                    <p class="text-[var(--text-muted)] text-sm leading-relaxed">
+                    <h3 class="text-2xl font-black italic text-[var(--text-on-light)]">Priority Support</h3>
+                    <p class="text-[var(--text-on-light)]/70 text-sm leading-relaxed">
                         Get fast-tracked assistance from our dedicated support team. Your questions, answered quickly.
                     </p>
                 </div>
@@ -86,29 +86,29 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-20">
             <!-- Free Plan -->
-            <div class="glass-dark p-8 rounded-[2.5rem] border border-slate-800 text-left">
+            <div class="bg-[var(--bg-card)] p-8 rounded-[2.5rem] border border-[var(--border-subtle)] text-left text-[var(--text-on-light)]">
                 <h3 class="text-2xl font-bold mb-2">Free</h3>
-                <div class="text-4xl font-black mb-6">$0<span class="text-lg text-slate-500 font-medium">/forever</span></div>
-                <ul class="space-y-4 mb-12 text-slate-400">
-                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Custom Bio Link</li>
-                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Standard Themes</li>
-                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-emerald-500"></i> Basic Analytics</li>
+                <div class="text-4xl font-black mb-6">$0<span class="text-lg opacity-60 font-medium">/forever</span></div>
+                <ul class="space-y-4 mb-12 text-[var(--text-muted)]">
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-[var(--c-primary)]"></i> Custom Bio Link</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-[var(--c-primary)]"></i> Standard Themes</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check" class="w-5 h-5 text-[var(--c-primary)]"></i> Basic Analytics</li>
                 </ul>
-                <a href="../auth/register.html" class="block w-full text-center bg-slate-800 py-4 rounded-2xl font-bold hover:bg-slate-700">Current Plan</a>
+                <a href="../auth/register.html" class="block w-full text-center bg-[var(--bg-page)]/10 text-[var(--text-on-light)] py-4 rounded-2xl font-bold hover:bg-[var(--bg-page)]/20 transition-all">Current Plan</a>
             </div>
             
             <!-- Pro Plan -->
-            <div class="bg-white text-slate-950 p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-left">
-                <div class="absolute top-6 right-6 bg-slate-950 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recommended</div>
+            <div class="bg-[var(--c-primary)] text-[var(--c-bg)] p-8 rounded-[2.5rem] shadow-2xl relative overflow-hidden text-left">
+                <div class="absolute top-6 right-6 bg-[var(--c-bg)] text-[var(--c-primary)] px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Recommended</div>
                 <h3 class="text-2xl font-bold mb-2">Pro</h3>
-                <div class="text-4xl font-black mb-6">$9<span class="text-lg text-slate-500 font-medium">/month</span></div>
+                <div class="text-4xl font-black mb-6">$9<span class="text-lg opacity-60 font-medium">/month</span></div>
                 <ul class="space-y-4 mb-12">
-                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Everything in Free</li>
-                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Custom Domains</li>
-                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> Advanced Analytics</li>
-                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-indigo-600"></i> White-label Profiles</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-[var(--c-bg)]"></i> Everything in Free</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-[var(--c-bg)]"></i> Custom Domains</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-[var(--c-bg)]"></i> Advanced Analytics</li>
+                    <li class="flex items-center gap-2 font-bold"><i data-lucide="check" class="w-5 h-5 text-[var(--c-bg)]"></i> White-label Profiles</li>
                 </ul>
-                <button class="w-full bg-slate-950 text-white py-4 rounded-2xl font-bold text-lg hover:scale-[1.02] transition-transform">Get Started with Pro</button>
+                <button class="w-full bg-[var(--c-bg)] text-[var(--c-primary)] py-4 rounded-2xl font-black text-lg hover:scale-[1.02] transition-transform">Get Started with Pro</button>
             </div>
         </div>
     <footer></footer>
