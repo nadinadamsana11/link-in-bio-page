@@ -23,18 +23,18 @@
         <p class="text-[var(--text-muted)] mb-12">Have questions or need support? We're here to help.</p>
         
         <div class="bg-[var(--bg-card)] p-8 rounded-3xl border border-[var(--border-subtle)] text-left text-[var(--text-on-light)]">
-            <form class="space-y-4">
+            <form action="https://formspree.io/f/xvgzbgzl" method="POST" class="space-y-4">
                 <div>
                     <label class="block text-sm font-medium text-[var(--text-on-light)]/60 mb-1 ml-1">Your Name</label>
-                    <input type="text" class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]">
+                    <input type="text" name="name" required class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-[var(--text-on-light)]/60 mb-1 ml-1">Email Address</label>
-                    <input type="email" class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]">
+                    <input type="email" name="email" required class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-[var(--text-on-light)]/60 mb-1 ml-1">Message</label>
-                    <textarea rows="4" class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]"></textarea>
+                    <textarea name="message" rows="4" required class="w-full bg-[var(--bg-page)]/5 border border-[var(--border-subtle)] rounded-2xl py-3.5 px-5 outline-none focus:ring-1 focus:ring-[var(--c-primary)] text-[var(--text-on-light)]"></textarea>
                 </div>
                 <button type="submit" class="w-full creative-btn-primary py-4 rounded-2xl font-bold">Send Message</button>
             </form>
@@ -50,6 +50,7 @@
                 <p class="text-sm text-[var(--text-muted)] font-medium">@linkinbiodev</p>
             </div>
         </div>
+    </main>
     <footer></footer>
     <script type="module" src="../assets/js/layout.js"></script>
     <script>lucide.createIcons();</script>

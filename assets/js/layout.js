@@ -61,7 +61,7 @@ function injectFooter() {
     // Full-width background classes
     footer.className = "w-full bg-[var(--bg-page)] border-t border-[var(--border-subtle)] pt-20 pb-10 mt-auto relative z-10 overflow-hidden";
     footer.innerHTML = `
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="w-full px-6 md:px-12 lg:px-24">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
                 <div class="col-span-1 md:col-span-1 space-y-6">
                     <div class="flex items-center gap-2 text-[var(--text-main)]">
