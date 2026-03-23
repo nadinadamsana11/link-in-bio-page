@@ -27,33 +27,51 @@
             
             <!-- Profile Dropdown -->
             <div class="relative">
-                <button id="profileDropdownBtn" class="flex items-center gap-3 bg-[var(--bg-card)] border border-[var(--border-subtle)] pl-4 pr-2 py-1.5 rounded-full hover:bg-[var(--bg-card-hover)] transition-all border-glow">
-                    <span id="navEmail" class="text-xs font-bold text-[var(--text-muted)] hidden md:block">loading...</span>
-                    <div id="navAvatar" class="w-8 h-8 rounded-full bg-[var(--bg-card-hover)] border border-[var(--border-subtle)] overflow-hidden flex items-center justify-center text-[10px] font-black">
+                <button id="profileDropdownBtn" class="flex items-center gap-3 bg-[var(--bg-card)] border border-[var(--border-subtle)] pl-4 pr-1.5 py-1.5 rounded-full hover:shadow-xl hover:border-[var(--c-primary)]/30 transition-all group overflow-hidden border-glow group">
+                    <div class="hidden md:flex flex-col items-end text-right">
+                        <span id="navEmail" class="text-[10px] font-black text-[var(--text-on-light)] uppercase tracking-widest leading-none">loading...</span>
+                        <span class="text-[8px] font-bold text-[var(--c-secondary)] uppercase tracking-[0.2em] mt-1">Personal Account</span>
+                    </div>
+                    <div id="navAvatar" class="w-10 h-10 rounded-full bg-[var(--bg-page)]/10 border-2 border-[var(--border-subtle)] overflow-hidden flex items-center justify-center text-xs font-black text-[var(--text-on-light)] shadow-inner group-hover:scale-105 transition-transform">
                         ?
                     </div>
                 </button>
 
                 <!-- Dropdown Menu -->
-                <div id="profileDropdown" class="hidden absolute right-0 mt-3 w-64 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-2xl shadow-2xl z-50 overflow-hidden">
-                    <div class="p-5 border-b border-[var(--border-subtle)] bg-[var(--bg-card-hover)]/30">
-                        <p class="text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-widest mb-1">Authenticated as</p>
-                        <p id="dropdownEmail" class="text-xs font-bold text-[var(--text-main)] truncate">email@example.com</p>
+                <div id="profileDropdown" class="hidden absolute right-0 mt-4 w-72 bg-[var(--bg-card)] border border-[var(--border-subtle)] rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.2)] z-50 overflow-hidden animate-slide-up">
+                    <div class="p-6 border-b border-[var(--border-subtle)] bg-[var(--bg-page)]/5 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-5">
+                            <i data-lucide="user" class="w-20 h-20"></i>
+                        </div>
+                        <p class="text-[9px] font-black text-[var(--c-secondary)] uppercase tracking-[0.3em] mb-2">Member Identity</p>
+                        <p id="dropdownEmail" class="text-sm font-black text-[var(--text-on-light)] truncate">email@example.com</p>
                     </div>
-                    <div class="p-2">
-                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all">
-                            <i data-lucide="external-link" class="w-4 h-4"></i>
-                            <span class="text-xs font-bold uppercase tracking-widest">View Profile</span>
+                    <div class="p-3 grid grid-cols-1 gap-1">
+                        <a id="publicProfileBtn" href="#" target="_blank" class="flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-[var(--bg-page)]/10 text-[var(--text-on-light)] transition-all group/item">
+                            <div class="p-2 bg-[var(--bg-page)]/5 rounded-lg group-hover/item:bg-[var(--c-primary)] group-hover/item:text-white transition-colors">
+                                <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] font-black uppercase tracking-widest">Public Profile</span>
+                                <span class="text-[8px] opacity-60 font-medium">View your live presence</span>
+                            </div>
                         </a>
-                        <button id="editIdentityBtnQuick" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-[var(--bg-card-hover)] text-[var(--text-muted)] hover:text-[var(--text-main)] transition-all text-left">
-                            <i data-lucide="settings" class="w-4 h-4"></i>
-                            <span class="text-xs font-bold uppercase tracking-widest">Profile Settings</span>
+                        <button id="editIdentityBtnQuick" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-[var(--bg-page)]/10 text-[var(--text-on-light)] transition-all text-left group/item">
+                            <div class="p-2 bg-[var(--bg-page)]/5 rounded-lg group-hover/item:bg-[var(--c-primary)] group-hover/item:text-white transition-colors">
+                                <i data-lucide="settings" class="w-4 h-4"></i>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="text-[10px] font-black uppercase tracking-widest">Preferences</span>
+                                <span class="text-[8px] opacity-60 font-medium">Edit badge details</span>
+                            </div>
                         </button>
                     </div>
-                    <div class="p-2 border-t border-[var(--border-subtle)]">
-                        <button id="logoutBtn" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-red-500/10 text-red-500 transition-all text-left">
-                            <i data-lucide="log-out" class="w-4 h-4"></i>
-                            <span class="text-xs font-bold uppercase tracking-widest">Sign Out</span>
+                    <div class="p-3 border-t border-[var(--border-subtle)] bg-[var(--bg-page)]/5">
+                        <button id="logoutBtn" class="w-full flex items-center gap-4 px-5 py-4 rounded-2xl hover:bg-red-500/10 text-red-500 transition-all text-left group/item">
+                            <div class="p-2 bg-red-500/5 rounded-lg group-hover/item:bg-red-500 group-hover/item:text-white transition-colors">
+                                <i data-lucide="log-out" class="w-4 h-4"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-widest">Secure Sign Out</span>
                         </button>
                     </div>
                 </div>
